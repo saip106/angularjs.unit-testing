@@ -48,17 +48,12 @@
                             </ul>                                                 
 
                     </div>
-                    <div class="row">
-                        <div class="span5">
-                            Left
-                        </div>
-                        <div class="span5">
-                            Right
-                        </div>
+                    <div class="row col-md-6">
+                        Dashboard Content 1
                     </div>
                 </div>
             </div>
-            <div id="sellPanel" class="tab-pane">
+            <div id="sellPanel" class="tab-pane active">
                 <div id="sellPanelContent">
                     <div class="row">
                         <div class="nav navbar">
@@ -69,20 +64,46 @@
                             </ul>                                                 
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="span6">
-                            <table>
-                                <tr>
-                                    <td>Search</td>
-                                </tr>
-                                <tr>
-                                    <td>Cart Data</td>
-                                </tr>
-                            </table>
+                    <div class="row" style="height:400px;">
+                        <!--Spacer-->
+                        <div class="col-sm-2"></div>
+                        <!--Shopping Cart-->
+                        <div class="col-sm-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                     <input type="text" /><button type="button" class="btn btn-info">Add</button>
+                                </div>
+                                <div class="panel-body">
+                                    <!--jQuery will be used to add items to this table one row represents a line item in the cart -->
+                                    <table id="shoppingCart">
+
+                                    </table>
+                                </div>
+                                <div class="panel-footer">
+                                    <button type="button" class="btn btn-primary">Void</button>
+                                    <button type="button" class="btn btn-primary">Park</button>
+                                    <button type="button" class="btn btn-primary">Donation</button>
+                                    <button type="button" class="btn btn-primary">Gift Card</button>
+                                    <button type="button" class="btn btn-primary">Discount</button>
+                                    <button type="button" class="btn btn-primary">Notes</button>
+                                    <button type="button" class="btn btn-success">Pay</button>
+                                </div>
+                           </div>
                         </div>
-                        <div class="span6">
-                            Right
+  
+                        <!--Product Hot Keys Panel-->
+                        <div class="col-sm-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    Panel content
+                                </div>
+                                <div class="panel-footer">
+                                    Panel footer
+                                </div>
+                            </div>
                         </div>
+                        <!--Spacer-->
+                        <div class="col-sm-2"></div>
                     </div>
                 </div>
             </div>
