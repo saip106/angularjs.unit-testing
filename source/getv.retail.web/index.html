@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Retail POS</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="/Content/" rel="stylesheet"/>
+        <link href="/Content/bootstrap.min.css" rel="stylesheet"/>
+        <script src="/Scripts/modernizr-2.6.2.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+        <script src="/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="/Scripts/bootstrap.min.js"></script>
+
+        <meta name="viewport" content="width=device-width" />
+         <style>
+        .footer {
+            height: 40px;
+            margin-top: -40px;
+        }
+        
+    </style>
+        <script type="text/javascript">
+
+        </script>
+    </head>
+   
+    <body style="padding-top: 35px;">
+        <div class="nav navbar-fixed-top">
+            <ul class="nav nav-tabs">
+                <li><a href="#dashboardPanel" data-tabs="tabs" data-toggle="tab">Dashboard</a></li> 
+                <li class="active"><a href="#sellPanel" data-toggle="tab">Sell</a></li> 
+                <li><a href="#productPanel" data-toggle="tab">Products</a></li> 
+                <li><a href="#customerPanel" data-toggle="tab">Customers</a></li> 
+                <li><a href="#settingsModal" data-toggle="modal">Settings</a></li> 
+                <li><a href="#helpModal" data-toggle="modal">Help</a></li> 
+                <li class="pull-right"><div id="login">Login</div></li>
+            </ul>                                                 
+        </div>
+        <div class="tab-content" style="margin-left:10px">
+            <div id="dashboardPanel" class="tab-pane">
+
+                <div id="dashboardPanelContent">
+                  <div class="row">
+
+                            <ul class="nav nav-pills">
+                                <li><a href="#" >Dashboard #1</a></li> 
+                                <li><a href="#" >Dashboard #2</a></li> 
+                            </ul>                                                 
+
+                    </div>
+                    <div class="row">
+                        <div class="span5">
+                            Left
+                        </div>
+                        <div class="span5">
+                            Right
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sellPanel" class="tab-pane">
+                <div id="sellPanelContent">
+                    <div class="row">
+                        <div class="nav navbar">
+                            <ul class="nav nav-pills">
+                                <li><a href="#" >Current Sale</a></li> 
+                                <li><a href="#" >Retrieve Sale</a></li> 
+                                <li><a href="#" >Close Register</a></li> 
+                            </ul>                                                 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span6">
+                            <table>
+                                <tr>
+                                    <td>Search</td>
+                                </tr>
+                                <tr>
+                                    <td>Cart Data</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="span6">
+                            Right
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="productPanel" class="tab-pane">
+                <div id="productPanelContent">
+                    Products
+                </div>
+            </div>
+            <div id="customerPanel" class="tab-pane">
+                <div id="customerPanelContent">
+                    Customers
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
+
