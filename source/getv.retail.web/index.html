@@ -4,12 +4,11 @@
         <meta charset="utf-8" />
         <title>Retail POS</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <link href="/Content/" rel="stylesheet"/>
         <link href="/Content/bootstrap.min.css" rel="stylesheet"/>
         <script src="/Scripts/modernizr-2.6.2.js"></script>
         <script src="/Scripts/respond.min.js"></script>
         <script src="/Scripts/jquery-1.10.2.min.js"></script>
-        <script src="/Scripts/bootstrap.min.js"></script>
+        <script src="/Scripts/bootstrap.js"></script>
 
         <meta name="viewport" content="width=device-width" />
          <style>
@@ -30,13 +29,40 @@
                 $('#login').append('<ul class=\"nav\"><li><a onclick=\"processLogin()\">Login</a></li></ul>');
             }
             
+
             $(document).ready(function () {
                 var url = "http://v1retailapi.apiary.io/products";
                 $.getJSON(url, null, function (data) {
                     $.each(data.items, function (key, vals) {
-                        $('#hotKeys').append('<button type=\"button\" class=\"btn btn-primary\">' + vals.name + '</button>');
+                        $('#hotKeys').append('<a id=\"' + vals.id + '\" href=\"#hotKeyModal\" role=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\">' + vals.name + '</a>');
                     });
                 });
+            });
+
+            $(document).on("click", "a[data-toggle=modal]", function (event) {
+                        var itemId = $(this).attr('id');
+                        var url = "http://v1retailapi.apiary.io/products/" + itemId + "/stockitems";
+                        
+                        $('#hotKeyModalBody').empty();
+
+                        $.getJSON(url, null, function (data) {
+                            $.each(data.items, function (key, vals) {
+
+                                $('#hotKeyModalBody').append('<button type=\"button\" id=\"' + vals.id + '\" class=\"btn btn-primary addStockItemToCart\" >' + vals.name + '</button>');
+                            });
+                        });
+            });
+
+            $(document).on("click", ".addStockItemToCart", function (event) {
+                var itemId = $(this).attr('id');
+                var url = "http://v1-dev-retail-api.jhm.info/stockitems/" + itemId;
+                $.getJSON(url, null, function (data) {
+                    $('#shoppingCart').append('<tr><td>' + data.name + '</td></tr>');
+                    $('#hotKeyModal').modal('hide')
+
+                })
+                .error(function () { alert("there was an issue"); }
+                );
             });
 
         </script>
@@ -116,7 +142,6 @@
                                     
                                 </div>
                                 <div class="panel-footer">
-                                    Panel footer
                                 </div>
                             </div>
                         </div>
@@ -137,6 +162,14 @@
             </div>
         </div>
 
+        <div id="hotKeyModal" class="modal fade modal-dialog modal-content">
+            <div id="hotKeyModalBody" class="modal-body">            
+                
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn btn-info" data-dismiss="modal" >Close</a>
+            </div>
+        </div>
     </body>
 </html>
 
