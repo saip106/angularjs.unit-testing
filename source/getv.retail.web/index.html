@@ -9,6 +9,8 @@
         <script src="/Scripts/respond.min.js"></script>
         <script src="/Scripts/jquery-1.10.2.min.js"></script>
         <script src="/Scripts/bootstrap.js"></script>
+        <script src="/Scripts/POS.js"></script>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
         <meta name="viewport" content="width=device-width" />
          <style>
@@ -16,56 +18,22 @@
             height: 40px;
             margin-top: -40px;
         }
+        .qtyKeys, .unitPriceKeys {
+            height:60px;
+            width: 80px;
+        }
+
+        .qtyRtnKey, .unitPriceRtnKey {
+            height: 184px;
+            width: 80px;
+        }
+
+        .modal {
+            vertical-align: top;
+        }
         
     </style>
-        <script type="text/javascript">
-            function processLogin() {
-                $('#login').empty();
-                $('#login').append('Welcome, John Smith.');
-                $('#mainNavigation').add('<li><a onclick=\"processLogout()\" /a></li>');
-            }
-            function processLogout() {
-                $('#login').empty();
-                $('#login').append('<ul class=\"nav\"><li><a onclick=\"processLogin()\">Login</a></li></ul>');
-            }
-            
-
-            $(document).ready(function () {
-                var url = "http://v1retailapi.apiary.io/products";
-                $.getJSON(url, null, function (data) {
-                    $.each(data.items, function (key, vals) {
-                        $('#hotKeys').append('<a id=\"' + vals.id + '\" href=\"#hotKeyModal\" role=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\">' + vals.name + '</a>');
-                    });
-                });
-            });
-
-            $(document).on("click", "a[data-toggle=modal]", function (event) {
-                        var itemId = $(this).attr('id');
-                        var url = "http://v1retailapi.apiary.io/products/" + itemId + "/stockitems";
-                        
-                        $('#hotKeyModalBody').empty();
-
-                        $.getJSON(url, null, function (data) {
-                            $.each(data.items, function (key, vals) {
-
-                                $('#hotKeyModalBody').append('<button type=\"button\" id=\"' + vals.id + '\" class=\"btn btn-primary addStockItemToCart\" >' + vals.name + '</button>');
-                            });
-                        });
-            });
-
-            $(document).on("click", ".addStockItemToCart", function (event) {
-                var itemId = $(this).attr('id');
-                var url = "http://v1-dev-retail-api.jhm.info/stockitems/" + itemId;
-                $.getJSON(url, null, function (data) {
-                    $('#shoppingCart').append('<tr><td>' + data.name + '</td></tr>');
-                    $('#hotKeyModal').modal('hide')
-
-                })
-                .error(function () { alert("there was an issue"); }
-                );
-            });
-
-        </script>
+     
     </head>
    
     <body style="padding-top: 35px;">
@@ -119,9 +87,31 @@
                                 </div>
                                 <div class="panel-body">
                                     <!--jQuery will be used to add items to this table one row represents a line item in the cart -->
-                                    <table id="shoppingCart">
+                                    <table id="shoppingCart" style="width:100%">
 
                                     </table>
+                                    <table id="shoppingCartFooter" style="width:100%">
+                                        <tr>
+                                            <td rowspan="4">
+                                                &nbsp;
+                                            </td>
+                                            <td>Subtotal:</td>
+                                            <td id="subTotal"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tax:</td>
+                                            <td id="tax"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total:</td>
+                                            <td id="total"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>To Pay:</td>
+                                            <td id="toPay"></td>
+                                        </tr>
+                                    </table>
+
                                 </div>
                                 <div class="panel-footer">
                                     <button type="button" class="btn btn-primary">Void</button>
@@ -162,7 +152,7 @@
             </div>
         </div>
 
-        <div id="hotKeyModal" class="modal fade modal-dialog modal-content">
+         <div id="hotKeyModal" class="modal fade modal-dialog modal-content">
             <div id="hotKeyModalBody" class="modal-body">            
                 
             </div>
@@ -170,6 +160,111 @@
               <a href="#" class="btn btn-info" data-dismiss="modal" >Close</a>
             </div>
         </div>
+
+         <div id="QtyModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+             <div class="modal-body" style="margin: 0 auto; vertical-align:top;">            
+                <table>
+                    <tr>
+                        <td colspan="4">
+                            <div class="input-group" style="width: 330px;">
+                                <span class="input-group-addon">
+                                    <button class="fa fa-th showQtyNumPad" type="button"></button>
+                                </span>
+                                <input id="adjustQty" type="text" class="form-control">
+                                <span class="input-group-addon">
+                                    <button type="button">-</button>
+                                </span>
+                                <span class="input-group-addon">
+                                    <button type="button">+</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </td>
+                    </tr>
+                    <tr id="qtyFooter">
+                        <td colspan="4">
+                            <table id="qtyKeyPad">
+                                <tr>
+                                    <td><button value="1" type="button" class="btn btn-primary qtyKeys" >1</button></td>
+                                    <td><button value="2" type="button" class="btn btn-primary qtyKeys" >2</button></td>
+                                    <td><button value="3" type="button" class="btn btn-primary qtyKeys" >3</button></td>
+                                    <td><button value="bksp" type="button" class="btn btn-primary qtyKeys fa fa-arrow-circle-left" ></button></td>
+                                </tr>
+                                <tr>
+                                    <td><button value="4" type="button" class="btn btn-primary qtyKeys" >4</button></td>
+                                    <td><button value="5" type="button" class="btn btn-primary qtyKeys" >5</button></td>
+                                    <td><button value="6" type="button" class="btn btn-primary qtyKeys" >6</button></td>
+                                    <td rowspan="3"><button type="button" class="btn btn-primary qtyRtnKey" data-dismiss="modal">Return</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button value="7" type="button" class="btn btn-primary qtyKeys" >7</button></td>
+                                    <td><button value="8" type="button" class="btn btn-primary qtyKeys" >8</button></td>
+                                    <td><button value="9" type="button" class="btn btn-primary qtyKeys" >9</button></td>
+                                   
+                                </tr>
+                                <tr>
+                                    <td><button value="0" type="button" class="btn btn-primary qtyKeys" >0</button></td>
+                                    <td><button value="00" type="button" class="btn btn-primary qtyKeys" >00</button></td>
+                                    <td><button value="." type="button" class="btn btn-primary qtyKeys" >.</button></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+         <div id="UnitPriceModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+             <div class="modal-body" style="margin: 0 auto; vertical-align:top;">            
+                <table>
+                    <tr>
+                        <td colspan="4">
+                            <div class="input-group" style="width: 330px;">
+                                <span class="input-group-addon">
+                                    <button class="fa fa-th showUnitPriceNumPad" type="button"></button>
+                                </span>
+                                <input id="adjustUnitPrice" type="text" class="form-control">
+                                <span class="input-group-addon">
+                                    <button type="button">-</button>
+                                </span>
+                                <span class="input-group-addon">
+                                    <button type="button">+</button>
+                                </span>
+                            </div><!-- /input-group -->
+                        </td>
+                    </tr>
+                    <tr id="unitPriceFooter">
+                        <td colspan="4">
+                            <table id="unitPriceKeyPad">
+                                <tr>
+                                    <td><button value="1" type="button" class="btn btn-primary unitPriceKeys" >1</button></td>
+                                    <td><button value="2" type="button" class="btn btn-primary unitPriceKeys" >2</button></td>
+                                    <td><button value="3" type="button" class="btn btn-primary unitPriceKeys" >3</button></td>
+                                    <td><button value="bksp" type="button" class="btn btn-primary unitPriceKeys fa fa-arrow-circle-left" ></button></td>
+                                </tr>
+                                <tr>
+                                    <td><button value="4" type="button" class="btn btn-primary unitPriceKeys" >4</button></td>
+                                    <td><button value="5" type="button" class="btn btn-primary unitPriceKeys" >5</button></td>
+                                    <td><button value="6" type="button" class="btn btn-primary unitPriceKeys" >6</button></td>
+                                    <td rowspan="3"><button type="button" class="btn btn-primary unitPriceRtnKey" data-dismiss="modal">Return</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button value="7" type="button" class="btn btn-primary unitPriceKeys" >7</button></td>
+                                    <td><button value="8" type="button" class="btn btn-primary unitPriceKeys" >8</button></td>
+                                    <td><button value="9" type="button" class="btn btn-primary unitPriceKeys" >9</button></td>
+                                   
+                                </tr>
+                                <tr>
+                                    <td><button value="0" type="button" class="btn btn-primary unitPriceKeys" >0</button></td>
+                                    <td><button value="00" type="button" class="btn btn-primary unitPriceKeys" >00</button></td>
+                                    <td><button value="." type="button" class="btn btn-primary unitPriceKeys" >.</button></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
     </body>
 </html>
 
