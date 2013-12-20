@@ -1,175 +1,220 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>Retail POS</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <link href="/Content/bootstrap.min.css" rel="stylesheet"/>
-        <script src="/Scripts/modernizr-2.6.2.js"></script>
-        <script src="/Scripts/respond.min.js"></script>
-        <script src="/Scripts/jquery-1.10.2.min.js"></script>
-        <script src="/Scripts/bootstrap.js"></script>
+<head>
+    <meta charset="utf-8" />
+    <title>Retail POS</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/Content/sticky-footer-navbar.css" rel="stylesheet">
+    <script src="/Scripts/modernizr-2.6.2.js"></script>
+    <script src="/Scripts/respond.min.js"></script>
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="/Scripts/bootstrap.js"></script>
 
-        <meta name="viewport" content="width=device-width" />
-         <style>
-        .footer {
-            height: 40px;
-            margin-top: -40px;
+    <meta name="viewport" content="width=device-width" />
+    
+    <script type="text/javascript">
+        function processLogin() {
+            $('#login').empty();
+            $('#login').append('Reg 01 - GETV User');
+            $('#mainNavigation').add('<li><a onclick=\"processLogout()\" /a></li>');
         }
-        
-    </style>
-        <script type="text/javascript">
-            function processLogin() {
-                $('#login').empty();
-                $('#login').append('Welcome, John Smith.');
-                $('#mainNavigation').add('<li><a onclick=\"processLogout()\" /a></li>');
-            }
-            function processLogout() {
-                $('#login').empty();
-                $('#login').append('<ul class=\"nav\"><li><a onclick=\"processLogin()\">Login</a></li></ul>');
-            }
-            
+        function processLogout() {
+            $('#login').empty();
+            $('#login').append('<ul class=\"nav\"><li><a onclick=\"processLogin()\">Login</a></li></ul>');
+        }
+        function addItem() {
+            //check from db if item exists then add its object or id
+            //for now just add what in the text box
+            $('#shoppingCart').append('<tr><td>' + $('#txtMainItem').val() + '</td><td><a href=index.htm data-role=button  data-icon=delete data-iconpos=notext>Delete</a></td></tr>');
+        }
 
-            $(document).ready(function () {
-                var url = "http://v1retailapi.apiary.io/products";
-                $.getJSON(url, null, function (data) {
-                    $.each(data.items, function (key, vals) {
-                        $('#hotKeys').append('<a id=\"' + vals.id + '\" href=\"#hotKeyModal\" role=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\">' + vals.name + '</a>');
-                    });
+        function voidItem() {
+            $('#shoppingCart').empty();
+            alert('Your products have been removed.');
+        }
+
+        $(document).ready(function () {
+            var url = "http://v1retailapi.apiary.io/products";
+            $.getJSON(url, null, function (data) {
+                $.each(data.items, function (key, vals) {
+                    $('#hotKeys').append('<a id=\"' + vals.id + '\" href=\"#hotKeyModal\" role=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\">' + vals.name + '</a>');
                 });
             });
+        });
 
-            $(document).on("click", "a[data-toggle=modal]", function (event) {
-                        var itemId = $(this).attr('id');
-                        var url = "http://v1retailapi.apiary.io/products/" + itemId + "/stockitems";
-                        
-                        $('#hotKeyModalBody').empty();
+        $(document).on("click", "a[data-toggle=modal]", function (event) {
+            var itemId = $(this).attr('id');
+            var url = "http://v1retailapi.apiary.io/products/" + itemId + "/stockitems";
 
-                        $.getJSON(url, null, function (data) {
-                            $.each(data.items, function (key, vals) {
+            $('#hotKeyModalBody').empty();
 
-                                $('#hotKeyModalBody').append('<button type=\"button\" id=\"' + vals.id + '\" class=\"btn btn-primary addStockItemToCart\" >' + vals.name + '</button>');
-                            });
-                        });
+            $.getJSON(url, null, function (data) {
+                $.each(data.items, function (key, vals) {
+
+                    $('#hotKeyModalBody').append('<button type=\"button\" id=\"' + vals.id + '\" class=\"btn btn-primary addStockItemToCart\" >' + vals.name + '</button>');
+                });
             });
+        });
 
-            $(document).on("click", ".addStockItemToCart", function (event) {
-                var itemId = $(this).attr('id');
-                var url = "http://v1-dev-retail-api.jhm.info/stockitems/" + itemId;
-                $.getJSON(url, null, function (data) {
-                    $('#shoppingCart').append('<tr><td>' + data.name + '</td></tr>');
-                    $('#hotKeyModal').modal('hide')
+        $(document).on("click", ".addStockItemToCart", function (event) {
+            var itemId = $(this).attr('id');
+            var url = "http://v1-dev-retail-api.jhm.info/stockitems/" + itemId;
+            $.getJSON(url, null, function (data) {
+                $('#shoppingCart').append('<tr><td>' + data.itemId + '</td><td><a href=index.htm data-role=button  data-icon=delete data-iconpos=notext>Delete</a></td></tr>');
+                $('#hotKeyModal').modal('hide')
 
-                })
-                .error(function () { alert("there was an issue"); }
-                );
-            });
+            })
+            .error(function () { alert("there was an issue"); }
+            );
+        });
 
-        </script>
-    </head>
-   
-    <body style="padding-top: 35px;">
-        <div class="nav navbar-fixed-top">
-            <ul id="mainNavigation" class="nav nav-tabs">
-                <li><a href="#dashboardPanel" data-tabs="tabs" data-toggle="tab">Dashboard</a></li> 
-                <li class="active"><a href="#sellPanel" data-toggle="tab">Sell</a></li> 
-                <li><a href="#productPanel" data-toggle="tab">Products</a></li> 
-                <li><a href="#customerPanel" data-toggle="tab">Customers</a></li> 
-                <li><a href="#settingsModal" data-toggle="modal">Settings</a></li> 
-                <li><a href="#helpModal" data-toggle="modal">Help</a></li> 
-                <li class="pull-right"><div id="login"><ul class="nav"><li><a href="#" onclick="processLogin()">Login</a></li></ul></div></li>
-            </ul>                                                 
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">GETV POS</a>
+                </div>
+                <div  class="collapse navbar-collapse">
+                    <ul id="mainNavigation" class="nav navbar-nav">
+                        <li><a href="#dashboardPanel" data-toggle="tab">Dashboard</a></li>
+                        <li class="active"><a href="#sellPanel" data-toggle="tab">Sell</a></li>
+                        <li><a href="#productPanel" data-toggle="tab">Products</a></li>
+                        <li><a href="#customerPanel" data-toggle="tab">Customers</a></li>
+                        <li><a href="#helpModal" data-toggle="modal">Help</a></li>
+                        <li class="pull-right">
+                            <div id="login">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#" onclick="processLogin()">Login</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Set Warehouse</a></li>
+                                <li><a href="#">Product Controls</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Admin</li>
+                                <li><a href="#">Offline Setup</a></li>
+                                <li><a href="#">Batch Register</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
         </div>
-        <div class="tab-content" style="margin-left:10px">
-            <div id="dashboardPanel" class="tab-pane">
+        <!-- Begin page content -->
+        <div class="container">
+    <div class="tab-content">
+        <div id="dashboardPanel" class="tab-pane">
 
-                <div id="dashboardPanelContent">
-                  <div class="row">
+            <div id="dashboardPanelContent">
+                <div class="row">
 
-                            <ul class="nav nav-pills">
-                                <li><a href="#" >Dashboard #1</a></li> 
-                                <li><a href="#" >Dashboard #2</a></li> 
-                            </ul>                                                 
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Dashboard #1</a></li>
+                        <li><a href="#">Dashboard #2</a></li>
+                    </ul>
 
-                    </div>
-                    <div class="row col-md-6">
-                        Dashboard Content 1
-                    </div>
+                </div>
+                <div class="row col-md-6">
+                    Dashboard Content 1
                 </div>
             </div>
-            <div id="sellPanel" class="tab-pane active">
-                <div id="sellPanelContent">
-                    <div class="row">
-                        <div class="nav navbar">
-                            <ul class="nav nav-pills">
-                                <li><a href="#" >Current Sale</a></li> 
-                                <li><a href="#" >Retrieve Sale</a></li> 
-                                <li><a href="#" >Close Register</a></li> 
-                            </ul>                                                 
-                        </div>
+        </div>
+        <div id="sellPanel" class="tab-pane active">
+            <div id="sellPanelContent">
+                <div class="row">
+                    <div class="nav navbar-nav">
+                        <ul class="nav nav-pills">
+                            <li><a href="#">Current Sale</a></li>
+                            <li><a href="#">Retrieve Sale</a></li>
+                            <li><a href="#">Close Register</a></li>
+                        </ul>
                     </div>
-                    <div class="row" style="height:400px;">
-                        <!--Spacer-->
-                        <div class="col-sm-2"></div>
-                        <!--Shopping Cart-->
-                        <div class="col-sm-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                     <input type="text" /><button type="button" class="btn btn-info">Add</button>
-                                </div>
-                                <div class="panel-body">
-                                    <!--jQuery will be used to add items to this table one row represents a line item in the cart -->
-                                    <table id="shoppingCart">
-
-                                    </table>
-                                </div>
-                                <div class="panel-footer">
-                                    <button type="button" class="btn btn-primary">Void</button>
-                                    <button type="button" class="btn btn-primary">Park</button>
-                                    <button type="button" class="btn btn-primary">Donation</button>
-                                    <button type="button" class="btn btn-primary">Gift Card</button>
-                                    <button type="button" class="btn btn-primary">Discount</button>
-                                    <button type="button" class="btn btn-primary">Notes</button>
-                                    <button type="button" class="btn btn-success">Pay</button>
-                                </div>
-                           </div>
-                        </div>
-  
-                        <!--Product Hot Keys Panel-->
-                        <div class="col-sm-4">
-                            <div class="panel panel-default">
-                                <div id="hotKeys" class="panel-body">
-                                    
-                                </div>
-                                <div class="panel-footer">
-                                </div>
+                </div>
+                <div class="row" style="height:400px;">
+                    <!--Spacer-->
+                    <div class="col-sm-2"></div>
+                    <!--Shopping Cart-->
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <input type="text" id="txtMainItem" /><button type="button" class="btn btn-info" onclick="addItem()">Add</button>
+                            </div>
+                            <div class="panel-body">
+                                <!--jQuery will be used to add items to this table one row represents a line item in the cart -->
+                                <table id="shoppingCart"></table>
+                            </div>
+                            <div class="panel-footer">
+                                <button type="button" class="btn btn-primary" onclick="voidItem()">Void</button>
+                                <button type="button" class="btn btn-primary">Park</button>
+                                <button type="button" class="btn btn-primary">Donation</button>
+                                <button type="button" class="btn btn-primary">Gift Card</button>
+                                <button type="button" class="btn btn-primary">Discount</button>
+                                <button type="button" class="btn btn-primary">Notes</button>
+                                <button type="button" class="btn btn-success">Pay</button>
                             </div>
                         </div>
-                        <!--Spacer-->
-                        <div class="col-sm-2"></div>
                     </div>
-                </div>
-            </div>
-            <div id="productPanel" class="tab-pane">
-                <div id="productPanelContent">
-                    Products
-                </div>
-            </div>
-            <div id="customerPanel" class="tab-pane">
-                <div id="customerPanelContent">
-                    Customers
-                </div>
-            </div>
-        </div>
 
-        <div id="hotKeyModal" class="modal fade modal-dialog modal-content">
-            <div id="hotKeyModalBody" class="modal-body">            
-                
-            </div>
-            <div class="modal-footer">
-              <a href="#" class="btn btn-info" data-dismiss="modal" >Close</a>
+                    <!--Product Hot Keys Panel-->
+                    <div class="col-sm-4">
+                        <div class="panel panel-default">
+                            <div id="hotKeys" class="panel-body">
+                            </div>
+                            <div class="panel-footer">
+                            </div>
+                        </div>
+                    </div>
+                    <!--Spacer-->
+                    <div class="col-sm-2"></div>
+                </div>
             </div>
         </div>
-    </body>
+        <div id="productPanel" class="tab-pane">
+            <div id="productPanelContent">
+                Products
+            </div>
+        </div>
+        <div id="customerPanel" class="tab-pane">
+            <div id="customerPanelContent">
+                Customers
+            </div>
+        </div>
+    </div>
+
+    <div id="hotKeyModal" class="modal fade modal-dialog modal-content">
+        <div id="hotKeyModalBody" class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-info" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+
+
+</div>
+    </div>
+    
+
+            <div id="footer">
+                <div class="container">
+                    <p class="text-muted">footer content here.</p>
+                </div>
+            </div>
+</body>
 </html>
-
