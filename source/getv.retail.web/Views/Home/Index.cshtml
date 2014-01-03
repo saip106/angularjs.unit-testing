@@ -38,7 +38,7 @@
                             <div class="panel-heading">
                                 <input type="hidden" name="product_search[product_id]" id="product_search_product_id" />                <input type="search" name="product_search[product_sku]" autocomplete="off" autocorrect="off" autocapitalize="off" x-webkit-speech="true" placeholder="Search products" class="use-keypad click-to-select" autofocus="on" id="product_search_product_sku" />                <button id="btn-add-product" class="btn btn--small btn--no-min-width right">Add</button>
 
-                                <input type="text" id="txtMainItem" />                <button type="button" class="btn btn-info" onclick="addItem()">Add</button>
+                                @*<input type="text" id="txtMainItem" />                <button type="button" class="btn btn-info" onclick="addItem()">Add</button>*@
                             </div>
                             <div class="panel-body">
                                 <!--jQuery will be used to add items to this table one row represents a line item in the cart -->
@@ -52,8 +52,8 @@
                                         <td id="subTotal"></td>
                                     </tr>
                                     <tr>
-                                        <td>Tax:</td>
-                                        <td id="tax"></td>
+                                        <td>Discount:</td>
+                                        <td id="discount"></td>
                                     </tr>
                                     <tr>
                                         <td>Total:</td>
@@ -71,7 +71,7 @@
                                 <button type="button" class="btn btn-primary">Park</button>
                                 <button type="button" class="btn btn-primary">Donation</button>
                                 <button type="button" class="btn btn-primary">Gift Card</button>
-                                <button type="button" class="btn btn-primary">Discount</button>
+                                <button type="button" class="btn btn-primary discountBtn">Discount</button>
                                 <button type="button" class="btn btn-primary">Notes</button>
                                 <button type="button" class="btn btn-success">Pay</button>
                             </div>
@@ -102,12 +102,107 @@
         </div>
     </div>
 
-    <div id="hotKeyModal" class="modal fade modal-dialog modal-content">
-        <div id="hotKeyModalBody" class="modal-body">
+    <div id="QtyModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+        <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
+            <table>
+                <tr>
+                    <td colspan="4">
+                        <div class="input-group" style="width: 330px;">
+                            <span class="input-group-addon">
+                                <button class="fa fa-th showQtyNumPad" type="button"></button>
+                            </span>
+                            <input id="adjustQty" type="text" class="form-control">
+                            <span class="input-group-addon">
+                                <button type="button">-</button>
+                            </span>
+                            <span class="input-group-addon">
+                                <button type="button">+</button>
+                            </span>
+                        </div><!-- /input-group -->
+                    </td>
+                </tr>
+                <tr id="qtyFooter">
+                    <td colspan="4">
+                        <table id="qtyKeyPad">
+                            <tr>
+                                <td><button value="1" type="button" class="btn btn-primary qtyKeys">1</button></td>
+                                <td><button value="2" type="button" class="btn btn-primary qtyKeys">2</button></td>
+                                <td><button value="3" type="button" class="btn btn-primary qtyKeys">3</button></td>
+                                <td><button value="bksp" type="button" class="btn btn-primary qtyKeys fa fa-arrow-circle-left"></button></td>
+                            </tr>
+                            <tr>
+                                <td><button value="4" type="button" class="btn btn-primary qtyKeys">4</button></td>
+                                <td><button value="5" type="button" class="btn btn-primary qtyKeys">5</button></td>
+                                <td><button value="6" type="button" class="btn btn-primary qtyKeys">6</button></td>
+                                <td rowspan="3"><button type="button" class="btn btn-primary qtyRtnKey" data-dismiss="modal">Return</button></td>
+                            </tr>
+                            <tr>
+                                <td><button value="7" type="button" class="btn btn-primary qtyKeys">7</button></td>
+                                <td><button value="8" type="button" class="btn btn-primary qtyKeys">8</button></td>
+                                <td><button value="9" type="button" class="btn btn-primary qtyKeys">9</button></td>
 
+                            </tr>
+                            <tr>
+                                <td><button value="0" type="button" class="btn btn-primary qtyKeys">0</button></td>
+                                <td><button value="00" type="button" class="btn btn-primary qtyKeys">00</button></td>
+                                <td><button value="." type="button" class="btn btn-primary qtyKeys">.</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
         </div>
-        <div class="modal-footer">
-            <a href="#" class="btn btn-info" data-dismiss="modal">Close</a>
+    </div>
+
+    <div id="UnitPriceModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+        <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
+            <table>
+                <tr>
+                    <td colspan="4">
+                        <div class="input-group" style="width: 330px;">
+                            <span class="input-group-addon">
+                                <button class="fa fa-th showUnitPriceNumPad" type="button"></button>
+                            </span>
+                            <input id="adjustUnitPrice" type="text" class="form-control">
+                            <span class="input-group-addon">
+                                <button type="button">-</button>
+                            </span>
+                            <span class="input-group-addon">
+                                <button type="button">+</button>
+                            </span>
+                        </div><!-- /input-group -->
+                    </td>
+                </tr>
+                <tr id="unitPriceFooter">
+                    <td colspan="4">
+                        <table id="unitPriceKeyPad">
+                            <tr>
+                                <td><button value="1" type="button" class="btn btn-primary unitPriceKeys">1</button></td>
+                                <td><button value="2" type="button" class="btn btn-primary unitPriceKeys">2</button></td>
+                                <td><button value="3" type="button" class="btn btn-primary unitPriceKeys">3</button></td>
+                                <td><button value="bksp" type="button" class="btn btn-primary unitPriceKeys fa fa-arrow-circle-left"></button></td>
+                            </tr>
+                            <tr>
+                                <td><button value="4" type="button" class="btn btn-primary unitPriceKeys">4</button></td>
+                                <td><button value="5" type="button" class="btn btn-primary unitPriceKeys">5</button></td>
+                                <td><button value="6" type="button" class="btn btn-primary unitPriceKeys">6</button></td>
+                                <td rowspan="3"><button type="button" class="btn btn-primary unitPriceRtnKey" data-dismiss="modal">Return</button></td>
+                            </tr>
+                            <tr>
+                                <td><button value="7" type="button" class="btn btn-primary unitPriceKeys">7</button></td>
+                                <td><button value="8" type="button" class="btn btn-primary unitPriceKeys">8</button></td>
+                                <td><button value="9" type="button" class="btn btn-primary unitPriceKeys">9</button></td>
+
+                            </tr>
+                            <tr>
+                                <td><button value="0" type="button" class="btn btn-primary unitPriceKeys">0</button></td>
+                                <td><button value="00" type="button" class="btn btn-primary unitPriceKeys">00</button></td>
+                                <td><button value="." type="button" class="btn btn-primary unitPriceKeys">.</button></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 

@@ -358,15 +358,26 @@ function getStockItemDetails(itemId) {
 }
 
 function setCartFooterTotals() {
-    var subTotal = $('#subTotal').text($('#lineItemTotal').text());
 
-    var tax = $('#tax').text(+subTotal * 0.08125);
+    var subTotal = parseFloat(0.00);
+    var discount =parseFloat( 0.00);
+    var total = parseFloat(0.00);
+    var toPay = parseFloat(0.00);
 
-    var total = +subTotal + +tax;
+    $("td[id^='lineItemTotal']").each(function () {
+        subTotal = +subTotal + +parseFloat($('#' + this.id).text());
+    });
 
-    $('#toPay').text(total);
 
-    alert($('#subtotal').text());
+    $('#subTotal').text(subTotal.toFixed(2));
+    subTotal = parseFloat($('#subTotal').text());
+    total = parseFloat(subTotal) + parseFloat(discount);
+    toPay = total;
+    
+    $('#discount').text(discount.toFixed(2))
+    $('#total').text(total.toFixed(2))
+    $('#toPay').text(toPay.toFixed(2));
+
 }
 
 $(document).ready(function () {
@@ -377,21 +388,6 @@ $(document).ready(function () {
 
 });
 
-//$(document).on("click", "a[data-toggle=modal]", function (event) {
-
-//    var itemId = $(this).attr('id');
-//    ////var url = "http://v1retailapi.apiary.io/products/" + itemId + "/stockitems";
-
-//    $('#hotKeyModalBody').empty();
-
-//    var data = getStockItemsForHotKey(itemId);
-//    ////$.getJSON(url, null, function (data) {
-//        $.each(data.items, function () {
-//            $('#hotKeyModalBody').append('<button type=\"button\" id=\"' + this.id + '\" class=\"btn btn-primary addStockItemToCart\" >' + this.name + '</button>');
-//        });
-//    ////});
-//});
-
 $(document).on("click", ".addStockItemToCart", function (event) {
 
     var itemId = $(this).attr('id');
@@ -399,7 +395,7 @@ $(document).on("click", ".addStockItemToCart", function (event) {
     var data = getStockItemDetails(itemId);
     
 
-    $('#shoppingCart').append('<tr><td class=\"span2\"><a id=\"updateQty\" href=\"#QtyModal\" class="updateQty" data-toggle=\"modal\">1</a></td><td class=\"span2\">Obamas New World Order</td><td><a id=\"updateUnitPrice\" href=\"#UnitPriceModal\" class=\"btn btn-info\" data-toggle="modal">@5.00</a></td><td id="lineItemTotal">5.00</td><td><a href="#"><i class="icon-remove-circle"></i></a></td></tr>');
+    $('#shoppingCart').append('<tr id=\"' + itemId + '\"><td class=\"span2\"><a id=\"updateQty\" class="updateQty" data-toggle=\"modal\" data-target=\"#QtyModal\">1</a></td><td class=\"span2\">Obamas New World Order</td><td><a id=\"updateUnitPrice\" href=\"#UnitPriceModal\" class=\"btn btn-info\" data-toggle="modal">@5.00</a></td><td id="lineItemTotal' + itemId + '">5.25</td><td><a  id=\"' + itemId + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
     setCartFooterTotals();
 });
 
@@ -407,6 +403,26 @@ $(document).on("click", ".addStockItemToCart", function (event) {
 $(document).on("click", ".updateQty", function (event) {
 
     $('#qtyFooter').hide();
+});
+
+$(document).on("click", ".removeLineItem", function (event) {
+    var itemId = $(this).attr('id');
+
+    $('#' + itemId).remove();
+    setCartFooterTotals();
+    
+});
+
+$(document).on("click", ".discountBtn", function (event) {
+    var discount = 0.00;
+    discount = $('#subTotal').text() * .15;
+    $('#discount').text(-discount.toFixed(2));
+    
+});
+
+$(document).on("change", "#discount", function (event) {
+    setCartFooterTotals();
+
 });
 
 $(document).on("click", ".qtyKeys", function (event) {
