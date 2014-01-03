@@ -370,7 +370,7 @@ function setCartFooterTotals() {
 }
 
 $(document).ready(function () {
-     var hotKeyData = getStockItemsForHotKey();
+    var hotKeyData = getStockItemsForHotKey();
     $.each(hotKeyData.items, function () {
         $('#hotKeys').append('<a id=\"' + this.id + '\" href=\"#hotKeyModal\" role=\"button\" class=\"btn btn-primary addStockItemToCart\">' + this.name + '</a>');
     });

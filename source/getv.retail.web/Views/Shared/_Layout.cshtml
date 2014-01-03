@@ -5,38 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Scripts/POS.js")
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        .footer {
+            height: 40px;
+            margin-top: -40px;
+        }
+
+        .qtyKeys, .unitPriceKeys {
+            height: 60px;
+            width: 80px;
+        }
+
+        .qtyRtnKey, .unitPriceRtnKey {
+            height: 184px;
+            width: 80px;
+        }
+
+        .modal {
+            vertical-align: top;
+        }
+    </style>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+    <div id="wrap">
+        <!-- Fixed navbar -->
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">GETV POS</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul id="mainNavigation" class="nav navbar-nav">
+                        <li><a href="#dashboardPanel" data-toggle="tab">Dashboard</a></li>
+                        <li class="active"><a href="#sellPanel" data-toggle="tab">Sell</a></li>
+                        <li><a href="#productPanel" data-toggle="tab">Products</a></li>
+                        <li><a href="#customerPanel" data-toggle="tab">Customers</a></li>
+                        <li><a href="#helpModal" data-toggle="modal">Help</a></li>
+                        <li class="pull-right">
+                            <div id="login">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="#" onclick="processLogin()">Login</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Set Warehouse</a></li>
+                                <li><a href="#">Product Controls</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-header">Admin</li>
+                                <li><a href="#">Offline Setup</a></li>
+                                <li><a href="#">Batch Register</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-    
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - GETV</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
 </body>
 </html>

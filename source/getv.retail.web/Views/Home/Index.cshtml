@@ -2,30 +2,114 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
+<div class="container">
+    <div class="tab-content">
+        <div id="dashboardPanel" class="tab-pane">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            <div id="dashboardPanelContent">
+                <div class="row">
+
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Dashboard #1</a></li>
+                        <li><a href="#">Dashboard #2</a></li>
+                    </ul>
+
+                </div>
+                <div class="row col-md-6">
+                    Dashboard Content 1
+                </div>
+            </div>
+        </div>
+        <div id="sellPanel" class="tab-pane active">
+            <div id="sellPanelContent">
+                <div class="row">
+                    <div class="nav navbar-nav">
+                        <ul class="nav nav-pills">
+                            <li><a href="#">Current Sale</a></li>
+                            <li><a href="#">Retrieve Sale</a></li>
+                            <li><a href="#">Close Register</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row" style="height:400px;">
+                    <!--Shopping Cart-->
+                    <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <input type="hidden" name="product_search[product_id]" id="product_search_product_id" />                <input type="search" name="product_search[product_sku]" autocomplete="off" autocorrect="off" autocapitalize="off" x-webkit-speech="true" placeholder="Search products" class="use-keypad click-to-select" autofocus="on" id="product_search_product_sku" />                <button id="btn-add-product" class="btn btn--small btn--no-min-width right">Add</button>
+
+                                <input type="text" id="txtMainItem" />                <button type="button" class="btn btn-info" onclick="addItem()">Add</button>
+                            </div>
+                            <div class="panel-body">
+                                <!--jQuery will be used to add items to this table one row represents a line item in the cart -->
+                                <table id="shoppingCart" style="width:100%"></table>
+                                <table id="shoppingCartFooter" style="width:100%">
+                                    <tr>
+                                        <td rowspan="4">
+                                            &nbsp;
+                                        </td>
+                                        <td>Subtotal:</td>
+                                        <td id="subTotal"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tax:</td>
+                                        <td id="tax"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total:</td>
+                                        <td id="total"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>To Pay:</td>
+                                        <td id="toPay"></td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="panel-footer">
+                                <button type="button" class="btn btn-primary" onclick="voidItem()">Void</button>
+                                <button type="button" class="btn btn-primary">Park</button>
+                                <button type="button" class="btn btn-primary">Donation</button>
+                                <button type="button" class="btn btn-primary">Gift Card</button>
+                                <button type="button" class="btn btn-primary">Discount</button>
+                                <button type="button" class="btn btn-primary">Notes</button>
+                                <button type="button" class="btn btn-success">Pay</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Product Hot Keys Panel-->
+                    <div class="col-sm-6">
+                        <div class="panel panel-default">
+                            <div id="hotKeys" class="panel-body">
+                            </div>
+                            <div class="panel-footer">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="productPanel" class="tab-pane">
+            <div id="productPanelContent">
+                Products
+            </div>
+        </div>
+        <div id="customerPanel" class="tab-pane">
+            <div id="customerPanelContent">
+                Customers
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <div id="hotKeyModal" class="modal fade modal-dialog modal-content">
+        <div id="hotKeyModalBody" class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-info" data-dismiss="modal">Close</a>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
+
 </div>
