@@ -4,14 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/bundles/bootstrap")
+    @Styles.Render("~/bundles/CSS")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/POS.js")
-  
+    @RenderSection("scripts", required: false)
+
     <meta name="viewport" content="width=device-width" />
     <style>
+        
         .footer {
             height: 40px;
             margin-top: -40px;
@@ -28,7 +30,12 @@
         }
 
         .modal {
-            vertical-align: top;
+            left:0;
+            top:-75%;
+        }
+
+        .modal-body{
+            position:relative;
         }
     </style>
 </head>
@@ -86,6 +93,6 @@
         </div>
 
 
-        @RenderSection("scripts", required: false)
+
 </body>
 </html>

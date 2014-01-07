@@ -19,7 +19,7 @@ namespace Getv.Retail.Web
 					  "~/Scripts/bootstrap.js",
 					  "~/Scripts/respond.js"));
 
-			bundles.Add(new StyleBundle("~/bundles/bootstrap").Include(
+			bundles.Add(new StyleBundle("~/bundles/CSS").Include(
 					  "~/Content/bootstrap.css",
 					  "~/Content/site.css"));
 		}
