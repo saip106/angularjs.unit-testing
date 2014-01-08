@@ -24,6 +24,8 @@ namespace Getv.Retail.Web
 
 			bundles.Add(new StyleBundle("~/bundles/CSS").Include(
 					  "~/Content/bootstrap.css",
+                      "~/Content/sticky-footer-navbar.css",
+                       "~/Content/bootstrap.min.css",
 					  "~/Content/site.css"));
 		}
 	}
