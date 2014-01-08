@@ -82,13 +82,13 @@
                 </div><!--/.nav-collapse -->
             </div>
         </div>
+        <!-- Begin page content -->
+        @RenderBody()
     </div>
-
-        <div class="container body-content">
-            @RenderBody()
+        <div class="container">           
             <hr />
             <footer>
-                <p>&copy; @DateTime.Now.Year - GETV</p>
+                <p class="text-muted">&copy; @DateTime.Now.Year - GETV</p>
             </footer>
         </div>
 
