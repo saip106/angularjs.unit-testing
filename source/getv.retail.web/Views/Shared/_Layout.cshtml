@@ -8,7 +8,8 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/POS.js")
+    @Scripts.Render("~/bundles/custom")
+
     @RenderSection("scripts", required: false)
 
     <meta name="viewport" content="width=device-width" />
@@ -74,6 +75,7 @@
                                 <li><a href="#">Product Controls</a></li>
                                 <li class="divider"></li>
                                 <li class="dropdown-header">Admin</li>
+                                <li><a href="/Admin/QuickKeys">Quick Key Setup</a></li>
                                 <li><a href="#">Offline Setup</a></li>
                                 <li><a href="#">Batch Register</a></li>
                             </ul>

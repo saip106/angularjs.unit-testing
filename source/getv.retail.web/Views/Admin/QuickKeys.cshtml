@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "QuickKeys";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <input id="productToAddToHotKeySection" type="text">
+            <button id="btnAddHotKeyToSection" type="button" class="btn btn-default">Add</button>
+        </div>
+
+        <div class="col-sm-4">
+            <label>Pages:</label><button type="button" class="btn btn-default">-</button><button type="button" class="btn btn-default">+</button>
+        </div>
+        <div class="input-group col-sm-4">
+            Layout Name:
+            <input type="text" class="form-control">
+        </div> 
+    </div>       
+    <div class="row">
+        <div class="col-sm-12"></div>
+    </div>  
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <div class="panel-default">
+                <div class="panel-heading">
+                    <ul id="LayoutConfig" class="nav nav-tabs">
+                        <li><a href="javascript:void(0);" id="createTab"><i class="icon-plus"></i>Add Section</a></li>
+                    </ul>
+                    Set Tab Name: <input type="text" id="txtNameTab" /><button id="btnChangeActiveTab">Set Name</button>
+                </div>
+                <div class="panel-body">
+                    <div id="SectionContent" class="tab-content">
+
+                    </div>
+                </div>
+                <div class="panel-footer">
+
+                </div>
+            </div>
+        </div>
+        <div class=" col-sm-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default">Cancel</button>
+                <button type="button" class="btn btn-default">Delete</button>
+                <button type="button" class="btn btn-default">Save</button>
+            </div>
+        </div>
+        <div class=" col-sm-2"></div>
+    </div>
+</div>

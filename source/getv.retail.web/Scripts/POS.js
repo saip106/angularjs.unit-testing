@@ -132,20 +132,69 @@ function voidItem() {
 }
 
 function getHotKeys() {
+
     var hotKeyData = {
         "items": [
                   {
-                      "id": "0829",
-                      "name": "The Wild Horse Of Anger",
-                      "description": "<p>Anger is a powerful emotion that can be used to build someone up or tear them down.  It is justified if the cause is godly, but you must look at the motivation behind your anger.  Jesus became enraged when he walked into the temple and saw that it had become a marketplace.</p> <p>Pastor Hagee walks us through the synagogue that had become a bargainerâ€™s paradise.  Much like our world today, there was little room for prayer.  We are reminded that when the cause is righteous, anger is loveâ€™s clearest voice.  As Christians, we are called to be motivated by righteous indignation.  Stop being seduced by the things of this world, and start standing up for what is good and pure.  Put on the whole armor of God and fight the good fight.</p>",
-                      "publisherId": "JHM",
-                      "availableStartDate": "2008-09-02T00:00:00"
+                      "id": "SERMON",
+                      "name": "Sermon Series",
+                      "isActive": true
+                  },
+                  {
+                      "id": "BBD",
+                      "name": "Books, Bibles And Devotionals",
+                      "isActive": true
+                  },
+                  {
+                      "id": "MUSIC",
+                      "name": "Music",
+                      "isActive": true
+                  },
+                  {
+                      "id": "MD",
+                      "name": "Movies And Documentaries",
+                      "isActive": true
+                  },
+                  {
+                      "id": "HEALTH",
+                      "name": "Health And Healing",
+                      "isActive": true
+                  },
+                  {
+                      "id": "WOMEN",
+                      "name": "Women",
+                      "isActive": true
+                  },
+                  {
+                      "id": "CHILD",
+                      "name": "Children And Teens",
+                      "isActive": true
+                  },
+                  {
+                      "id": "SPANISH",
+                      "name": "En Espanol",
+                      "isActive": true
+                  },
+                  {
+                      "id": "INTERVIEW",
+                      "name": "Interviews",
+                      "isActive": true
+                  },
+                  {
+                      "id": "SINGLE",
+                      "name": "Sermon Singles",
+                      "isActive": true
+                  },
+                  {
+                      "id": "MISC",
+                      "name": "Miscellaneous product or resources",
+                      "isActive": true
                   }
         ],
         "links": [
             {
                 "rel": "self",
-                "href": "http://v1-retail-api.jhm.info/products",
+                "href": "http://v1-retail-api.jhm.info/categories",
                 "method": "GET"
             }
         ],
@@ -490,12 +539,43 @@ function setCartFooterTotals() {
 
 }
 
-$(document).ready(function () {
-    var hotKeyData = getStockItemsForHotKey();
-    $.each(hotKeyData.items, function () {
-        $('#hotKeys').append('<a id=\"' + this.id + '\" href=\"#hotKeyModal\" role=\"button\" class=\"btn btn-primary addStockItemToCart\">' + this.name + '</a>');
-    });
+function buildHotKeys() {
+    var hotKeyCategories = getHotKeys();
+    
+    $.each(hotKeyCategories.items, function () {
 
+        $('#hotKeysNav').append('<li><a href="#' + this.name + '" data-toggle="tab">' + this.name + '</a></li>');
+
+
+    });
+}
+
+function addItemToHotKeyLayout(sectionName) {
+    //check from db if item exists then add its object or id
+    var sku = $('#productToAddToHotKeySection').val();
+    var orderAPI = "http://v1retailapi.apiary.io/products/" + sku;
+    
+    $.getJSON(orderAPI, function (order) {
+
+        var itemID = order.items[0].id;
+        var itemName = order.items[0].name;
+        alert('#" + sectionName + "');
+        $('#' + sectionName + '').append('<a id=\"' + itemID + '\" href=\"#\" role=\"button\" class=\"btn btn-primary hotkeyconfiguration\">' + itemName + '</a>');
+
+    })
+    //after the item has been added clear the text or the scanned item...
+    $('#productToAddToHotKeySection').val('');
+
+    setCartFooterTotals();
+}
+
+$(document).ready(function () {
+
+    buildHotKeys();
+    //var hotKeyData = getStockItemsForHotKey();
+    //$.each(hotKeyData.items, function () {
+    //    $('#hkUserSpecific').append('<a id=\"' + this.id + '\" href=\"#hotKeyModal\" role=\"button\" class=\"btn btn-primary addStockItemToCart\">' + this.name + '</a>');
+    //});
 });
 
 $(document).on("click", ".addStockItemToCart", function (event) {
@@ -507,6 +587,29 @@ $(document).on("click", ".addStockItemToCart", function (event) {
 
     $('#shoppingCart').append('<tr id=\"' + itemId + '\"><td class=\"span2\"><a id=\"updateQty\" class="updateQty" data-toggle=\"modal\" href=\"#QtyModal\">1</a></td><td class=\"span2\">Obamas New World Order</td><td><a id=\"updateUnitPrice\" href=\"#UnitPriceModal\" class=\"btn btn-info\" data-toggle="modal">@5.00</a></td><td id="lineItemTotal' + itemId + '">5.25</td><td><a  id=\"' + itemId + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
     setCartFooterTotals();
+});
+
+$(document).on("click", ".hotkeyconfiguration", function (event) {
+    var itemId = $(this).attr('id');
+    alert(itemId);
+ 
+});
+
+$(document).on("click", "#btnChangeActiveTab", function (event) {
+    //var index = $('#LayoutConfig li.active').text()
+
+    alert(index)
+ 
+
+});
+
+$(document).on("click", '#createTab', function () {
+
+    var tabCount = 0;
+    tabCount = $('#LayoutConfig li').length + 1;
+    $('#LayoutConfig').append("<li><a href=\"#tab" + tabCount + "\" data-toggle=\"tab\">Tab " + tabCount + "</a></li>")
+
+    $('#SectionContent').append("<div id=\"tab" + tabCount + "\" class=\"tab-pane\">Test " + tabCount + " </div>")
 });
 
 //Quantity keypad

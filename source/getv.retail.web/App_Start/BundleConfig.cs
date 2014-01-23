@@ -18,6 +18,9 @@ namespace Getv.Retail.Web
 			bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
 					  "~/Scripts/bootstrap.js",
 					  "~/Scripts/respond.js"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/Custom").Include(
+                      "~/Scripts/POS.js"));
 
 			bundles.Add(new StyleBundle("~/bundles/CSS").Include(
 					  "~/Content/bootstrap.css",
