@@ -479,19 +479,30 @@ $(document).on("click", ".addStockItemToCart", function (event) {
     setCartFooterTotals();
 });
 
-$(document).on("click", ".hotkeyconfiguration", function (event) {
-    var itemId = $(this).attr('id');
-    alert(itemId);
- 
+
+
+$(document).on("click", "#btnAddHotKeyToSection", function (event) {
+    //check from db if item exists then add its object or id
+    var sku = $('#productToAddToHotKeySection').val();
+    var orderAPI = "http://v1retailapi.apiary.io/products/" + sku;
+    alert(sku);
+    alert(orderAPI);
+    $.getJSON(orderAPI, function (order) {
+        var itemID = order.items[0].id;
+        var itemName = order.items[0].name;
+
+        var tabid = $('#LayoutConfig').tabs('option', 'active').attr('id');
+
+        alert(itemID);
+        $('#' + tabid + '').append('<a id=\"' + itemID + '\" href=\"#\" role=\"button\" class=\"btn btn-primary hotkeyconfiguration\">' + itemName + '</a>');
+
+    })
+    //after the item has been added clear the text or the scanned item...
+    $('#productToAddToHotKeySection').val('');
+
+    
 });
 
-$(document).on("click", "#btnChangeActiveTab", function (event) {
-    //var index = $('#LayoutConfig li.active').text()
-
-    alert(index)
- 
-
-});
 
 $(document).on("click", '#createTab', function () {
 
