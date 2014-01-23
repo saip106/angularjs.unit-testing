@@ -25,7 +25,7 @@
                     <div class="navbar-inner">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="#">Current Sale</a></li>
-                            <li><a href="#">Retrieve Sale</a></li>
+                            <li><a href="#" onclick="LoadOrder()">Retrieve Sale</a></li>
                             <li><a href="#">Close Register</a></li>
                         </ul>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="col-sm-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <input type="hidden" name="product_search[product_id]" id="product_search_product_id" />                <input type="search" name="product_search[product_sku]" autocomplete="off" autocorrect="off" autocapitalize="off" x-webkit-speech="true" placeholder="Search products" class="use-keypad click-to-select" autofocus="on" id="product_search_product_sku" />                <button id="btn-add-product" class="btn btn--small btn--no-min-width right">Add</button>
+                                <input type="hidden" name="product_search[product_id]" id="product_search_product_id" />                <input type="search" name="product_search[product_sku]" autocomplete="off" autocorrect="off" autocapitalize="off" x-webkit-speech="true" placeholder="Search products" class="use-keypad click-to-select" autofocus="on" id="product_search_product_sku" />                <button id="btn-add-product" class="btn btn-info" onclick="addItem()">Add</button>
 
                                 @*<input type="text" id="txtMainItem" />                <button type="button" class="btn btn-info" onclick="addItem()">Add</button>*@
                             </div>
@@ -67,12 +67,12 @@
                             </div>
                             <div class="panel-footer">
                                 <button type="button" class="btn btn-primary" onclick="voidItem()">Void</button>
-                                <button type="button" class="btn btn-primary">Park</button>
+                                <button type="button" class="btn btn-primary" onclick="parkOrder()">Park</button>
                                 <button type="button" class="btn btn-primary">Donation</button>
                                 <button type="button" class="btn btn-primary">Gift Card</button>
                                 <button type="button" class="btn btn-primary discountBtn">Discount</button>
                                 <button type="button" class="btn btn-primary">Notes</button>
-                                <button type="button" class="btn btn-success">Pay</button>
+                                <button type="button" class="btn btn-success" onclick="payOrder()">Pay</button>
                             </div>
                         </div>
                     </div>
@@ -99,8 +99,13 @@
                 Customers
             </div>
         </div>
+        
     </div>
-
+    <div id="payModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+        <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
+            <input type="text" id="txtPaymentAmount" /><button type="button" class="btn btn-primary" onclick="voidItem()">Cash</button>
+        </div>
+    </div>
     <div id="QtyModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
         <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
             <table>
@@ -205,5 +210,18 @@
         </div>
     </div>
 
+    <div id="template" style="display:none">
+        <table>
+            <tr id="rowid" class="row">
+                <td class="span2"><a id="updateQty" class="updateQty" data-toggle="modal" href="#QtyModal"></a></td>
+            <td class="itemName"></td>
+            <td><a id="updateUnitPrice" href="#UnitPriceModal" class="btn btn-info" data-toggle="modal"></a></td>
+            <td id="lineItemTotal"></td>
+            <td><a id="itemid" href="#" class="removeLineItem">X</a></td>
+            </tr>
+            
+        </table>
 
+
+    </div>
 </div>
