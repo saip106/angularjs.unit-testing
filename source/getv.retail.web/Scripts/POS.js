@@ -504,15 +504,21 @@ $(document).on("click", "#btnAddHotKeyToSection", function (event) {
 $(document).on("click", "#btnChangeActiveTabName", function (event) {
     //check from db if item exists then add its object or id
     var newTabName = $('#txtNewTabName').val();
-    
-    
-    var curTabHref = $('#LayoutConfig li.active a').attr('href');
-    //$('#LayoutConfig li.active a').html().text(newTabName);
-    $('#LayoutConfig li.active a').attr('href').text('#' + newTabName.replace(/\s/g, '') + '');
+    var activeAnchor = $('#LayoutConfig li.active a').eq(0);
 
-    $('' + curTabHref + '').attr('id').text(newTabName.replace(/\s/g, '') + '');
+    activeAnchor.html(newTabName);
+
+    var curTabHref = $('#LayoutConfig li.active a').attr('href');
+
+    var newTabHref = '#' + newTabName.replace(/\s/g, '');
+
+    activeAnchor.attr('href', newTabHref);
+   
+    var newSectionName = newTabName.replace(/\s/g, '');
+        
+    $('' + curTabHref + '').attr('id', newSectionName);
     
-    alert('newTabName: ' + newTabName);
+   
 
 
 });
@@ -520,7 +526,7 @@ $(document).on("click", "#btnChangeActiveTabName", function (event) {
 
 $(document).on("click", '#createTab', function () {
 
-    var tabCount = 0;
+    var tabCount = 1;
     tabCount = $('#LayoutConfig li').length + 1;
     $('#LayoutConfig').append("<li><a href=\"#tab" + tabCount + "\" data-toggle=\"tab\">Tab " + tabCount + "</a></li>")
 
