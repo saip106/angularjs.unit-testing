@@ -19,6 +19,9 @@ function processLogout() {
     $('#login').append('<ul class=\"nav\"><li><a onclick=\"processLogin()\">Login</a></li></ul>');
 }
 
+function setGiftCard() {
+    var tabid = $('#LayoutConfig li.active').find('a').attr('id');
+} 
 
 function addItem() {
     //check from api if item exists then add its object or id
@@ -597,7 +600,7 @@ $(document).on("click", ".hotkeyconfiguration", function (event) {
 
 $(document).on("click", "#btnChangeActiveTab", function (event) {
     //var index = $('#LayoutConfig li.active').text()
-
+    var tabid = $('#LayoutConfig li.active').find('a').attr('id');
     alert(index)
  
 
