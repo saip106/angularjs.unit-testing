@@ -667,7 +667,7 @@ $(document).on("click", "#btnAddHotKeyToSection", function (event) {
  
 });
 
-$(document).on("click", "#btnChangeActiveTab", function (event) {
+$(document).on("click", "#btnChangeActiveTabName", function (event) {
     //var index = $('#LayoutConfig li.active').text()
     var newTabName = $('#txtNewTabName').val();
     var activeAnchor = $('#LayoutConfig li.active a').eq(0);
