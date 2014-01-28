@@ -101,6 +101,53 @@ function getHotKeys() {
     return hotKeyData;
 }
 
+function getLayout()
+{
+    var layout = {
+        "layout": [
+            {
+                "id": "1",
+                "name": "default",
+                "sections": [
+                    {
+                        "id": "1",
+                        "name": "Test Tab",
+                        "quick_keys": [
+                            {
+                                "id": "B43",
+                                "text": "Prophecy Bible"
+                            },
+                            {
+                                "id": "B44",
+                                "text": "Prophecy Bible 2"
+                            }
+
+                        ]
+                    },
+                     {
+                         "id": "2",
+                         "name": "Test Tab 2",
+                         "quick_keys": [
+                             {
+                                 "id": "B43",
+                                 "text": "Prophecy Bible"
+                             },
+                             {
+                                 "id": "B44",
+                                 "text": "Prophecy Bible 2"
+                             }
+
+                         ]
+                     }
+                ]
+            }
+        ]
+    };
+
+    return layout;
+}
+
+
 function getStockItemsForHotKey(itemId) {
     var stockItemList = {
         "items": [
@@ -430,13 +477,20 @@ function setCartFooterTotals() {
 }
 
 function buildHotKeys() {
-    var hotKeyCategories = getHotKeys();
+    var JSONData = getLayout();
     
-    $.each(hotKeyCategories.items, function () {
+    $.each(JSONData.layout[0].sections, function (i, sections) {
+     
+        var sectionName = sections.name.replace(/\s/g, '');
 
-        $('#hotKeysNav').append('<li><a href="#' + this.name + '" data-toggle="tab">' + this.name + '</a></li>');
+        $("#hotKeysTabs").append("<li><a href=\"#" + sectionName + "\" data-toggle=\"tab\">" + sections.name + "</a></li>");
+        $("#hotKeySections").append("<div id=\"" + sectionName + "\" class=\"tab-pane\"></div>");
 
-
+        $.each(sections.quick_keys, function (i, quick_keys) {
+            
+            $('#' + sectionName).append('<a id=\"' + quick_keys.id + '\" href=\"#\" role=\"button\" class=\"btn btn-primary hotkeyconfiguration\">' + quick_keys.text + '</a>');
+            
+        });
     });
 }
 
@@ -478,7 +532,6 @@ $(document).on("click", ".addStockItemToCart", function (event) {
     $('#shoppingCart').append('<tr id=\"' + itemId + '\"><td class=\"span2\"><a id=\"updateQty\" class="updateQty" data-toggle=\"modal\" href=\"#QtyModal\">1</a></td><td class=\"span2\">Obamas New World Order</td><td><a id=\"updateUnitPrice\" href=\"#UnitPriceModal\" class=\"btn btn-info\" data-toggle="modal">@5.00</a></td><td id="lineItemTotal' + itemId + '">5.25</td><td><a  id=\"' + itemId + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
     setCartFooterTotals();
 });
-
 
 $(document).on("click", "#btnAddHotKeyToSection", function (event) {
     //check from db if item exists then add its object or id
@@ -523,7 +576,6 @@ $(document).on("click", "#btnChangeActiveTabName", function (event) {
 
 });
 
-
 $(document).on("click", '#createTab', function () {
 
     var tabCount = 1;
@@ -532,7 +584,6 @@ $(document).on("click", '#createTab', function () {
 
     $('#SectionContent').append("<div id=\"tab" + tabCount + "\" class=\"tab-pane\"></div>")
 });
-
 //Quantity keypad
 $(document).on("click", ".updateQty", function (event) {
 
@@ -592,7 +643,6 @@ $(document).on("click", ".qtyRtnKey", function (event) {
     $('#adjustQty').val('')
     $('#lineItemTotal').text(qty * unitPrice);
 });
-
 //Unit Price keypad
 $(document).on("click", ".updateUnitPrice", function (event) {
 
