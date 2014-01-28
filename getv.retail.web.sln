@@ -15,11 +15,20 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		deploy-dev|Any CPU = deploy-dev|Any CPU
+		deploy-prod|Any CPU = deploy-prod|Any CPU
+		deploy-test|Any CPU = deploy-test|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{3D69F3BF-E464-48C0-A165-D85654ECFCBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3D69F3BF-E464-48C0-A165-D85654ECFCBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D69F3BF-E464-48C0-A165-D85654ECFCBC}.deploy-dev|Any CPU.ActiveCfg = deploy-dev|Any CPU
+		{3D69F3BF-E464-48C0-A165-D85654ECFCBC}.deploy-dev|Any CPU.Build.0 = deploy-dev|Any CPU
+		{3D69F3BF-E464-48C0-A165-D85654ECFCBC}.deploy-prod|Any CPU.ActiveCfg = deploy-prod|Any CPU
+		{3D69F3BF-E464-48C0-A165-D85654ECFCBC}.deploy-prod|Any CPU.Build.0 = deploy-prod|Any CPU
+		{3D69F3BF-E464-48C0-A165-D85654ECFCBC}.deploy-test|Any CPU.ActiveCfg = deploy-test|Any CPU
+		{3D69F3BF-E464-48C0-A165-D85654ECFCBC}.deploy-test|Any CPU.Build.0 = deploy-test|Any CPU
 		{3D69F3BF-E464-48C0-A165-D85654ECFCBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D69F3BF-E464-48C0-A165-D85654ECFCBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

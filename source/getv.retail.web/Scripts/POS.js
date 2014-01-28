@@ -592,19 +592,36 @@ $(document).on("click", ".addStockItemToCart", function (event) {
     setCartFooterTotals();
 });
 
-$(document).on("click", ".hotkeyconfiguration", function (event) {
-    var itemId = $(this).attr('id');
-    alert(itemId);
+
+$(document).on("click", "#btnAddHotKeyToSection", function (event) {
+    //check from db if item exists then add its object or id
+    var sku = $('#productToAddToHotKeySection').val();
+    var orderAPI = "http://v1retailapi.apiary.io/products/" + sku;
+    var itemID = "B43";
+    var itemName = "Prophecy Study Bible";
+
+    //$.getJSON(orderAPI, function (order) {
+    //    var itemID = order.items[0].id;
+    //    var itemName = order.items[0].name;
+ 
+    //})
+    var tabid = $('#LayoutConfig li.active a').attr('href');
+    $('' + tabid + '').append('<a id=\"' + itemID + '\" href=\"#\" role=\"button\" class=\"btn btn-primary hotkeyconfiguration\">' + itemName + '</a>');
+    
+    //after the item has been added clear the text or the scanned item...
+    $('#productToAddToHotKeySection').val('');
+
  
 });
 
 $(document).on("click", "#btnChangeActiveTab", function (event) {
     //var index = $('#LayoutConfig li.active').text()
-    var tabid = $('#LayoutConfig li.active').find('a').attr('id');
+
     alert(index)
  
 
 });
+
 
 $(document).on("click", '#createTab', function () {
 
@@ -612,7 +629,7 @@ $(document).on("click", '#createTab', function () {
     tabCount = $('#LayoutConfig li').length + 1;
     $('#LayoutConfig').append("<li><a href=\"#tab" + tabCount + "\" data-toggle=\"tab\">Tab " + tabCount + "</a></li>")
 
-    $('#SectionContent').append("<div id=\"tab" + tabCount + "\" class=\"tab-pane\">Test " + tabCount + " </div>")
+    $('#SectionContent').append("<div id=\"tab" + tabCount + "\" class=\"tab-pane\"></div>")
 });
 
 //Quantity keypad
@@ -712,7 +729,7 @@ $(document).on("click", ".unitPriceRtnKey", function (event) {
     $('#updateUnitPrice').text(unitPrice);
     $('#adjustUnitPrice').val('')
     
-    
+    setCartFooterTotals();
 });
 
 
