@@ -1,19 +1,132 @@
 ﻿function processLogin() {
     $('#login').empty();
-    $('#login').append('Welcome, John Smith.');
-    $('#mainNavigation').add('<li><a onclick=\"processLogout()\" /a></li>');
+    $('#login').append('Register# JRX01 - Cashier User Name');
+    $('#mainNavigation').add('<li><a onclick=\"processLogout()\" /a></li>');    
+    var userAPI = "http://v1retailapi.apiary.io/users/55";
+    $.getJSON(userAPI, function (usr) {
+        var usrName = usr.UserName;
+        var usrID = usr.UserID;
+        var registerHost = window.location.hostname;//replace with POS register identification.
+        $('#login').empty();
+        $('#login').append('Register# ' + registerHost + ' - Cashier ' + usrName + ' : ' + usrName + ' ');
+
+    }).fail(function (jqXHR, textStatus, err) {
+        $('#login').text('user name not found' + err);
+    });
 }
 function processLogout() {
     $('#login').empty();
     $('#login').append('<ul class=\"nav\"><li><a onclick=\"processLogin()\">Login</a></li></ul>');
 }
 
+function setGiftCard() {
+    var tabid = $('#LayoutConfig li.active').find('a').attr('id');
+} 
 
 function addItem() {
-    //check from db if item exists then add its object or id
+    //check from api if item exists then add its object or id
+    var sku = $('#product_search_product_sku').val();
+    var orderAPI = "http://v1retailapi.apiary.io/products/"+ sku;
+    $.getJSON(orderAPI, function (order) {
+        var itemID = order.items[0].id;
+        var itemPrice = 1.01;
+        var itemName = order.items[0].name;
+        var itemQuantity = 1;
+        $('#shoppingCart').append('<tr id=\"' + itemID + '\"><td class=\"span2\"><a id=\"updateQty\" class="updateQty" data-toggle=\"modal\" href=\"#QtyModal\">' + itemQuantity + '</a></td><td class=\"span2\">' + itemName + '</td><td><a id=\"updateUnitPrice\" href=\"#UnitPriceModal\" class=\"btn btn-info\" data-toggle="modal">' + itemPrice + '</a></td><td id="lineItemTotal' + itemID + '">' + itemPrice + '</td><td><a  id=\"' + itemID + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
+
+    }).fail(function (jqXHR, textStatus, err) {
+                $('#product').text('Error: ' + err);
+           });
+    //function find() {
+    //    var id = $('#prodId').val();
+    //    $.getJSON(uri + '/' + id)
+    //        .done(function (data) {
+    //            $('#product').text(formatItem(data));
+    //        })
+    //        .fail(function (jqXHR, textStatus, err) {
+    //            $('#product').text('Error: ' + err);
+    //        });
+    //}
     //for now just add what in the text box
-    $('#shoppingCart').append('<tr><td>1</td><td>' + $('#txtMainItem').val() + '</td><td><a href=index.htm data-role=button  data-icon=delete data-iconpos=notext>Delete</a></td><td></td></tr>');
-    //<tr><td class=\"span2\"><a id=\"updateQty\" href=\"#QtyModal\" class="updateQty" data-toggle=\"modal\">1</a></td><td class=\"span2\">Obamas New World Order</td><td><a id=\"updateUnitPrice\" href=\"#UnitPriceModal\" class=\"btn btn-info\" data-toggle="modal">@5.00</a></td><td id="lineItemTotal">5.00</td><td><a href="#"><i class="icon-remove-circle"></i></a></td></tr>'
+    //$('#shoppingCart').append('<tr><td>1</td><td>' + $('#product_search_product_sku').val() + '</td><td><a href=index.htm data-role=button  data-icon=delete data-iconpos=notext>Delete</a></td><td></td></tr>');
+    //$('#shoppingCart').append('<tr id=\"' + 90210 + '\"><td class=\"span2\"><a id=\"updateQty\" class="updateQty" data-toggle=\"modal\" href=\"#QtyModal\">' + 1 + '</a></td><td class=\"span2\">' + $('#product_search_product_sku').val() + '</td><td><a id=\"updateUnitPrice\" href=\"#UnitPriceModal\" class=\"btn btn-info\" data-toggle="modal">' + 1.00 + '</a></td><td id="lineItemTotal' + 90210 + '">' + 1.00 + '</td><td><a  id=\"' + 90210 + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
+    
+
+    //after the item has been added clear the text or the scanned item...
+    $('#product_search_product_sku').val('');
+
+    setCartFooterTotals();
+}
+
+function LoadOrder() {
+    var orderAPI = "http://v1retailapi.apiary.io/orders/99";
+    var orderTotal = 0;
+    var discount = 0;
+    var orderSubTotal = 0;
+    var donation = 0;
+    
+    $.getJSON(orderAPI, function (order) {
+        orderTotal = order.Total;
+        discount = order.PromoDiscount;
+        orderSubTotal = order.ItemsSubtotal;
+        donation = order.DonationAmount;
+        $.each(order.Items, function (index, item) {
+            var $row = $("#template").find(".row").clone().attr("id", "row_" + item.ID)
+            $row.find(".itemName").html(item.Name);
+            var itemID = item.ID;
+            var itemPrice = item.Price;
+            var itemName = item.Name;
+            var itemQuantity = item.Quantity;
+            $('#shoppingCart').append('<tr id=\"' + index + '\"><td class=\"span2\"><a id=\"updateQty\" class="updateQty" data-toggle=\"modal\" href=\"#QtyModal\">' + itemQuantity + '</a></td><td class=\"span2\">' + itemName + '</td><td><a id=\"updateUnitPrice\" href=\"#UnitPriceModal\" class=\"btn btn-info\" data-toggle="modal">' + itemPrice + '</a></td><td id="lineItemTotal' + itemID + '">' + itemPrice + '</td><td><a  id=\"' + itemID + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
+            //$('#shoppingCart').append($row); \\need to switch out to template row
+        });
+        $('#subTotal').text(orderSubTotal.toFixed(2));
+        orderSubTotal = parseFloat($('#subTotal').text());
+        var total = parseFloat(orderSubTotal) + parseFloat(discount);
+        //if (total != orderTotal) { alert('total error'); } else {
+        // verify totals
+        //}
+        var toPay = orderTotal;
+
+        $('#discount').text(discount.toFixed(2))
+        $('#total').text(orderTotal.toFixed(2))
+        $('#toPay').text(toPay.toFixed(2));
+
+    });
+    //setCartFooterTotals();
+}
+
+function parkOrder() {
+    var orderAPI = "http://v1retailapi.apiary.io/orders/";//maybe use the wish list to park the cart?
+    var orderTotal = 0;
+    var discount = 0;
+    var orderSubTotal = 0;
+    var donation = 0;
+
+    var orderToParkItems = [{ "ID": "12345", "Name": "name here 1", "Format": "", "Price": "1.99", "Sale": "0.59", "IsOnSale": "false", "Availability": "", "Image": "", "Quantity": "1" },
+               { "ID": "67890", "Name": "name here 2", "Format": "", "Price": "2.99", "Sale": "1.59", "IsOnSale": "false", "Availability": "", "Image": "", "Quantity": "1" },
+               { "ID": "ABC123", "Name": "name here 3", "Format": "", "Price": "3.99", "Sale": "2.59", "IsOnSale": "true", "Availability": "", "Image": "", "Quantity": "1" }];
+    var orderToPark = [{ "ItemsSubtotal": "49.97", "ItemsDiscount": "6.00", "PromoCode": "QR53C", "PromoDiscount": "10.00", "DonationAmount": "5.00", "Total": "44.97", "Items": [orderToPark] }];
+    //grab all items and build json string
+    //
+
+    $.ajax({
+        type: "POST",
+        url: orderAPI,
+        data: JSON.stringify({ order: orderToPark }),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (data) { alert(data + 'Your Order has been placed on hold/parked.'); },
+        failure: function (errMsg) {
+            alert(errMsg);
+        }
+    }); //send the parked cart
+
+    voidItem();//clear the cart after park
+}
+function payOrder() {
+
+    $('#payModal').toggle();
 }
 
 function voidItem() {
@@ -551,11 +664,11 @@ $(document).on("click", "#btnAddHotKeyToSection", function (event) {
     //after the item has been added clear the text or the scanned item...
     $('#productToAddToHotKeySection').val('');
 
-    
+ 
 });
 
-$(document).on("click", "#btnChangeActiveTabName", function (event) {
-    //check from db if item exists then add its object or id
+$(document).on("click", "#btnChangeActiveTab", function (event) {
+    //var index = $('#LayoutConfig li.active').text()
     var newTabName = $('#txtNewTabName').val();
     var activeAnchor = $('#LayoutConfig li.active a').eq(0);
 
@@ -564,14 +677,6 @@ $(document).on("click", "#btnChangeActiveTabName", function (event) {
     var curTabHref = $('#LayoutConfig li.active a').attr('href');
 
     var newTabHref = '#' + newTabName.replace(/\s/g, '');
-
-    activeAnchor.attr('href', newTabHref);
-   
-    var newSectionName = newTabName.replace(/\s/g, '');
-        
-    $('' + curTabHref + '').attr('id', newSectionName);
-    
-   
 
 
 });
