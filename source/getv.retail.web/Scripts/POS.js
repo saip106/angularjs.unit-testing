@@ -124,6 +124,7 @@ function parkOrder() {
 
     voidItem();//clear the cart after park
 }
+
 function payOrder() {
 
     $('#payModal').toggle();
@@ -260,6 +261,88 @@ function getLayout()
     return layout;
 }
 
+function saveLayout(layoutId, layoutName)
+{
+    var data = [];
+    var sectionData = [];
+  
+    //Get the sections of the layout
+    $('#LayoutConfig li a').each(function (index) {
+        var text = $(this).text();
+
+
+        if (text != 'Add Section')
+        {
+ 
+            var quick_keys = [];
+            //get the quick keys for each section
+            $('#default a').each(function ()
+            {
+                var keys = {
+                    id: $(this).attr('id'),
+                    text: $(this).text()
+                };
+
+                quick_keys.push(keys);
+                
+                
+            });
+
+            sectionData.push({ "name": text, "quick_keys": quick_keys });
+        }
+
+       
+
+
+    });
+
+    data.push({ "id":layoutId,"name":layoutName,"sections": sectionData });
+    alert(JSON.stringify(data));
+ 
+    
+
+    //var layoutJSONString = {
+    //    "layout": [
+    //        {
+    //            "id": "1",
+    //            "name": "default",
+    //            "sections": [
+    //                {
+    //                    "id": "1",
+    //                    "name": "Test Tab",
+    //                    "quick_keys": [
+    //                        {
+    //                            "id": "B43",
+    //                            "text": "Prophecy Bible"
+    //                        },
+    //                        {
+    //                            "id": "B44",
+    //                            "text": "Prophecy Bible 2"
+    //                        }
+
+    //                    ]
+    //                },
+    //                 {
+    //                     "id": "2",
+    //                     "name": "Test Tab 2",
+    //                     "quick_keys": [
+    //                         {
+    //                             "id": "B43",
+    //                             "text": "Prophecy Bible"
+    //                         },
+    //                         {
+    //                             "id": "B44",
+    //                             "text": "Prophecy Bible 2"
+    //                         }
+
+    //                     ]
+    //                 }
+    //            ]
+    //        }
+    //    ]
+    //};
+
+}
 
 function getStockItemsForHotKey(itemId) {
     var stockItemList = {
@@ -616,7 +699,6 @@ function addItemToHotKeyLayout(sectionName) {
 
         var itemID = order.items[0].id;
         var itemName = order.items[0].name;
-        alert('#" + sectionName + "');
         $('#' + sectionName + '').append('<a id=\"' + itemID + '\" href=\"#\" role=\"button\" class=\"btn btn-primary hotkeyconfiguration\">' + itemName + '</a>');
 
     })
@@ -644,6 +726,12 @@ $(document).on("click", ".addStockItemToCart", function (event) {
 
     $('#shoppingCart').append('<tr id=\"' + itemId + '\"><td class=\"span2\"><a id=\"updateQty\" class="updateQty" data-toggle=\"modal\" href=\"#QtyModal\">1</a></td><td class=\"span2\">Obamas New World Order</td><td><a id=\"updateUnitPrice\" href=\"#UnitPriceModal\" class=\"btn btn-info\" data-toggle="modal">@5.00</a></td><td id="lineItemTotal' + itemId + '">5.25</td><td><a  id=\"' + itemId + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
     setCartFooterTotals();
+});
+
+
+$(document).on("click", "#btnSaveLayout", function(event)
+{
+    saveLayout(1, $('#txtLayoutName').val());
 });
 
 $(document).on("click", "#btnAddHotKeyToSection", function (event) {
