@@ -6,35 +6,38 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-6">
             <input id="productToAddToHotKeySection" type="text">
             <button id="btnAddHotKeyToSection" type="button" class="btn btn-default">Add</button>
         </div>
 
-        <div class="col-sm-4">
+        @*<div class="col-sm-4">
             <label>Pages:</label><button type="button" class="btn btn-default">-</button><button type="button" class="btn btn-default">+</button>
-        </div>
-        <div class="input-group col-sm-4">
+        </div>*@
+        <div class="input-group col-sm-6">
             Layout Name:
-            <input type="text" class="form-control">
+            <input id="txtLayoutName" type="text" class="form-control">
         </div> 
     </div>       
     <div class="row">
         <div class="col-sm-12"></div>
     </div>  
     <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8">
+        <div class=" col-sm-1"></div>
+        <div class="col-sm-10">
             <div class="panel-default">
                 <div class="panel-heading">
                     <ul id="LayoutConfig" class="nav nav-tabs">
                         <li><a href="javascript:void(0);" id="createTab"><i class="icon-plus"></i>Add Section</a></li>
+                        <li><a href="#default" data-toggle="tab">Default</a></li>
                     </ul>
                     Set Tab Name: <input type="text" id="txtNewTabName" /><button id="btnChangeActiveTabName">Set Name</button>
                 </div>
                 <div class="panel-body">
                     <div id="SectionContent" class="tab-content">
-
+                       <div id="default" class="tab-pane">
+                      
+                        </div>
                     </div>
                 </div>
                 <div class="panel-footer">
@@ -42,17 +45,26 @@
                 </div>
             </div>
         </div>
-        <div class=" col-sm-2"></div>
+        <div class=" col-sm-1"></div>
     </div>
     <div class="row">
-        <div class="col-sm-2"></div>
+        <div class="col-sm-4"></div>
         <div class="col-sm-4">
             <div class="btn-group">
                 <button type="button" class="btn btn-default">Cancel</button>
                 <button type="button" class="btn btn-default">Delete</button>
-                <button type="button" class="btn btn-default">Save</button>
+                <button id="btnSaveLayout" type="button" class="btn btn-default">Save</button>
             </div>
         </div>
-        <div class=" col-sm-2"></div>
+        <div class=" col-sm-4"></div>
+    </div>
+
+    <div id="hkEditModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+        <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
+            Button Text: <input type="text" id="Id" value="" /><br />
+            <button class="btn btn-primary" data-dismiss="modal">Close</button>
+            <button id="btnDeleteHotKey" class="btn btn-primary" data-hotkeyid="">Delete </button>
+            <button id="btnApplyHotKeyChanges" class="btn btn-primary" data-hotkeyid="">Apply</button>
+        </div>
     </div>
 </div>

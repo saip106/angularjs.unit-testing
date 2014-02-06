@@ -124,9 +124,14 @@ function parkOrder() {
 
     voidItem();//clear the cart after park
 }
+
 function payOrder() {
 
     $('#payModal').toggle();
+}
+
+function editHotKey() {
+    $('#hkEditModal').toggle();
 }
 
 function voidItem() {
@@ -212,6 +217,136 @@ function getHotKeys() {
     };
 
     return hotKeyData;
+}
+
+function getLayout()
+{
+    var layout = {
+        "layout": [
+            {
+                "id": "1",
+                "name": "default",
+                "sections": [
+                    {
+                        "id": "1",
+                        "name": "Test Tab",
+                        "quick_keys": [
+                            {
+                                "id": "B43",
+                                "text": "Prophecy Bible"
+                            },
+                            {
+                                "id": "B44",
+                                "text": "Prophecy Bible 2"
+                            }
+
+                        ]
+                    },
+                     {
+                         "id": "2",
+                         "name": "Test Tab 2",
+                         "quick_keys": [
+                             {
+                                 "id": "B43",
+                                 "text": "Prophecy Bible"
+                             },
+                             {
+                                 "id": "B44",
+                                 "text": "Prophecy Bible 2"
+                             }
+
+                         ]
+                     }
+                ]
+            }
+        ]
+    };
+
+    return layout;
+}
+
+function saveLayout(layoutId, layoutName)
+{
+    var data = [];
+    var sectionData = [];
+  
+    //Get the sections of the layout
+    $('#LayoutConfig li a').each(function (index) {
+        var text = $(this).text();
+
+
+        if (text != 'Add Section')
+        {
+ 
+            var quick_keys = [];
+            //get the quick keys for each section
+            $('#default a').each(function ()
+            {
+                
+                var keys = {
+                    id: $(this).attr('id').split('-', 1),
+                    text: $(this).text()
+                };
+
+                quick_keys.push(keys);
+                
+                
+            });
+
+            sectionData.push({ "name": text, "quick_keys": quick_keys });
+        }
+
+       
+
+
+    });
+
+    data.push({ "id":layoutId,"name":layoutName,"sections": sectionData });
+    alert(JSON.stringify(data));
+ 
+    
+
+    //var layoutJSONString = {
+    //    "layout": [
+    //        {
+    //            "id": "1",
+    //            "name": "default",
+    //            "sections": [
+    //                {
+    //                    "id": "1",
+    //                    "name": "Test Tab",
+    //                    "quick_keys": [
+    //                        {
+    //                            "id": "B43",
+    //                            "text": "Prophecy Bible"
+    //                        },
+    //                        {
+    //                            "id": "B44",
+    //                            "text": "Prophecy Bible 2"
+    //                        }
+
+    //                    ]
+    //                },
+    //                 {
+    //                     "id": "2",
+    //                     "name": "Test Tab 2",
+    //                     "quick_keys": [
+    //                         {
+    //                             "id": "B43",
+    //                             "text": "Prophecy Bible"
+    //                         },
+    //                         {
+    //                             "id": "B44",
+    //                             "text": "Prophecy Bible 2"
+    //                         }
+
+    //                     ]
+    //                 }
+    //            ]
+    //        }
+    //    ]
+    //};
+
 }
 
 function getStockItemsForHotKey(itemId) {
@@ -543,34 +678,40 @@ function setCartFooterTotals() {
 }
 
 function buildHotKeys() {
-    var hotKeyCategories = getHotKeys();
+    var JSONData = getLayout();
     
-    $.each(hotKeyCategories.items, function () {
+    $.each(JSONData.layout[0].sections, function (i, sections) {
+     
+        var sectionName = sections.name.replace(/\s/g, '');
 
-        $('#hotKeysNav').append('<li><a href="#' + this.name + '" data-toggle="tab">' + this.name + '</a></li>');
+        $("#hotKeysTabs").append("<li><a href=\"#" + sectionName + "\" data-toggle=\"tab\">" + sections.name + "</a></li>");
+        $("#hotKeySections").append("<div id=\"" + sectionName + "\" class=\"tab-pane\"></div>");
 
-
+        $.each(sections.quick_keys, function (i, quick_keys) {
+            
+            $('#' + sectionName).append('<a id=\"' + quick_keys.id + '\" href=\"#\" role=\"button\" class=\"btn btn-primary hotkeyconfiguration\">' + quick_keys.text + '</a>');
+            
+        });
     });
 }
 
-function addItemToHotKeyLayout(sectionName) {
-    //check from db if item exists then add its object or id
-    var sku = $('#productToAddToHotKeySection').val();
-    var orderAPI = "http://v1retailapi.apiary.io/products/" + sku;
+//function addItemToHotKeyLayout(sectionName) {
+//    //check from db if item exists then add its object or id
+//    var sku = $('#productToAddToHotKeySection').val();
+//    var orderAPI = "http://v1retailapi.apiary.io/products/" + sku;
     
-    $.getJSON(orderAPI, function (order) {
+//    $.getJSON(orderAPI, function (order) {
 
-        var itemID = order.items[0].id;
-        var itemName = order.items[0].name;
-        alert('#" + sectionName + "');
-        $('#' + sectionName + '').append('<a id=\"' + itemID + '\" href=\"#\" role=\"button\" class=\"btn btn-primary hotkeyconfiguration\">' + itemName + '</a>');
+//        var itemID = order.items[0].id;
+//        var itemName = order.items[0].name;
+//        $('#' + sectionName + '').append('<a id=\"' + itemID + '\" href=\"#\" role=\"button\" class=\"btn btn-primary hotkeyconfiguration\">' + itemName + '   <button type="button" class="close" aria-hidden="true">&times;</button></a>');
 
-    })
-    //after the item has been added clear the text or the scanned item...
-    $('#productToAddToHotKeySection').val('');
+//    })
+//    //after the item has been added clear the text or the scanned item...
+//    $('#productToAddToHotKeySection').val('');
 
-    setCartFooterTotals();
-}
+//    setCartFooterTotals();
+//}
 
 $(document).ready(function () {
 
@@ -580,6 +721,22 @@ $(document).ready(function () {
     //    $('#hkUserSpecific').append('<a id=\"' + this.id + '\" href=\"#hotKeyModal\" role=\"button\" class=\"btn btn-primary addStockItemToCart\">' + this.name + '</a>');
     //});
 });
+
+$(document).on("click", "#btnDeleteHotKey", function () {
+
+    var idToDelete = $(this).attr('data-hotKeyId');
+    selectorString = '#' + idToDelete;
+    $(selectorString).remove();
+});
+
+$(document).on("click", "#btnApplyHotKeyChanges", function () {
+    var idToEdit = $(this).attr('data-hotKeyId');
+    selectorString = '#' + idToEdit;
+    var newText = $('#Id').val();
+    $(selectorString).text(newText);
+
+});
+
 
 $(document).on("click", ".addStockItemToCart", function (event) {
 
@@ -592,6 +749,23 @@ $(document).on("click", ".addStockItemToCart", function (event) {
     setCartFooterTotals();
 });
 
+$(document).on("click", "#btnSaveLayout", function(event)
+{
+    saveLayout(1, $('#txtLayoutName').val());
+});
+
+$(document).on("click", ".open-EditHotKeyDialog", function () {
+    var keyText = $(this).text();
+    $(".modal-body #Id").val(keyText);
+
+    var keyId = $(this).attr('id');
+
+    
+
+    $('.modal-body #btnDeleteHotKey').attr('data-hotKeyId', keyId);
+    $('.modal-body #btnApplyHotKeyChanges').attr('data-hotKeyId', keyId);
+
+});
 
 $(document).on("click", "#btnAddHotKeyToSection", function (event) {
     //check from db if item exists then add its object or id
@@ -599,39 +773,44 @@ $(document).on("click", "#btnAddHotKeyToSection", function (event) {
     var orderAPI = "http://v1retailapi.apiary.io/products/" + sku;
     var itemID = "B43";
     var itemName = "Prophecy Study Bible";
+    var itemCount = 0;
 
     //$.getJSON(orderAPI, function (order) {
     //    var itemID = order.items[0].id;
     //    var itemName = order.items[0].name;
  
     //})
+
+    
     var tabid = $('#LayoutConfig li.active a').attr('href');
-    $('' + tabid + '').append('<a id=\"' + itemID + '\" href=\"#\" role=\"button\" class=\"btn btn-primary hotkeyconfiguration\">' + itemName + '</a>');
+    $('' + tabid + '').append('<a id=\"' + itemID + '-' + itemCount + '\" href=\"#hkEditModal\" role=\"button\" class=\"btn btn-primary open-EditHotKeyDialog\" data-toggle=\"modal\" data-target=\"#hkEditModal\">' + itemName + '</a>');
     
     //after the item has been added clear the text or the scanned item...
     $('#productToAddToHotKeySection').val('');
-
- 
 });
 
-$(document).on("click", "#btnChangeActiveTab", function (event) {
+$(document).on("click", "#btnChangeActiveTabName", function (event) {
     //var index = $('#LayoutConfig li.active').text()
+    var newTabName = $('#txtNewTabName').val();
+    var activeAnchor = $('#LayoutConfig li.active a').eq(0);
 
-    alert(index)
- 
+    activeAnchor.html(newTabName);
+
+    var curTabHref = $('#LayoutConfig li.active a').attr('href');
+
+    var newTabHref = '#' + newTabName.replace(/\s/g, '');
+
 
 });
-
 
 $(document).on("click", '#createTab', function () {
 
-    var tabCount = 0;
+    var tabCount = 1;
     tabCount = $('#LayoutConfig li').length + 1;
     $('#LayoutConfig').append("<li><a href=\"#tab" + tabCount + "\" data-toggle=\"tab\">Tab " + tabCount + "</a></li>")
 
     $('#SectionContent').append("<div id=\"tab" + tabCount + "\" class=\"tab-pane\"></div>")
 });
-
 //Quantity keypad
 $(document).on("click", ".updateQty", function (event) {
 
@@ -691,7 +870,6 @@ $(document).on("click", ".qtyRtnKey", function (event) {
     $('#adjustQty').val('')
     $('#lineItemTotal').text(qty * unitPrice);
 });
-
 //Unit Price keypad
 $(document).on("click", ".updateUnitPrice", function (event) {
 
