@@ -265,6 +265,13 @@ function getLayout()
     return layout;
 }
 
+function deleteSection(sectionId, tabId)
+{
+    $('#' + sectionId).remove();
+
+
+}
+
 function saveLayout(layoutId, layoutName)
 {
     var data = [];
@@ -677,6 +684,7 @@ function setCartFooterTotals() {
 
 }
 
+
 function buildHotKeys() {
     var JSONData = getLayout();
     
@@ -754,6 +762,15 @@ $(document).on("click", "#btnSaveLayout", function(event)
     saveLayout(1, $('#txtLayoutName').val());
 });
 
+
+$(document).on("click", ".delete-HotKeySection", function () {
+    alert("Begin delete");
+    var currentHref = $('#LayoutConfig li.active a').attr('href');
+    $(currentHref).remove();
+
+    $('#LayoutConfig li.active a').parent().remove();
+});
+
 $(document).on("click", ".open-EditHotKeyDialog", function () {
     var keyText = $(this).text();
     $(".modal-body #Id").val(keyText);
@@ -799,7 +816,6 @@ $(document).on("click", "#btnChangeActiveTabName", function (event) {
     var curTabHref = $('#LayoutConfig li.active a').attr('href');
 
     var newTabHref = '#' + newTabName.replace(/\s/g, '');
-
 
 });
 
