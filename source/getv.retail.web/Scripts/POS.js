@@ -1,20 +1,22 @@
 ﻿function processLogin() {
+    $('#logout').toggle();
     $('#login').empty();
-    $('#login').append('Register# JRX01 - Cashier User Name');
+    $('#login').append("<a href='#' >" + "Register# JRX01 - Cashier " + $('#loginModalUsername').val() + "</a>");
     $('#mainNavigation').add('<li><a onclick=\"processLogout()\" /a></li>');    
     var userAPI = "http://v1retailapi.apiary.io/users/55";
-    $.getJSON(userAPI, function (usr) {
-        var usrName = usr.UserName;
-        var usrID = usr.UserID;
-        var registerHost = window.location.hostname;//replace with POS register identification.
-        $('#login').empty();
-        $('#login').append('Register# ' + registerHost + ' - Cashier ' + usrName + ' : ' + usrName + ' ');
+    //$.getJSON(userAPI, function (usr) {
+    //    var usrName = usr.UserName;
+    //    var usrID = usr.UserID;
+    //    var registerHost = window.location.hostname;//replace with POS register identification.
+    //    $('#login').empty();
+    //    $('#login').append('Register# ' + registerHost + ' - Cashier ' + usrName + ' : ' + usrName + ' ');
 
-    }).fail(function (jqXHR, textStatus, err) {
-        $('#login').text('user name not found' + err);
-    });
+    //}).fail(function (jqXHR, textStatus, err) {
+    //    $('#login').text('user name not found' + err);
+    //});
 }
 function processLogout() {
+    $('#logout').toggle();
     $('#login').empty();
     $('#login').append('<ul class=\"nav\"><li><a onclick=\"processLogin()\">Login</a></li></ul>');
 }
@@ -228,7 +230,6 @@ function getLayout()
                 "name": "default",
                 "sections": [
                     {
-                        "id": "1",
                         "name": "Test Tab",
                         "quick_keys": [
                             {
@@ -243,7 +244,6 @@ function getLayout()
                         ]
                     },
                      {
-                         "id": "2",
                          "name": "Test Tab 2",
                          "quick_keys": [
                              {
@@ -263,13 +263,6 @@ function getLayout()
     };
 
     return layout;
-}
-
-function deleteSection(sectionId, tabId)
-{
-    $('#' + sectionId).remove();
-
-
 }
 
 function saveLayout(layoutId, layoutName)
@@ -684,6 +677,15 @@ function setCartFooterTotals() {
 
 }
 
+function resetLayout()
+{
+    $('#SectionContent').empty();
+    $('#LayoutConfig').empty();
+
+    $('#LayoutConfig').append('<li><a href=\"javascript:void(0);\" id=\"createTab\"><i class=\"icon-plus\"></i>Add Section</a></li><li><a href=\"#default\" data-toggle=\"tab\">Default</a></li>')
+    $('#SectionContent').append('<div id=\"default\" class=\"tab-pane\"></div>')
+}
+
 
 function buildHotKeys() {
     var JSONData = getLayout();
@@ -745,6 +747,9 @@ $(document).on("click", "#btnApplyHotKeyChanges", function () {
 
 });
 
+$(document).on("click", ".clear-Layout", function () {
+    resetLayout();
+});
 
 $(document).on("click", ".addStockItemToCart", function (event) {
 
@@ -762,9 +767,7 @@ $(document).on("click", "#btnSaveLayout", function(event)
     saveLayout(1, $('#txtLayoutName').val());
 });
 
-
 $(document).on("click", ".delete-HotKeySection", function () {
-    alert("Begin delete");
     var currentHref = $('#LayoutConfig li.active a').attr('href');
     $(currentHref).remove();
 
