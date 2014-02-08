@@ -15,15 +15,12 @@
     //    $('#login').text('user name not found' + err);
     //});
 }
+
 function processLogout() {
     $('#logout').toggle();
     $('#login').empty();
     $('#login').append('<ul class=\"nav\"><li><a onclick=\"processLogin()\">Login</a></li></ul>');
 }
-
-function setGiftCard() {
-    var tabid = $('#LayoutConfig li.active').find('a').attr('id');
-} 
 
 function addItem() {
     //check from api if item exists then add its object or id
@@ -662,7 +659,11 @@ function setCartFooterTotals() {
     var toPay = parseFloat(0.00);
 
     $("td[id^='lineItemTotal']").each(function () {
-        subTotal = +subTotal + +parseFloat($('#' + this.id).text());
+       
+        alert($('#' + this.id).text());
+        alert(parseFloat($('#' + this.id).text().replace('$', '')));
+
+        subTotal = +subTotal + +parseFloat($(this.id).text().replace('$', ''));
     });
 
 
@@ -685,7 +686,6 @@ function resetLayout()
     $('#LayoutConfig').append('<li><a href=\"javascript:void(0);\" id=\"createTab\"><i class=\"icon-plus\"></i>Add Section</a></li><li><a href=\"#default\" data-toggle=\"tab\">Default</a></li>')
     $('#SectionContent').append('<div id=\"default\" class=\"tab-pane\"></div>')
 }
-
 
 function buildHotKeys() {
     var JSONData = getLayout();
@@ -730,6 +730,33 @@ $(document).ready(function () {
     //$.each(hotKeyData.items, function () {
     //    $('#hkUserSpecific').append('<a id=\"' + this.id + '\" href=\"#hotKeyModal\" role=\"button\" class=\"btn btn-primary addStockItemToCart\">' + this.name + '</a>');
     //});
+});
+
+$(document).on("click", "#btnCancelGiftCard", function (event) {
+    $('#txtbxAddGiftCardId').val('');
+    $('#txtbxAddGiftCardValue').val('');
+        
+        $('#giftCardModal').modal('hide');
+});
+
+$(document).on("click", "#btnAddGiftCard", function (event) {
+    var itemId = $('#txtbxAddGiftCardId').val();
+    var itemAmount = $('#txtbxAddGiftCardValue').val();
+
+    var regex  = /^\d+(?:\.\d{0,2})$/;
+    if (regex.test(itemAmount)) {
+        //Add dollar sign
+        var itemAmount = '$' + itemAmount;
+
+        $('#shoppingCart').append('<tr id=\"' + itemId + '\"><td class=\"span2\"><a href=\"#\">1</a></td><td class=\"span2\">Gift Card - ' + itemId + '</td><td><a href=\"#\" class=\"btn btn-info\">@' + itemAmount + '</a></td><td id="lineItemTotal' + itemId + '">' + itemAmount + '</td><td><a  id=\"' + itemId + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
+        setCartFooterTotals();
+
+        $('#giftCardModal').modal('hide');
+    }
+    else
+    {
+        alert("Invalid Amount: Please enter amount in $0.00 format.");
+    }
 });
 
 $(document).on("click", "#btnDeleteHotKey", function () {
