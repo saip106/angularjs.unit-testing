@@ -33,9 +33,11 @@
                 <div class="row" style="height:400px;">
                     <!--Shopping Cart-->
                     <div class="col-sm-6">
-                        <div class="panel panel-default">
+
+                        <div class="panel panel-default" id="register-display">
                             <div class="panel-heading">
-                                <input type="hidden" name="product_search[product_id]" id="product_search_product_id" />                <input type="search" name="product_search[product_sku]" autocomplete="off" autocorrect="off" autocapitalize="off" x-webkit-speech="true" placeholder="Search products" class="use-keypad click-to-select" autofocus="on" id="product_search_product_sku" />                <button id="btn-add-product" class="btn btn-info" onclick="addItem()">Add</button>
+                                <input type="hidden" name="product_search[product_id]" id="product_search_product_id" />                <input type="search" name="product_search[product_sku]" autocomplete="off" autocorrect="off" autocapitalize="off" x-webkit-speech="true" placeholder="Search products" class="use-keypad click-to-select" autofocus="on" id="product_search_product_sku" />                
+                                <button id="btn-add-product" class="btn btn--small btn--no-min-width right" onclick="addItem()">Add</button>
 
                                 @*<input type="text" id="txtMainItem" />                <button type="button" class="btn btn-info" onclick="addItem()">Add</button>*@
                             </div>
@@ -66,13 +68,13 @@
 
                             </div>
                             <div class="panel-footer">
-                                <button type="button" class="btn btn-primary" onclick="voidItem()">Void</button>
+                                <button type="button" class="btn btn-void modal-button" onclick="voidItem()">Void</button>
                                 <button type="button" class="btn btn-primary" onclick="parkOrder()">Park</button>
-                                <button type="button" class="btn btn-primary">Donation</button>
+                                <a href="#" class="btn btn-void modal-button">Donation</a>
                                 <button type="button" class="btn btn-primary" onclick="setGiftCard()">Gift Card</button>
                                 <button type="button" class="btn btn-primary discountBtn">Discount</button>
-                                <button type="button" class="btn btn-primary">Notes</button>
-                                <button type="button" class="btn btn-success" onclick="payOrder()">Pay</button>
+                                <button type="button" class="btn btn-primary">Notes</button>                                
+                                <a id="btn-make-payment" class="btn btn--well btn--success right" data-toggle="modal" href="#payModal">Pay</a>
                             </div>
                         </div>
                     </div>
@@ -107,9 +109,58 @@
             </div>
         </div>
     </div>
-    <div id="payModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+    <div id="payModal" class="modal fade modal-dialog modal-content" >
         <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
-            <input type="text" id="txtPaymentAmount" /><button type="button" class="btn btn-primary" onclick="voidItem()">Cash</button>
+            <div class="box">
+                <div class="head box-gradient-modal text-center">
+                    <h2 class="text">Payment</h2>
+                </div>
+                <div id="customer-bar">
+                    <span class="name">No customer</span>
+                    <span id="customer-bar-loyalty" style="display: none;">
+                        <span class="loyalty-earned">Sale earns<span class="currency total-amount">0</span> </span>
+                        <span class="loyalty">Loyalty<span class="currency total-amount">0</span> </span>
+                    </span>
+                    <span class="balance">Balance<span class="currency total-amount">0</span> </span>
+                </div>
+
+                <div class="content">
+
+                    <table id="table-payment-totals" class="accounts">
+                        <tbody>
+                            <tr id="topay" class="total">
+                                <td class="total-item">
+                                    <span class="topay-label"></span>
+                                </td>
+                                <td class="payment-totals-topay total-amount">
+                                    $0.00
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="payment-input noprint">
+                        <label class="block" id="prompt-for-tender">Amount tendered</label>
+                        <div class="numpad-input"><div class="numpad-input-content"><button type="button" value="toggle" class="numpad-input-button-toggle numpad-input-button-toggle--light numpad-input-closed" title="Open Number Pad"><i class="numpad-icon-toggle"></i></button>
+                            <input id="checkout_amount" type="text" class="numpad-input-input numpad-input-input--light no-payment-required" placeholder="" title="E.g. 5.50" pattern="[-]{0,1}([0-9]{0,}[.]{1}[0-9]{1,}|[0-9]{1,}[.]{0,1}[0-9]{0,})">
+                            <div class="validation-bubble"></div></div></div>
+                    </div>
+                    <div class="payment-buttons">
+                        <div class="buttons secondary">
+                            <button type="submit" value="183333b9-5c53-11e3-a29a-bc305bf5da20" name="payment_type" class="button medium payment-button btn btn--inverse">Cash</button>
+                            <button type="submit" value="1833674b-5c53-11e3-a29a-bc305bf5da20" name="payment_type" class="button medium payment-button btn btn--inverse">Credit Card</button>
+                            <div class="clearer"></div>
+                        </div>
+                        <div class="clearer"></div>
+                        <div class="modal-button-bar">
+                            <button type="submit" value="on_account" name="payment_type" id="btn-save-onaccount" class="btn btn--well modal-button left">On account</button>
+                            
+                            <a id="btn-close-payment" data-dismiss="modal" class="btn btn--well btn-back-to-sale modal-button">Back to Sale</a>
+                        </div>
+                    </div>
+                    <div class="numpad numpad-input-closed numpad--aside numpad--right-aside"><div class="numpad-content"><div class="numpad-section numpad-section-main"><button type="button" value="1" class="numpad-key numpad-key--light numpad-key-number">1</button><button type="button" value="2" class="numpad-key numpad-key--light numpad-key-number">2</button><button type="button" value="3" class="numpad-key numpad-key--light numpad-key-number">3</button><button type="button" value="4" class="numpad-key numpad-key--light numpad-key-number">4</button><button type="button" value="5" class="numpad-key numpad-key--light numpad-key-number">5</button><button type="button" value="6" class="numpad-key numpad-key--light numpad-key-number">6</button><button type="button" value="7" class="numpad-key numpad-key--light numpad-key-number">7</button><button type="button" value="8" class="numpad-key numpad-key--light numpad-key-number">8</button><button type="button" value="9" class="numpad-key numpad-key--light numpad-key-number">9</button><button type="button" value="0" class="numpad-key numpad-key--light numpad-key-number">0</button><button type="button" value="00" class="numpad-key numpad-key--light numpad-key-double-zero">00</button><button type="button" value="." class="numpad-key numpad-key--light numpad-key-decimal">.</button></div><div class="numpad-section numpad-section-last"><button type="button" value="delete" class="numpad-key numpad-key--light numpad-key-delete"><i class="numpad-icon-delete"></i></button><button type="button" value="-" class="numpad-key numpad-key--light numpad-key-negative-toggle"><i class="numpad-icon-negative-toggle"></i></button></div></div></div>
+                </div>
+            </div>
+            
         </div>
     </div>
     <div id="QtyModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
@@ -230,4 +281,33 @@
 
 
 </div>
+</div>
+<div id="select-sale" class="padded-20">
+    <div class="section">
+        <form>
+            <div class="subheading">
+                enter into retrive tab<h1 class="strong">Select a Sale to Open</h1>
+            </div>
+
+            <div id="sales_list_container">
+                <div class="table-wrapper">
+                    <table class="item_list table-padded" id="register-sale-list">
+                        <thead>
+                            <tr>
+                                <th>Date/time</th>
+                                <th>Status</th>
+                                <th>User</th>
+                                <th>Customer</th>
+                                <th>Code</th>
+                                <th>Total</th>
+                                <th>Note</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
