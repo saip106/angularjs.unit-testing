@@ -3,7 +3,7 @@
     $('#login').empty();
     $('#login').append("<a href='#' >" + "Register# JRX01 - Cashier " + $('#loginModalUsername').val() + "</a>");
     $('#mainNavigation').add('<li><a onclick=\"processLogout()\" /a></li>');    
-    var userAPI = "http://v1retailapi.apiary.io/users/55";
+    var userAPI = "http://private-6221-v1retailapi.apiary.io/products/users/55";
     //$.getJSON(userAPI, function (usr) {
     //    var usrName = usr.UserName;
     //    var usrID = usr.UserID;
@@ -25,7 +25,7 @@ function processLogout() {
 function addItem() {
     //check from api if item exists then add its object or id
     var sku = $('#product_search_product_sku').val();
-    var orderAPI = "http://v1retailapi.apiary.io/products/"+ sku;
+    var orderAPI = "http://private-6221-v1retailapi.apiary.io/products/" + sku;
     $.getJSON(orderAPI, function (order) {
         var itemID = order.items[0].id;
         var itemPrice = 1.01;
@@ -58,7 +58,7 @@ function addItem() {
 }
 
 function LoadOrder() {
-    var orderAPI = "http://v1retailapi.apiary.io/orders/99";
+    var orderAPI = "http://private-6221-v1retailapi.apiary.io/products/orders/99";
     var orderTotal = 0;
     var discount = 0;
     var orderSubTotal = 0;
@@ -96,7 +96,7 @@ function LoadOrder() {
 }
 
 function parkOrder() {
-    var orderAPI = "http://v1retailapi.apiary.io/orders/";//maybe use the wish list to park the cart?
+    var orderAPI = "http://private-6221-v1retailapi.apiary.io/products/";//maybe use the wish list to park the cart?
     var orderTotal = 0;
     var discount = 0;
     var orderSubTotal = 0;
@@ -126,7 +126,7 @@ function parkOrder() {
 
 function payOrder() {
 
-    $('#payModal').toggle();
+    $('#payModal').data.toggle();
 }
 
 function editHotKey() {
@@ -817,7 +817,7 @@ $(document).on("click", ".open-EditHotKeyDialog", function () {
 $(document).on("click", "#btnAddHotKeyToSection", function (event) {
     //check from db if item exists then add its object or id
     var sku = $('#productToAddToHotKeySection').val();
-    var orderAPI = "http://v1retailapi.apiary.io/products/" + sku;
+    var orderAPI = "http://private-6221-v1retailapi.apiary.io/products/" + sku;
     var itemID = "B43";
     var itemName = "Prophecy Study Bible";
     var itemCount = 0;
