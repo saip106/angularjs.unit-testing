@@ -71,7 +71,7 @@
                                 <button type="button" class="btn btn-void modal-button" onclick="voidItem()">Void</button>
                                 <button type="button" class="btn btn-primary" onclick="parkOrder()">Park</button>
                                 <a href="#" class="btn btn-void modal-button">Donation</a>
-                                <button type="button" class="btn btn-primary" onclick="setGiftCard()">Gift Card</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#giftCardModal">Gift Card</button>
                                 <button type="button" class="btn btn-primary discountBtn">Discount</button>
                                 <button type="button" class="btn btn-primary">Notes</button>                                
                                 <a id="btn-make-payment" class="btn btn--well btn--success right" data-toggle="modal" href="#payModal">Pay</a>
@@ -273,13 +273,41 @@
                 <td class="span2"><a id="updateQty" class="updateQty" data-toggle="modal" href="#QtyModal"></a></td>
             <td class="itemName"></td>
             <td><a id="updateUnitPrice" href="#UnitPriceModal" class="btn btn-info" data-toggle="modal"></a></td>
-            <td id="lineItemTotal"></td>
+            <td id="lineItemTotal">0.00</td>
             <td><a id="itemid" href="#" class="removeLineItem">X</a></td>
             </tr>
             
         </table>
 
 
+    </div>
+    <div id="giftCardModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+        <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
+            <h3 style="text-align:center;">Add Gift Card</h3>
+          <table style="width:100%;" align="center">
+              <tr>
+                  <td align="right">Gift Card #:</td>
+                  <td align="left"><input id="txtbxAddGiftCardId" type="text" value="" /></td>
+              </tr>
+              <tr>
+                  <td align="right">Gift Card Value:</td>
+                  <td align="left"><input id="txtbxAddGiftCardValue" type="text" value="" /></td>
+              </tr>
+              <tr>
+                  <td align="center" colspan="2">
+                     <br/>
+                      <br/>
+                  </td>
+              </tr>
+              <tr>
+                  <td align="center" colspan="2">
+                      <button id="btnCancelGiftCard" class="btn btn-primary">Cancel</button>
+                      <button id="btnAddGiftCard" class="btn btn-primary">Add to Order</button>
+                  </td>
+              </tr>
+          </table>
+        </div>
+    </div>
 </div>
 </div>
 <div id="select-sale" class="padded-20">

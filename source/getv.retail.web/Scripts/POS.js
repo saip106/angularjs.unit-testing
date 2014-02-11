@@ -1,27 +1,26 @@
 ﻿function processLogin() {
+    $('#logout').toggle();
     $('#login').empty();
-    $('#login').append('Register# JRX01 - Cashier User Name');
+    $('#login').append("<a href='#' >" + "Register# JRX01 - Cashier " + $('#loginModalUsername').val() + "</a>");
     $('#mainNavigation').add('<li><a onclick=\"processLogout()\" /a></li>');    
     var userAPI = "http://private-6221-v1retailapi.apiary.io/products/users/55";
-    $.getJSON(userAPI, function (usr) {
-        var usrName = usr.UserName;
-        var usrID = usr.UserID;
-        var registerHost = window.location.hostname;//replace with POS register identification.
-        $('#login').empty();
-        $('#login').append('Register# ' + registerHost + ' - Cashier ' + usrName + ' : ' + usrName + ' ');
+    //$.getJSON(userAPI, function (usr) {
+    //    var usrName = usr.UserName;
+    //    var usrID = usr.UserID;
+    //    var registerHost = window.location.hostname;//replace with POS register identification.
+    //    $('#login').empty();
+    //    $('#login').append('Register# ' + registerHost + ' - Cashier ' + usrName + ' : ' + usrName + ' ');
 
-    }).fail(function (jqXHR, textStatus, err) {
-        $('#login').text('user name not found' + err);
-    });
+    //}).fail(function (jqXHR, textStatus, err) {
+    //    $('#login').text('user name not found' + err);
+    //});
 }
+
 function processLogout() {
+    $('#logout').toggle();
     $('#login').empty();
     $('#login').append('<ul class=\"nav\"><li><a onclick=\"processLogin()\">Login</a></li></ul>');
 }
-
-function setGiftCard() {
-    var tabid = $('#LayoutConfig li.active').find('a').attr('id');
-} 
 
 function addItem() {
     //check from api if item exists then add its object or id
@@ -228,7 +227,6 @@ function getLayout()
                 "name": "default",
                 "sections": [
                     {
-                        "id": "1",
                         "name": "Test Tab",
                         "quick_keys": [
                             {
@@ -243,7 +241,6 @@ function getLayout()
                         ]
                     },
                      {
-                         "id": "2",
                          "name": "Test Tab 2",
                          "quick_keys": [
                              {
@@ -263,13 +260,6 @@ function getLayout()
     };
 
     return layout;
-}
-
-function deleteSection(sectionId, tabId)
-{
-    $('#' + sectionId).remove();
-
-
 }
 
 function saveLayout(layoutId, layoutName)
@@ -669,7 +659,11 @@ function setCartFooterTotals() {
     var toPay = parseFloat(0.00);
 
     $("td[id^='lineItemTotal']").each(function () {
-        subTotal = +subTotal + +parseFloat($('#' + this.id).text());
+       
+        alert($('#' + this.id).text());
+        alert(parseFloat($('#' + this.id).text().replace('$', '')));
+
+        subTotal = +subTotal + +parseFloat($(this.id).text().replace('$', ''));
     });
 
 
@@ -684,6 +678,14 @@ function setCartFooterTotals() {
 
 }
 
+function resetLayout()
+{
+    $('#SectionContent').empty();
+    $('#LayoutConfig').empty();
+
+    $('#LayoutConfig').append('<li><a href=\"javascript:void(0);\" id=\"createTab\"><i class=\"icon-plus\"></i>Add Section</a></li><li><a href=\"#default\" data-toggle=\"tab\">Default</a></li>')
+    $('#SectionContent').append('<div id=\"default\" class=\"tab-pane\"></div>')
+}
 
 function buildHotKeys() {
     var JSONData = getLayout();
@@ -730,6 +732,33 @@ $(document).ready(function () {
     //});
 });
 
+$(document).on("click", "#btnCancelGiftCard", function (event) {
+    $('#txtbxAddGiftCardId').val('');
+    $('#txtbxAddGiftCardValue').val('');
+        
+        $('#giftCardModal').modal('hide');
+});
+
+$(document).on("click", "#btnAddGiftCard", function (event) {
+    var itemId = $('#txtbxAddGiftCardId').val();
+    var itemAmount = $('#txtbxAddGiftCardValue').val();
+
+    var regex  = /^\d+(?:\.\d{0,2})$/;
+    if (regex.test(itemAmount)) {
+        //Add dollar sign
+        var itemAmount = '$' + itemAmount;
+
+        $('#shoppingCart').append('<tr id=\"' + itemId + '\"><td class=\"span2\"><a href=\"#\">1</a></td><td class=\"span2\">Gift Card - ' + itemId + '</td><td><a href=\"#\" class=\"btn btn-info\">@' + itemAmount + '</a></td><td id="lineItemTotal' + itemId + '">' + itemAmount + '</td><td><a  id=\"' + itemId + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
+        setCartFooterTotals();
+
+        $('#giftCardModal').modal('hide');
+    }
+    else
+    {
+        alert("Invalid Amount: Please enter amount in $0.00 format.");
+    }
+});
+
 $(document).on("click", "#btnDeleteHotKey", function () {
 
     var idToDelete = $(this).attr('data-hotKeyId');
@@ -745,6 +774,9 @@ $(document).on("click", "#btnApplyHotKeyChanges", function () {
 
 });
 
+$(document).on("click", ".clear-Layout", function () {
+    resetLayout();
+});
 
 $(document).on("click", ".addStockItemToCart", function (event) {
 
@@ -762,9 +794,7 @@ $(document).on("click", "#btnSaveLayout", function(event)
     saveLayout(1, $('#txtLayoutName').val());
 });
 
-
 $(document).on("click", ".delete-HotKeySection", function () {
-    alert("Begin delete");
     var currentHref = $('#LayoutConfig li.active a').attr('href');
     $(currentHref).remove();
 

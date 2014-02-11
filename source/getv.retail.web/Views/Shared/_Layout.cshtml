@@ -58,21 +58,23 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul id="mainNavigation" class="nav navbar-nav">
-                        <li><a href="#dashboardPanel" data-toggle="tab">Dashboard</a></li>
+                        @*<li><a href="#dashboardPanel" data-toggle="tab">Dashboard</a></li>*@
                         <li class="active"><a href="#sellPanel" data-toggle="tab">Sell</a></li>
-                        <li><a href="#productPanel" data-toggle="tab">Products</a></li>
+                        @*<li><a href="#productPanel" data-toggle="tab">Products</a></li>
                         <li><a href="#customerPanel" data-toggle="tab">Customers</a></li>
-                        <li><a href="#helpModal" data-toggle="modal">Help</a></li>
+                        <li><a href="#helpModal" data-toggle="modal">Help</a></li>*@
                         <li class="pull-right">
-                            <div id="login">
+                            <div>
                                 <ul class="nav navbar-nav">
-                                    <li><a href="#" onclick="processLogin()">Login</a></li>
+                                    <li id="logout" style="display: none;"><a style="" href="" onclick="processLogout()">Logout</a></li>
+                                    <li id="login"><a href="#loginModal" data-toggle="modal">Login</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                             <ul class="dropdown-menu">
+                                <li><a href="#">User Settings</a></li>
                                 <li><a href="#">Set Warehouse</a></li>
                                 <li><a href="#">Product Controls</a></li>
                                 <li class="divider"></li>
@@ -95,7 +97,14 @@
                 <p class="text-muted">&copy; @DateTime.Now.Year - GETV</p>
             </footer>
         </div>
-
+    <div id="loginModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+        <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
+            Username: <input id="loginModalUsername" type="text" value="" /><br/>
+            Password: <input id="loginModalPassword" type="password" value="" /><br/>
+            <button class="btn btn-primary" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-primary" onclick="processLogin()" data-dismiss="modal">Login</button>
+        </div>
+    </div>
 
 
 </body>
