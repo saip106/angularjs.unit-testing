@@ -31,8 +31,8 @@ function addItem() {
         var itemPrice = 1.01;
         var itemName = order.items[0].name;
         var itemQuantity = 1;
-        $('#shoppingCart').append('<tr id=\"' + itemID + '\"><td class=\"span2\"><a id=\"updateQty\" class="updateQty" data-toggle=\"modal\" href=\"#QtyModal\">' + itemQuantity + '</a></td><td class=\"span2\">' + itemName + '</td><td><a id=\"updateUnitPrice\" href=\"#UnitPriceModal\" class=\"btn btn-info\" data-toggle="modal">' + itemPrice + '</a></td><td id="lineItemTotal' + itemID + '">' + itemPrice + '</td><td><a  id=\"' + itemID + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
-
+        $('#shoppingCart').append('<tr id=\"' + itemID + '\"><td class=\"span2\"><a id=\"updateQty\" class="updateQty" data-toggle=\"modal\" href=\"#QtyModal\">' + itemQuantity + '</a></td><td class=\"span2\">' + itemName + '</td><td><a id=\"updateUnitPrice\" href=\"#UnitPriceModal\" class=\"btn btn-info\" data-toggle="modal">@' + itemPrice + '</a></td><td id="lineItemTotal' + itemPrice + '">' + itemPrice + '</td><td><a  id=\"' + itemID + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
+        
     }).fail(function (jqXHR, textStatus, err) {
                 $('#product').text('Error: ' + err);
            });
@@ -129,6 +129,22 @@ function payOrder() {
     $('#payModal').data.toggle();
 }
 
+function AddDonation() {
+    var itemAmount = $('#txtbxAddDonationAmount').val();
+    var itemId = '123';
+    var regex = /^\d+(?:\.\d{0,2})$/;
+    if (regex.test(itemAmount)) {
+        //Add dollar sign
+        var itemAmount = '$' + itemAmount;
+
+        $('#shoppingCart').append('<tr id=\"' + itemId + '\"><td class=\"span2\"><a href=\"#\">1</a></td><td class=\"span2\">Donation</td><td><a href=\"#\" class=\"btn btn-info\">@' + itemAmount + '</a></td><td id="lineItemTotal' + itemId + '">' + itemAmount + '</td><td><a  id=\"' + itemId + '\" href="#" class=\"removeLineItem\">X</a></td></tr>');
+        setCartFooterTotals();
+        $('#mdlDonation').modal('hide');
+    }
+    else {
+        alert("Invalid Amount: Please enter amount in $0.00 format.");
+    }
+}
 function editHotKey() {
     $('#hkEditModal').toggle();
 }
@@ -660,10 +676,10 @@ function setCartFooterTotals() {
 
     $("td[id^='lineItemTotal']").each(function () {
        
-        alert($('#' + this.id).text());
+        alert(subTotal );
         alert(parseFloat($('#' + this.id).text().replace('$', '')));
 
-        subTotal = +subTotal + +parseFloat($(this.id).text().replace('$', ''));
+        subTotal = subTotal + parseFloat($(this.id).text().replace('$', ''));
     });
 
 
