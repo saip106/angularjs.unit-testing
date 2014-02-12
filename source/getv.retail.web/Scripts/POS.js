@@ -935,6 +935,7 @@ $(document).on("click", ".unitPriceKeys", function (event) {
 
 });
 
+
 $(document).on("click", ".showUnitPriceNumPad", function (event) {
 
     $('#unitPriceFooter').toggle();

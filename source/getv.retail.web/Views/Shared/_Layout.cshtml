@@ -11,10 +11,10 @@
     @Scripts.Render("~/bundles/custom")
 
     @RenderSection("scripts", required: false)
-    <link rel="stylesheet" type="text/css" media="screen" href="/content/combined-global.714ead229b330434161907d933a1e313.min.css" />
+    @*<link rel="stylesheet" type="text/css" media="screen" href="/content/combined-global.714ead229b330434161907d933a1e313.min.css" />*@
     <meta name="viewport" content="width=device-width" />
-    <script type="text/javascript" src="/js/combined-global.f2b3e8e68827c2321d0817d1964ac634.min.js"></script>
-    <script type="text/javascript" src="/js/combined-renegade.b890b3d25a8fbf419523248ae57d7ff0.min.js"></script>
+    @*<script type="text/javascript" src="/js/combined-global.f2b3e8e68827c2321d0817d1964ac634.min.js"></script>
+    <script type="text/javascript" src="/js/combined-renegade.b890b3d25a8fbf419523248ae57d7ff0.min.js"></script>*@
     <style>
         
         .footer {
@@ -56,10 +56,10 @@
                     </button>
                     <a class="navbar-brand" href="#">GETV POS</a>
                 </div>
-                <div class="collapse navbar-collapse">
+                <div class="collapse navbar-collapse" id="tab-nav">
                     <ul id="mainNavigation" class="nav navbar-nav">
                         @*<li><a href="#dashboardPanel" data-toggle="tab">Dashboard</a></li>*@
-                        <li class="active"><a href="#sellPanel" data-toggle="tab">Sell</a></li>
+                        <li><a id="btnSell" href="/Sales/Index">Sell</a></li>
                         @*<li><a href="#productPanel" data-toggle="tab">Products</a></li>
                         <li><a href="#customerPanel" data-toggle="tab">Customers</a></li>
                         <li><a href="#helpModal" data-toggle="modal">Help</a></li>*@
