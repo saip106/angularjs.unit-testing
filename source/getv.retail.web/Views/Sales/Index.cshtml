@@ -1,0 +1,322 @@
+﻿@{
+    ViewBag.Title = "Sales";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="navbar-inner">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Current Sale</a></li>
+            <li><a href="#" onclick="LoadOrder()">Retrieve Sale</a></li>
+            <li><a href="#">Close Register</a></li>
+        </ul>
+    </div>
+</div>
+<div class="row" style="height:400px;">
+    <div class="col-sm-2"></div>
+        <!--Shopping Cart-->
+        <div class="col-sm-4">
+
+            <div class="panel panel-default" id="register-display">
+                <div class="panel-heading">
+                    <input type="hidden" name="product_search[product_id]" id="product_search_product_id" />                <input type="search" name="product_search[product_sku]" autocomplete="off" autocorrect="off" autocapitalize="off" x-webkit-speech="true" placeholder="Search products" class="use-keypad click-to-select" autofocus="on" id="product_search_product_sku" />
+                    <button id="btn-add-product" class="btn btn--small btn--no-min-width right" onclick="addItem()">Add</button>
+
+                    @*<input type="text" id="txtMainItem" />                <button type="button" class="btn btn-info" onclick="addItem()">Add</button>*@
+                </div>
+                <div class="panel-body">
+                    <!--jQuery will be used to add items to this table one row represents a line item in the cart -->
+                    <table id="shoppingCart" style="width:100%"></table>
+                    <table id="shoppingCartFooter" style="width:100%">
+                        <tr>
+                            <td rowspan="4">
+                                &nbsp;
+                            </td>
+                            <td>Subtotal:</td>
+                            <td id="subTotal"></td>
+                        </tr>
+                        <tr>
+                            <td>Discount:</td>
+                            <td id="discount"></td>
+                        </tr>
+                        <tr>
+                            <td>Total:</td>
+                            <td id="total"></td>
+                        </tr>
+                        <tr>
+                            <td>To Pay:</td>
+                            <td id="toPay"></td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-void modal-button" onclick="voidItem()">Void</button>
+                    <button type="button" class="btn btn-primary" onclick="parkOrder()">Park</button>
+                    <a href="#" class="btn btn-void modal-button">Donation</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#giftCardModal">Gift Card</button>
+                    <button type="button" class="btn btn-primary discountBtn">Discount</button>
+                    <button type="button" class="btn btn-primary">Notes</button>
+                    <a id="btn-make-payment" class="btn btn--well btn--success right" data-toggle="modal" href="#payModal">Pay</a>
+                </div>
+            </div>
+        </div>
+
+        <!--Product Hot Keys Panel-->
+        <div class="col-sm-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="nav">
+                        <ul id="hotKeysTabs" class="nav nav-tabs"></ul>
+                    </div>
+                </div>
+                <div id="hotKeySections" class="panel-body tab-content">
+                </div>
+                <div class="panel-footer">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-2"></div>
+    </div>
+
+<div id="payModal" class="modal fade modal-dialog modal-content">
+    <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
+        <div class="box">
+            <div class="head box-gradient-modal text-center">
+                <h2 class="text">Payment</h2>
+            </div>
+            <div id="customer-bar">
+                <span class="name">No customer</span>
+                <span id="customer-bar-loyalty" style="display: none;">
+                    <span class="loyalty-earned">Sale earns<span class="currency total-amount">0</span> </span>
+                    <span class="loyalty">Loyalty<span class="currency total-amount">0</span> </span>
+                </span>
+                <span class="balance">Balance<span class="currency total-amount">0</span> </span>
+            </div>
+
+            <div class="content">
+
+                <table id="table-payment-totals" class="accounts">
+                    <tbody>
+                        <tr id="topay" class="total">
+                            <td class="total-item">
+                                <span class="topay-label"></span>
+                            </td>
+                            <td class="payment-totals-topay total-amount">
+                                $0.00
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="payment-input noprint">
+                    <label class="block" id="prompt-for-tender">Amount tendered</label>
+                    <div class="numpad-input">
+                        <div class="numpad-input-content">
+                            <button type="button" value="toggle" class="numpad-input-button-toggle numpad-input-button-toggle--light numpad-input-closed" title="Open Number Pad"><i class="numpad-icon-toggle"></i></button>
+                            <input id="checkout_amount" type="text" class="numpad-input-input numpad-input-input--light no-payment-required" placeholder="" title="E.g. 5.50" pattern="[-]{0,1}([0-9]{0,}[.]{1}[0-9]{1,}|[0-9]{1,}[.]{0,1}[0-9]{0,})">
+                            <div class="validation-bubble"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="payment-buttons">
+                    <div class="buttons secondary">
+                        <button type="submit" value="183333b9-5c53-11e3-a29a-bc305bf5da20" name="payment_type" class="button medium payment-button btn btn--inverse">Cash</button>
+                        <button type="submit" value="1833674b-5c53-11e3-a29a-bc305bf5da20" name="payment_type" class="button medium payment-button btn btn--inverse">Credit Card</button>
+                        <div class="clearer"></div>
+                    </div>
+                    <div class="clearer"></div>
+                    <div class="modal-button-bar">
+                        <button type="submit" value="on_account" name="payment_type" id="btn-save-onaccount" class="btn btn--well modal-button left">On account</button>
+
+                        <a id="btn-close-payment" data-dismiss="modal" class="btn btn--well btn-back-to-sale modal-button">Back to Sale</a>
+                    </div>
+                </div>
+                <div class="numpad numpad-input-closed numpad--aside numpad--right-aside"><div class="numpad-content"><div class="numpad-section numpad-section-main"><button type="button" value="1" class="numpad-key numpad-key--light numpad-key-number">1</button><button type="button" value="2" class="numpad-key numpad-key--light numpad-key-number">2</button><button type="button" value="3" class="numpad-key numpad-key--light numpad-key-number">3</button><button type="button" value="4" class="numpad-key numpad-key--light numpad-key-number">4</button><button type="button" value="5" class="numpad-key numpad-key--light numpad-key-number">5</button><button type="button" value="6" class="numpad-key numpad-key--light numpad-key-number">6</button><button type="button" value="7" class="numpad-key numpad-key--light numpad-key-number">7</button><button type="button" value="8" class="numpad-key numpad-key--light numpad-key-number">8</button><button type="button" value="9" class="numpad-key numpad-key--light numpad-key-number">9</button><button type="button" value="0" class="numpad-key numpad-key--light numpad-key-number">0</button><button type="button" value="00" class="numpad-key numpad-key--light numpad-key-double-zero">00</button><button type="button" value="." class="numpad-key numpad-key--light numpad-key-decimal">.</button></div><div class="numpad-section numpad-section-last"><button type="button" value="delete" class="numpad-key numpad-key--light numpad-key-delete"><i class="numpad-icon-delete"></i></button><button type="button" value="-" class="numpad-key numpad-key--light numpad-key-negative-toggle"><i class="numpad-icon-negative-toggle"></i></button></div></div></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="QtyModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+    <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
+        <table>
+            <tr>
+                <td colspan="4">
+                    <div class="input-group" style="width: 330px;">
+                        <span class="input-group-addon">
+                            <button class="fa fa-th showQtyNumPad" type="button"></button>
+                        </span>
+                        <input id="adjustQty" type="text" class="form-control">
+                        <span class="input-group-addon">
+                            <button type="button">-</button>
+                        </span>
+                        <span class="input-group-addon">
+                            <button type="button">+</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </td>
+            </tr>
+            <tr id="qtyFooter">
+                <td colspan="4">
+                    <table id="qtyKeyPad">
+                        <tr>
+                            <td><button value="1" type="button" class="btn btn-primary qtyKeys">1</button></td>
+                            <td><button value="2" type="button" class="btn btn-primary qtyKeys">2</button></td>
+                            <td><button value="3" type="button" class="btn btn-primary qtyKeys">3</button></td>
+                            <td><button value="bksp" type="button" class="btn btn-primary qtyKeys fa fa-arrow-circle-left"></button></td>
+                        </tr>
+                        <tr>
+                            <td><button value="4" type="button" class="btn btn-primary qtyKeys">4</button></td>
+                            <td><button value="5" type="button" class="btn btn-primary qtyKeys">5</button></td>
+                            <td><button value="6" type="button" class="btn btn-primary qtyKeys">6</button></td>
+                            <td rowspan="3"><button type="button" class="btn btn-primary qtyRtnKey" data-dismiss="modal">Return</button></td>
+                        </tr>
+                        <tr>
+                            <td><button value="7" type="button" class="btn btn-primary qtyKeys">7</button></td>
+                            <td><button value="8" type="button" class="btn btn-primary qtyKeys">8</button></td>
+                            <td><button value="9" type="button" class="btn btn-primary qtyKeys">9</button></td>
+
+                        </tr>
+                        <tr>
+                            <td><button value="0" type="button" class="btn btn-primary qtyKeys">0</button></td>
+                            <td><button value="00" type="button" class="btn btn-primary qtyKeys">00</button></td>
+                            <td><button value="." type="button" class="btn btn-primary qtyKeys">.</button></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="UnitPriceModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+    <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
+        <table>
+            <tr>
+                <td colspan="4">
+                    <div class="input-group" style="width: 330px;">
+                        <span class="input-group-addon">
+                            <button class="fa fa-th showUnitPriceNumPad" type="button"></button>
+                        </span>
+                        <input id="adjustUnitPrice" type="text" class="form-control">
+                        <span class="input-group-addon">
+                            <button type="button">-</button>
+                        </span>
+                        <span class="input-group-addon">
+                            <button type="button">+</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </td>
+            </tr>
+            <tr id="unitPriceFooter">
+                <td colspan="4">
+                    <table id="unitPriceKeyPad">
+                        <tr>
+                            <td><button value="1" type="button" class="btn btn-primary unitPriceKeys">1</button></td>
+                            <td><button value="2" type="button" class="btn btn-primary unitPriceKeys">2</button></td>
+                            <td><button value="3" type="button" class="btn btn-primary unitPriceKeys">3</button></td>
+                            <td><button value="bksp" type="button" class="btn btn-primary unitPriceKeys fa fa-arrow-circle-left"></button></td>
+                        </tr>
+                        <tr>
+                            <td><button value="4" type="button" class="btn btn-primary unitPriceKeys">4</button></td>
+                            <td><button value="5" type="button" class="btn btn-primary unitPriceKeys">5</button></td>
+                            <td><button value="6" type="button" class="btn btn-primary unitPriceKeys">6</button></td>
+                            <td rowspan="3"><button type="button" class="btn btn-primary unitPriceRtnKey" data-dismiss="modal">Return</button></td>
+                        </tr>
+                        <tr>
+                            <td><button value="7" type="button" class="btn btn-primary unitPriceKeys">7</button></td>
+                            <td><button value="8" type="button" class="btn btn-primary unitPriceKeys">8</button></td>
+                            <td><button value="9" type="button" class="btn btn-primary unitPriceKeys">9</button></td>
+
+                        </tr>
+                        <tr>
+                            <td><button value="0" type="button" class="btn btn-primary unitPriceKeys">0</button></td>
+                            <td><button value="00" type="button" class="btn btn-primary unitPriceKeys">00</button></td>
+                            <td><button value="." type="button" class="btn btn-primary unitPriceKeys">.</button></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div id="template" style="display:none">
+    <table>
+        <tr id="rowid" class="row">
+            <td class="span2"><a id="updateQty" class="updateQty" data-toggle="modal" href="#QtyModal"></a></td>
+            <td class="itemName"></td>
+            <td><a id="updateUnitPrice" href="#UnitPriceModal" class="btn btn-info" data-toggle="modal"></a></td>
+            <td id="lineItemTotal">0.00</td>
+            <td><a id="itemid" href="#" class="removeLineItem">X</a></td>
+        </tr>
+
+    </table>
+
+
+</div>
+
+<div id="giftCardModal" class="modal fade modal-dialog modal-content" style="width: 400px;">
+    <div class="modal-body" style="margin: 0 auto; vertical-align:top;">
+        <h3 style="text-align:center;">Add Gift Card</h3>
+        <table style="width:100%;" align="center">
+            <tr>
+                <td align="right">Gift Card #:</td>
+                <td align="left"><input id="txtbxAddGiftCardId" type="text" value="" /></td>
+            </tr>
+            <tr>
+                <td align="right">Gift Card Value:</td>
+                <td align="left"><input id="txtbxAddGiftCardValue" type="text" value="" /></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <button id="btnCancelGiftCard" class="btn btn-primary">Cancel</button>
+                    <button id="btnAddGiftCard" class="btn btn-primary">Add to Order</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+@*<div id="select-sale" class="padded-20">
+    <div class="section">
+        <form>
+            <div class="subheading">
+                enter into retrive tab<h1 class="strong">Select a Sale to Open</h1>
+            </div>
+
+            <div id="sales_list_container">
+                <div class="table-wrapper">
+                    <table class="item_list table-padded" id="register-sale-list">
+                        <thead>
+                            <tr>
+                                <th>Date/time</th>
+                                <th>Status</th>
+                                <th>User</th>
+                                <th>Customer</th>
+                                <th>Code</th>
+                                <th>Total</th>
+                                <th>Note</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>*@
+
+
+

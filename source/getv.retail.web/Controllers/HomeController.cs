@@ -13,6 +13,11 @@ namespace Getv.Retail.Web
 			return View();
 		}
 
+        public ActionResult Sales()
+        {
+            return View();
+        }
+
 		public ActionResult About()
 		{
 			ViewBag.Message = "Your application description page.";

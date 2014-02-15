@@ -676,8 +676,13 @@ function setCartFooterTotals() {
 
     $("td[id^='lineItemTotal']").each(function () {
        
+<<<<<<< HEAD
         alert(subTotal );
         alert(parseFloat($('#' + this.id).text().replace('$', '')));
+=======
+        //alert($('#' + this.id).text());
+        //alert(parseFloat($('#' + this.id).text().replace('$', '')));
+>>>>>>> remotes/origin/Test_Branch
 
         subTotal = subTotal + parseFloat($(this.id).text().replace('$', ''));
     });
@@ -950,6 +955,7 @@ $(document).on("click", ".unitPriceKeys", function (event) {
     }
 
 });
+
 
 $(document).on("click", ".showUnitPriceNumPad", function (event) {
 
