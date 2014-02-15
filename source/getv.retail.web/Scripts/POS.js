@@ -660,8 +660,8 @@ function setCartFooterTotals() {
 
     $("td[id^='lineItemTotal']").each(function () {
        
-        alert($('#' + this.id).text());
-        alert(parseFloat($('#' + this.id).text().replace('$', '')));
+        //alert($('#' + this.id).text());
+        //alert(parseFloat($('#' + this.id).text().replace('$', '')));
 
         subTotal = +subTotal + +parseFloat($(this.id).text().replace('$', ''));
     });
