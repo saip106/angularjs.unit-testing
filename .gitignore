@@ -1,9 +1,0 @@
-*.svn
-*.suo
-*.user
-bin
-obj
-temp*
-packages/*
-!packages/repositories.config
-_Resharper.Getv.Foundation/*
