@@ -2,16 +2,10 @@
 
 angular.module('getvretailwebApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router'])
     .config(function ($stateProvider, $urlRouterProvider) {
-//        $urlRouterProvider.otherwise(function(){
-//
-//        });
+        $urlRouterProvider.otherwise('/dashboard');
         $stateProvider
-            .state('default', {
-                url: '/',
-                templateUrl: 'views/dashboard.html'
-            })
             .state('dashboard', {
-                url: '/',
+                url: '/dashboard',
                 templateUrl: 'views/dashboard.html'
             })
             .state('sell', {
@@ -21,7 +15,6 @@ angular.module('getvretailwebApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui
             })
             .state('products', {
                 url: '/products',
-                templateUrl: 'views/products.html',
-                controller: 'ProductsCtrl'
+                templateUrl: 'views/products.html'
             });
     });
