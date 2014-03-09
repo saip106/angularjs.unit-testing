@@ -25,7 +25,31 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div>
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="container-fluid">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Dashboard</a></li>
+                        <li><a href="#">Sell</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Customers</a></li>
+                        <li><a href="#">Setup</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Cashier</a></li>
+                        <li><a href="#">Main Outlet</a></li>
+                        <li><a href="#">Signout</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div data-ng-view=""></div>
+    </div>
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
