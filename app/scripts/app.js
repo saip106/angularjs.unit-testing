@@ -1,22 +1,27 @@
 'use strict';
 
-angular.module('getvretailwebApp', [
-        'ngCookies',
-        'ngResource',
-        'ngSanitize',
-        'ngRoute'
-    ])
-    .config(function ($routeProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'views/dahsboard.html',
-                controller: 'SellCtrl'
+angular.module('getvretailwebApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router'])
+    .config(function ($stateProvider, $urlRouterProvider) {
+//        $urlRouterProvider.otherwise(function(){
+//
+//        });
+        $stateProvider
+            .state('default', {
+                url: '/',
+                templateUrl: 'views/dashboard.html'
             })
-            .when('/sell', {
+            .state('dashboard', {
+                url: '/',
+                templateUrl: 'views/dashboard.html'
+            })
+            .state('sell', {
+                url: '/sell',
                 templateUrl: 'views/sell.html',
                 controller: 'SellCtrl'
             })
-            .otherwise({
-                redirectTo: '/'
+            .state('products', {
+                url: '/products',
+                templateUrl: 'views/products.html',
+                controller: 'ProductsCtrl'
             });
     });
