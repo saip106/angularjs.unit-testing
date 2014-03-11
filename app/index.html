@@ -26,27 +26,31 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-        <nav class="navbar navbar-inverse" role="navigation">
-            <div class="container-fluid">
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li ui-sref-active="active"><a ui-sref="dashboard">Dashboard</a></li>
-                        <li ui-sref-active="active"><a ui-sref="sell">Sell</a></li>
-                        <li ui-sref-active="active"><a ui-sref="products">Products</a></li>
-                        <li ui-sref-active="active"><a ui-sref="history">History</a></li>
-                        <li ui-sref-active="active"><a ui-sref="customers">Customers</a></li>
-                        <li ui-sref-active="active"><a ui-sref="setup">Setup</a></li>
-                        <li ui-sref-active="active"><a ui-sref="help">Help</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a ui-sref="cashier">Cashier</a></li>
-                        <li><a ui-sref="main-outlet">Main Outlet</a></li>
-                        <li><a ui-sref="signout">Signout</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
+
+        <div class="masthead">
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="container-fluid">
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li ui-sref-active="active"><a ui-sref="dashboard">Dashboard</a></li>
+                            <li ui-sref-active="active"><a ui-sref="sell">Sell</a></li>
+                            <li ui-sref-active="active"><a ui-sref="products">Products</a></li>
+                            <li ui-sref-active="active"><a ui-sref="history">History</a></li>
+                            <li ui-sref-active="active"><a ui-sref="customers">Customers</a></li>
+                            <li ui-sref-active="active"><a ui-sref="setup">Setup</a></li>
+                            <li ui-sref-active="active"><a ui-sref="help">Help</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a ui-sref="cashier">Cashier</a></li>
+                            <li><a ui-sref="main-outlet">Main Outlet</a></li>
+                            <li><a ui-sref="signout">Signout</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+
         <div data-ui-view></div>
     </div>
 
