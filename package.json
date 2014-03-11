@@ -1,6 +1,6 @@
 {
   "name": "getvretailweb",
-  "version": "0.0.1",
+  "version": "1.4.4",
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.3",
