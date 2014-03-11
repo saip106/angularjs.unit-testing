@@ -1,9 +1,9 @@
 {
   "name": "getvretailweb",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": "^0.4.3",
     "grunt-autoprefixer": "~0.4.0",
     "grunt-bower-install": "~0.7.0",
     "grunt-concurrent": "~0.4.1",
@@ -47,5 +47,15 @@
   },
   "scripts": {
     "test": "grunt test"
-  }
+  },
+  "main": "Gruntfile.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:getvrepo/getv.retail.web.git"
+  },
+  "author": "Sai Gudigundla",
+  "license": "ISC"
 }
