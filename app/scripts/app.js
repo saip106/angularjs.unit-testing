@@ -6,15 +6,47 @@ angular.module('getvApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router']
         $stateProvider
             .state('dashboard', {
                 url: '/dashboard',
-                templateUrl: 'views/dashboard.html'
+                views : {
+                    'header' : { templateUrl: 'views/header.html' },
+                    'main': { templateUrl: 'views/dashboard.html' }
+                }
             })
             .state('sell', {
                 url: '/sell',
-                templateUrl: 'views/sell.html',
-                controller: 'SellCtrl'
+                views : {
+                    'header' : { templateUrl: 'views/header.html' },
+                    'main': {
+                        templateUrl: 'views/sell.html',
+                        controller: 'SellCtrl'
+                    }
+                }
             })
             .state('products', {
                 url: '/products',
-                templateUrl: 'views/products.html'
+                views : {
+                    'header' : { templateUrl: 'views/header.html' },
+                    'main': { templateUrl: 'views/products.html' }
+                }
+            })
+            .state('customers', {
+                url: '/customers',
+                views : {
+                    'header' : { templateUrl: 'views/header.html' },
+                    'main': { templateUrl: 'views/customers.html' }
+                }
+            })
+            .state('setup', {
+                url: '/setup',
+                views : {
+                    'header' : { templateUrl: 'views/header.html' },
+                    'main': { templateUrl: 'views/setup.html' }
+                }
+            })
+            .state('history', {
+                url: '/history',
+                views : {
+                    'header' : { templateUrl: 'views/header.html' },
+                    'main': { templateUrl: 'views/history.html' }
+                }
             });
     });
