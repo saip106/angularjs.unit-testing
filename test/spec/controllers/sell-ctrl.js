@@ -3,7 +3,7 @@
 describe('Controller: SellCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('getvretailwebApp'));
+  beforeEach(module('getvApp'));
 
   var SellCtrl,
     scope;

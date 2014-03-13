@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('getvretailwebApp')
+angular.module('getvApp')
     .controller('SellCtrl', function ($scope) {
 
     });
