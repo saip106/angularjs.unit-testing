@@ -23,19 +23,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="sell.html" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="sell.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/sell.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="54" selection-start="381" selection-end="381" vertical-scroll-proportion="-5.6" vertical-offset="0" max-vertical-offset="1575">
+            <state line="30" column="63" selection-start="1408" selection-end="1408" vertical-scroll-proportion="0.43968096" vertical-offset="189" max-vertical-offset="1827">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="header.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="37" selection-start="60" selection-end="60" vertical-scroll-proportion="0.020937188" vertical-offset="0" max-vertical-offset="1003">
+            <state line="1" column="37" selection-start="60" selection-end="60" vertical-scroll-proportion="-0.7" vertical-offset="0" max-vertical-offset="567">
               <folding />
             </state>
           </provider>
@@ -70,8 +70,8 @@
         <option value="$PROJECT_DIR$/app/views/setup.html" />
         <option value="$PROJECT_DIR$/app/views/history.html" />
         <option value="$PROJECT_DIR$/app/views/customers.html" />
-        <option value="$PROJECT_DIR$/app/views/sell.html" />
         <option value="$PROJECT_DIR$/app/views/header.html" />
+        <option value="$PROJECT_DIR$/app/views/sell.html" />
       </list>
     </option>
   </component>
@@ -512,16 +512,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/sell.html">
+    <entry file="file://$PROJECT_DIR$/app/views/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="54" selection-start="381" selection-end="381" vertical-scroll-proportion="-5.6" vertical-offset="0" max-vertical-offset="1575">
+        <state line="1" column="37" selection-start="60" selection-end="60" vertical-scroll-proportion="-0.7" vertical-offset="0" max-vertical-offset="567">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/header.html">
+    <entry file="file://$PROJECT_DIR$/app/views/sell.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="37" selection-start="60" selection-end="60" vertical-scroll-proportion="0.020937188" vertical-offset="0" max-vertical-offset="1003">
+        <state line="30" column="63" selection-start="1408" selection-end="1408" vertical-scroll-proportion="0.43968096" vertical-offset="189" max-vertical-offset="1827">
           <folding />
         </state>
       </provider>
