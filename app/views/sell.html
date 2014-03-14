@@ -6,7 +6,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control">
                       <span class="input-group-btn">
-                        <button class="btn btn-info" type="button">Add</button>
+                        <button class="btn btn-primary" type="button">Add</button>
                       </span>
                 </div>
             </div>
@@ -15,7 +15,7 @@
                     <tbody>
                         <tr data-ng-repeat="item in order.items">
                             <td class="span1">{{item.quantity}}</td>
-                            <td class="span20">{{item.name}}</td>
+                            <td class="span20"><a data-toggle="modal" data-target="#myModal">{{item.name}}</a></td>
                             <td class="span5">{{item.unitPrice | currency}}</td>
                             <td class="span5">{{item.total | currency}}</td>
                             <td class="span1"><span class="glyphicon glyphicon-remove"></span></td>
@@ -25,13 +25,25 @@
 
             </div>
             <div class="panel-footer">
-                <div class="sell-button-group">
-                    <button type="button" class="btn btn-info sell-button">Void</button>
-                    <button type="button" class="btn btn-info sell-button">Park</button>
-                    <button type="button" class="btn btn-info sell-button">Notes</button>
-                    <button type="button" class="btn btn-info sell-button">Discount</button>
-                    <button type="button" class="btn btn-success sell-button">Pay</button>
-                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <h3>This is where we put total</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="sell-button-group">
+                                <button type="button" class="btn btn-primary sell-button">Void</button>
+                                <button type="button" class="btn btn-primary sell-button">Park</button>
+                                <button type="button" class="btn btn-primary sell-button">Notes</button>
+                                <button type="button" class="btn btn-primary sell-button">Discount</button>
+                                <button type="button" class="btn btn-success sell-button">Pay</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
             </div>
         </div>
 
@@ -46,6 +58,24 @@
             </div>
             <div class="panel-footer">
                 <h3 class="panel-title">Paging controls go here</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Details</h4>
+            </div>
+            <div class="modal-body">
+                A cup of Coffee. You can delete this once you have some other products setup.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Back to sale</button>
             </div>
         </div>
     </div>
