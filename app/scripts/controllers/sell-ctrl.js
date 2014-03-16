@@ -14,6 +14,12 @@ angular.module('getvApp')
 
         $scope.onSelect = function(){
             var selectedItem = $scope.selected;
-            $scope.order.items.push(selectedItem);
+            $scope.order.items.push({
+                id: selectedItem.id,
+                name: selectedItem.name,
+                unitPrice: 3.75,
+                quantity: 1,
+                total: 3.75
+            });
         };
     });
