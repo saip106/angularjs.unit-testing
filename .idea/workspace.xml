@@ -26,7 +26,7 @@
       <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="50" selection-start="875" selection-end="875" vertical-scroll-proportion="-8.4" vertical-offset="126" max-vertical-offset="1533">
+            <state line="30" column="10" selection-start="1328" selection-end="1328" vertical-scroll-proportion="-12.774194" vertical-offset="264" max-vertical-offset="1606">
               <folding />
             </state>
           </provider>
@@ -35,7 +35,7 @@
       <file leaf-file-name="bootstrap.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/bower_components/bootstrap/dist/css/bootstrap.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2121" column="1" selection-start="38585" selection-end="39570" vertical-scroll-proportion="0.0" vertical-offset="44379" max-vertical-offset="121611">
+            <state line="2121" column="1" selection-start="38585" selection-end="39570" vertical-scroll-proportion="0.0" vertical-offset="44379" max-vertical-offset="127402">
               <folding />
             </state>
           </provider>
@@ -44,16 +44,70 @@
       <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/styles/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="20" selection-start="2142" selection-end="2142" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2373">
+            <state line="74" column="20" selection-start="2142" selection-end="2142" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2486">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.html" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="header.html" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="35" selection-start="58" selection-end="58" vertical-scroll-proportion="0.03853211" vertical-offset="0" max-vertical-offset="567">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="594">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sell.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/sell.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="57" column="25" selection-start="2584" selection-end="2584" vertical-scroll-proportion="1.5462393" vertical-offset="0" max-vertical-offset="1870">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sell-ctrl.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/scripts/controllers/sell-ctrl.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="43" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2332">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sell.quick-keys.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/sell.quick-keys.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="6" selection-start="336" selection-end="336" vertical-scroll-proportion="-7.096774" vertical-offset="0" max-vertical-offset="352">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="21" selection-start="805" selection-end="805" vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="1342">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="customers.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/customers.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="25" selection-start="49" selection-end="49" vertical-scroll-proportion="-0.7096774" vertical-offset="0" max-vertical-offset="176">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/dashboard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="6" selection-start="69" selection-end="69" vertical-scroll-proportion="-1.4193548" vertical-offset="0" max-vertical-offset="176">
               <folding />
             </state>
           </provider>
@@ -79,11 +133,8 @@
         <option value="$PROJECT_DIR$/karma.conf.js" />
         <option value="$PROJECT_DIR$/app/bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/test/spec/controllers/sell-ctrl.js" />
-        <option value="$PROJECT_DIR$/app/views/sell.html" />
         <option value="$PROJECT_DIR$/app/styles/main.css" />
-        <option value="$PROJECT_DIR$/app/scripts/controllers/sell-ctrl.js" />
         <option value="$PROJECT_DIR$/app/views/products.html" />
-        <option value="$PROJECT_DIR$/app/scripts/app.js" />
         <option value="$PROJECT_DIR$/app/views/setup.html" />
         <option value="$PROJECT_DIR$/app/views/history.html" />
         <option value="$PROJECT_DIR$/app/views/customers.html" />
@@ -92,14 +143,18 @@
         <option value="$PROJECT_DIR$/app/styles/bootstrap.custom.css" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/views/header.html" />
+        <option value="$PROJECT_DIR$/app/views/sell.quick-keys.html" />
+        <option value="$PROJECT_DIR$/app/scripts/app.js" />
+        <option value="$PROJECT_DIR$/app/views/sell.html" />
+        <option value="$PROJECT_DIR$/app/scripts/controllers/sell-ctrl.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1026" />
+    <option name="width" value="1616" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -127,7 +182,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -198,11 +252,12 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="JavaScript.Libraries" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -217,14 +272,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
-      <method />
-    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -235,15 +282,23 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
@@ -282,14 +337,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32949308" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14526823" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17352755" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17289424" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -333,6 +388,34 @@
     </PATH>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="50" selection-start="875" selection-end="875" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1533">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bower_components/bootstrap/dist/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2121" column="1" selection-start="38585" selection-end="39570" vertical-scroll-proportion="0.0" vertical-offset="44379" max-vertical-offset="121611">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="20" selection-start="2142" selection-end="2142" vertical-scroll-proportion="0.0" vertical-offset="1554" max-vertical-offset="2373">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="35" selection-start="58" selection-end="58" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="567">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/sell.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="73" selection-start="886" selection-end="886" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1197">
@@ -363,16 +446,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/setup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="21" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="168">
-          <folding />
-        </state>
+        <state line="1" column="21" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="168" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/history.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="23" selection-start="47" selection-end="47" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="168">
-          <folding />
-        </state>
+        <state line="1" column="23" selection-start="47" selection-end="47" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="168" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/customers.html">
@@ -384,9 +463,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/products.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="24" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="168">
-          <folding />
-        </state>
+        <state line="1" column="24" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="168" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
@@ -534,86 +611,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/spec/controllers/sell-ctrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="19" selection-start="355" selection-end="355" vertical-scroll-proportion="0.42919707" vertical-offset="0" max-vertical-offset="685">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/sell.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="73" selection-start="886" selection-end="886" vertical-scroll-proportion="0.0" vertical-offset="378" max-vertical-offset="1197">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="69" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="168">
-          <folding />
-        </state>
+        <state line="14" column="19" selection-start="355" selection-end="355" vertical-scroll-proportion="0.42919707" vertical-offset="0" max-vertical-offset="685" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/setup.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="21" selection-start="45" selection-end="45" vertical-scroll-proportion="0.024970273" vertical-offset="0" max-vertical-offset="841">
-          <folding />
-        </state>
+        <state line="1" column="21" selection-start="45" selection-end="45" vertical-scroll-proportion="0.024970273" vertical-offset="0" max-vertical-offset="841" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitattributes">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="871">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="871" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="20" selection-start="62" selection-end="62" vertical-scroll-proportion="0.120551094" vertical-offset="0" max-vertical-offset="871">
-          <folding />
-        </state>
+        <state line="5" column="20" selection-start="62" selection-end="62" vertical-scroll-proportion="0.120551094" vertical-offset="0" max-vertical-offset="871" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/history.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="23" selection-start="47" selection-end="47" vertical-scroll-proportion="0.024970273" vertical-offset="0" max-vertical-offset="841">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/customers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="25" selection-start="49" selection-end="49" vertical-scroll-proportion="0.024970273" vertical-offset="0" max-vertical-offset="841">
-          <folding />
-        </state>
+        <state line="1" column="23" selection-start="47" selection-end="47" vertical-scroll-proportion="0.024970273" vertical-offset="0" max-vertical-offset="841" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/products.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="24" selection-start="48" selection-end="48" vertical-scroll-proportion="0.024970273" vertical-offset="0" max-vertical-offset="841">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="57" selection-start="1836" selection-end="1836" vertical-scroll-proportion="0.9448909" vertical-offset="185" max-vertical-offset="1218">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/sell-ctrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="18" selection-start="2716" selection-end="2716" vertical-scroll-proportion="1.1377727" vertical-offset="878" max-vertical-offset="2205">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="50" selection-start="875" selection-end="875" vertical-scroll-proportion="-8.4" vertical-offset="126" max-vertical-offset="1533">
-          <folding />
-        </state>
+        <state line="1" column="24" selection-start="48" selection-end="48" vertical-scroll-proportion="0.024970273" vertical-offset="0" max-vertical-offset="841" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/bower_components/bootstrap/dist/css/bootstrap.css">
@@ -630,9 +653,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/customers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="25" selection-start="49" selection-end="49" vertical-scroll-proportion="-0.7096774" vertical-offset="0" max-vertical-offset="176">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="6" selection-start="69" selection-end="69" vertical-scroll-proportion="-1.4193548" vertical-offset="0" max-vertical-offset="176">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="35" selection-start="58" selection-end="58" vertical-scroll-proportion="0.03853211" vertical-offset="0" max-vertical-offset="567">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="594">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="10" selection-start="1328" selection-end="1328" vertical-scroll-proportion="-12.774194" vertical-offset="264" max-vertical-offset="1606">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/sell.quick-keys.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="6" selection-start="336" selection-end="336" vertical-scroll-proportion="-7.096774" vertical-offset="0" max-vertical-offset="352">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="21" selection-start="805" selection-end="805" vertical-scroll-proportion="0.0" vertical-offset="66" max-vertical-offset="1342">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/controllers/sell-ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="43" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2332">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/sell.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="25" selection-start="2584" selection-end="2584" vertical-scroll-proportion="1.5462393" vertical-offset="0" max-vertical-offset="1870">
           <folding />
         </state>
       </provider>

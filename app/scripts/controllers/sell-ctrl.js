@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('getvApp')
-    .controller('SellCtrl', function ($scope) {
+    .controller('SellCtrl', function ($scope, $state) {
+        $state.transitionTo('sell.quickkeys');
         $scope.order = {
             items : [
                 {

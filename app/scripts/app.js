@@ -21,6 +21,9 @@ angular.module('getvApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router']
                     }
                 }
             })
+            .state('sell.quickkeys', {
+                templateUrl: 'views/sell.quick-keys.html'
+            })
             .state('products', {
                 url: '/products',
                 views : {
