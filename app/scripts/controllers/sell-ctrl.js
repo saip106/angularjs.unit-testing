@@ -3,7 +3,9 @@
 angular.module('getvApp')
     .controller('SellCtrl', function ($scope, $http) {
 
-        $scope.order = {};
+        $scope.order = {
+            items: []
+        };
 
         $http.get('/data/products.json')
             .success(function (data) {
@@ -11,6 +13,7 @@ angular.module('getvApp')
             });
 
         $scope.onSelect = function(){
-            console.log('item selected');
+            var selectedItem = $scope.selected;
+            $scope.order.items.push(selectedItem);
         };
     });
