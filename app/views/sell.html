@@ -1,13 +1,18 @@
-<div class="row">
+<div class="row" xmlns="http://www.w3.org/1999/html">
     <div class="col-lg-6">
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">
                 <div class="input-group">
-                    <input type="text" class="form-control">
-                      <span class="input-group-btn">
+                    <input type="text"
+                           ng-model="selected"
+                           typeahead="product as product.name for product in order.products | filter:$viewValue | limitTo:8"
+                           class="form-control"
+                           typeahead-template-url="templates/productItemTemplate.html">
+                        <span class="input-group-btn">
                         <button class="btn btn-primary" type="button">Add</button>
                       </span>
+                    </input>
                 </div>
             </div>
             <div class="panel-body sell-panel-body">
@@ -18,11 +23,13 @@
                                 <span class="badge">{{item.quantity}}</span>
                             </td>
                             <td class="span20">
-                                <button class="btn btn-sm btn-link" data-toggle="modal" data-target="#myModal">
+                                <button class="btn btn-link" data-toggle="modal" data-target="#myModal">
                                     {{item.name}}
                                 </button>
                             </td>
-                            <td class="span5">{{item.unitPrice | currency}}</td>
+                            <td class="span5">
+                                <rich-price-display ></rich-price-display>
+                            </td>
                             <td class="span5">{{item.total | currency}}</td>
                             <td class="span1"><span class="glyphicon glyphicon-remove"></span></td>
                         </tr>
