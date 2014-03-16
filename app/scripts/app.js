@@ -4,52 +4,50 @@ angular.module('getvApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router']
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/dashboard');
         $stateProvider
-            .state('dashboard', {
-                url: '/dashboard',
-                views : {
-                    'header' : { templateUrl: 'views/header.html' },
-                    'main': { templateUrl: 'views/dashboard.html' }
+            .state('root', {
+                url: '/',
+                views: {
+                    'header' : { templateUrl: 'views/header.html'},
+                    'footer' : { templateUrl: 'views/footer.html'}
                 }
             })
-            .state('sell', {
-                url: '/sell',
+            .state('root.dashboard', {
+                url: 'dashboard',
                 views : {
-                    'header' : { templateUrl: 'views/header.html' },
-                    'main': {
+                    'main@': { templateUrl: 'views/dashboard.html' }
+                }
+            })
+            .state('root.sell', {
+                url: 'sell',
+                views : {
+                    'main@': {
                         templateUrl: 'views/sell.html',
                         controller: 'SellCtrl'
                     }
                 }
             })
-            .state('sell.quickkeys', {
-                templateUrl: 'views/sell.quick-keys.html'
-            })
-            .state('products', {
-                url: '/products',
+            .state('root.products', {
+                url: 'products',
                 views : {
-                    'header' : { templateUrl: 'views/header.html' },
-                    'main': { templateUrl: 'views/products.html' }
+                    'main@': { templateUrl: 'views/products.html' }
                 }
             })
-            .state('customers', {
-                url: '/customers',
+            .state('root.customers', {
+                url: 'customers',
                 views : {
-                    'header' : { templateUrl: 'views/header.html' },
-                    'main': { templateUrl: 'views/customers.html' }
+                    'main@': { templateUrl: 'views/customers.html' }
                 }
             })
-            .state('setup', {
-                url: '/setup',
+            .state('root.setup', {
+                url: 'setup',
                 views : {
-                    'header' : { templateUrl: 'views/header.html' },
-                    'main': { templateUrl: 'views/setup.html' }
+                    'main@': { templateUrl: 'views/setup.html' }
                 }
             })
-            .state('history', {
-                url: '/history',
+            .state('root.history', {
+                url: 'history',
                 views : {
-                    'header' : { templateUrl: 'views/header.html' },
-                    'main': { templateUrl: 'views/history.html' }
+                    'main@': { templateUrl: 'views/history.html' }
                 }
             });
     });
