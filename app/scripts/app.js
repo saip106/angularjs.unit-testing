@@ -1,6 +1,13 @@
 'use strict';
 
-angular.module('getvApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ui.router', 'ui.bootstrap'])
+angular.module('getvApp',
+        [
+            'ngCookies',
+            'ngResource',
+            'ngSanitize',
+            'ui.router',
+            'ui.bootstrap'
+        ])
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/dashboard');
         $stateProvider

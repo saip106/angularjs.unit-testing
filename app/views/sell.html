@@ -5,10 +5,11 @@
             <div class="panel-heading">
                 <div class="input-group">
                     <input type="text"
+                           class="form-control"
                            ng-model="selected"
                            typeahead="product as product.name for product in order.products | filter:$viewValue | limitTo:8"
-                           class="form-control"
-                           typeahead-template-url="templates/productItemTemplate.html">
+                           typeahead-template-url="templates/productItemTemplate.html"
+                           typeahead-on-select="onSelect()">
                         <span class="input-group-btn">
                         <button class="btn btn-primary" type="button">Add</button>
                       </span>

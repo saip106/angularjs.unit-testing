@@ -10,4 +10,7 @@ angular.module('getvApp')
                 $scope.order.products = data;
             });
 
+        $scope.onSelect = function(){
+            console.log('item selected');
+        };
     });
