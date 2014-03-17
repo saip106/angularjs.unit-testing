@@ -12,6 +12,7 @@ angular.module('getvApp',
         $urlRouterProvider.otherwise('/dashboard');
         $stateProvider
             .state('root', {
+                abstract: true,
                 url: '/',
                 views: {
                     'header' : { templateUrl: 'views/header.html'},
