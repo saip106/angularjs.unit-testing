@@ -4,4 +4,5 @@ dist
 .sass-cache
 .idea
 .idea/workspace.xml
+.idea/**
 app/bower_components
