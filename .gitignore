@@ -2,5 +2,7 @@ node_modules
 dist
 .tmp
 .sass-cache
+.idea
+.idea/workspace.xml
 .idea/**
 app/bower_components
