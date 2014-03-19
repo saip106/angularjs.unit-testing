@@ -29,7 +29,11 @@
                                 </button>
                             </td>
                             <td class="span5">
-                                <rich-price-display ></rich-price-display>
+                                <button class="btn btn-link"
+                                        data-toggle="popover"
+                                        price-editor>
+                                    <span class="badge">@ {{item.unitPrice | currency}}</span>
+                                </button>
                             </td>
                             <td class="span5">{{item.total | currency}}</td>
                             <td class="span1"><span class="glyphicon glyphicon-remove"></span></td>
