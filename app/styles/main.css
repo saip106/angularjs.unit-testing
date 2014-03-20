@@ -106,3 +106,33 @@ body {
 .quick-keys-panel-body{
   height:455px;
 }
+
+
+.main_panel
+{
+    width:220px;
+    height:310px;
+    padding:10px;
+    background-color: lightgrey;
+}
+
+.number_button
+{
+    width:45px;
+    height:35px;
+    margin:10px;
+    float:left;
+    font-size:18px;
+    text-align:center;
+}
+
+.number_button:hover
+{
+    background-color:#666666;
+}
+
+.text_box
+{
+    font-size:24px;
+    text-align:right;
+}
