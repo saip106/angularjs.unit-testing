@@ -4,8 +4,9 @@ angular.module('getvApp')
     .directive('priceEditor', function ($templateCache) {
         return {
             restrict: 'A',
-            link: function postLink(scope, element, attrs) {
+            link: function (scope, element, attrs) {
 
+                window.x = $(element);
                 $(element).popover({
                     trigger: 'click',
                     html: true,
