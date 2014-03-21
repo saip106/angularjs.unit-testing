@@ -17,9 +17,9 @@ angular.module('getvApp')
                 console.log(error);
         });
 
-        /*$http({
+        $http({
             method: 'POST',
-            url: 'https://v1-prod-identity-api.jhm.info/token',
+            url: 'https://v1-dev-identity-api.jhm.info/token',
             data: 'grant_type=password&username=guest&password=asdfasdf',
             headers: {
                 authorization: 'Authorization: Basic amhtLXdlYjpDUTlCSGE2NW8zd0g0aWtRbDVOSWxJekhJNDdSclFFZ2VWOXlMdVhZZ2hIRWljdEdFdQ=='
@@ -34,17 +34,17 @@ angular.module('getvApp')
         });
 
         $http.get({
-            url: 'https://v1-prod-retail-api.jhm.info/products',
+            url: 'https://v1-dev-retail-api.jhm.info/products',
             headers: {
                 Authorization: 'Bearer' + $scope.user.token,
-                Host: 'v1-prod-retail-api.jhm.info'
+                Host: 'v1-dev-retail-api.jhm.info'
             }})
             .success(function (data) {
                 $scope.order.products = data;
             })
             .error(function (error){
                 console.log(error);
-        });*/
+        });
 
         $scope.onSelect = function(){
 
