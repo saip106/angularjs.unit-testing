@@ -2,7 +2,7 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{Node.js Dependencies for getv.retail.web}" />
-    <file url="PROJECT" libraries="{angular-protractor-DefinitelyTyped, angularjs-DefinitelyTyped}" />
+    <file url="PROJECT" libraries="{angularjs-DefinitelyTyped}" />
   </component>
 </project>
 
