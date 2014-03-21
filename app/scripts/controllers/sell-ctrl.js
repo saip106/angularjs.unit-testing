@@ -17,7 +17,7 @@ angular.module('getvApp')
                 console.log(error);
         });
 
-        $http({
+        /*$http({
             method: 'POST',
             url: 'https://v1-prod-identity-api.jhm.info/token',
             data: 'grant_type=password&username=guest&password=asdfasdf',
@@ -44,7 +44,7 @@ angular.module('getvApp')
             })
             .error(function (error){
                 console.log(error);
-        });
+        });*/
 
         $scope.onSelect = function(){
 
@@ -60,6 +60,6 @@ angular.module('getvApp')
         };
 
         $scope.$watchCollection('order.items', function(){
-            console.log('From controller' + $scope.order.items.length);
+            console.log('From controller, Number of items: ' + $scope.order.items.length);
         });
     });
