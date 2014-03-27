@@ -20,7 +20,7 @@ describe('Sell Controller', function () {
         });
 
         it('should have items in the order', function () {
-            expect(scope.orders.items).toBeDefined();
+            expect(scope.order.items).toBeDefined();
         });
     });
 });
