@@ -5,9 +5,7 @@
             <span class="badge">{{item.quantity}}</span>
         </td>
         <td class="span20">
-            <button class="btn btn-link" data-toggle="modal" data-target="#myModal">
-                {{item.name}}
-            </button>
+            <product-details name="{{item.name}}"></product-details>
         </td>
         <td class="span5">
             <button class="btn btn-link"

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('getvApp')
-    .directive('itemsList', function ($compile) {
+    .directive('itemsList', function ($templateCache, $compile) {
         return {
             restrict: 'A',
             scope: {
@@ -13,7 +13,6 @@ angular.module('getvApp')
                 scope.removeItem = function (index) {
                     scope.itemsListData.splice(index, 1);
                 };
-
             }
         };
     });
