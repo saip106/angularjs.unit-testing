@@ -8,54 +8,54 @@ angular.module('getvApp',
             'ui.router',
             'ui.bootstrap'
         ])
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/dashboard');
         $stateProvider
             .state('root', {
-                abstract: true,
-                url: '/',
-                views: {
-                    'header' : { templateUrl: 'views/header.html'},
-                    'footer' : { templateUrl: 'views/footer.html'}
+                abstract : true,
+                url : '/',
+                views : {
+                    'header' : { templateUrl : 'views/header.html'},
+                    'footer' : { templateUrl : 'views/footer.html'}
                 }
             })
             .state('root.dashboard', {
-                url: 'dashboard',
+                url : 'dashboard',
                 views : {
-                    'main@': { templateUrl: 'views/dashboard.html' }
+                    'main@' : { templateUrl : 'views/dashboard.html' }
                 }
             })
             .state('root.sell', {
-                url: 'sell',
+                url : 'sell',
                 views : {
-                    'main@': {
-                        templateUrl: 'views/sell.html',
-                        controller: 'SellCtrl'
+                    'main@' : {
+                        templateUrl : 'views/sell.html',
+                        controller : 'SellCtrl'
                     }
                 }
             })
             .state('root.products', {
-                url: 'products',
+                url : 'products',
                 views : {
-                    'main@': { templateUrl: 'views/products.html' }
+                    'main@' : { templateUrl : 'views/products.html' }
                 }
             })
             .state('root.customers', {
-                url: 'customers',
+                url : 'customers',
                 views : {
-                    'main@': { templateUrl: 'views/customers.html' }
+                    'main@' : { templateUrl : 'views/customers.html' }
                 }
             })
             .state('root.setup', {
-                url: 'setup',
+                url : 'setup',
                 views : {
-                    'main@': { templateUrl: 'views/setup.html' }
+                    'main@' : { templateUrl : 'views/setup.html' }
                 }
             })
             .state('root.history', {
-                url: 'history',
+                url : 'history',
                 views : {
-                    'main@': { templateUrl: 'views/history.html' }
+                    'main@' : { templateUrl : 'views/history.html' }
                 }
             });
     });

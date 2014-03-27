@@ -1,20 +1,20 @@
 'use strict';
 
 angular.module('getvApp')
-    .directive('productDetails', function ($modal) {
+    .directive('productDetails', function($modal) {
         return {
-            replace: true,
-            scope: {
-                item: '@'
+            replace : true,
+            scope : {
+                item : '@'
             },
-            templateUrl: 'templates/product-details.template.html',
-            restrict: "E",
-            link: function (scope, element, attrs) {
+            templateUrl : 'templates/product-details.template.html',
+            restrict : "E",
+            link : function(scope, element, attrs) {
                 scope.name = attrs.name;
 
-                element.bind('click', function () {
+                element.bind('click', function() {
                     $modal.open({
-                        templateUrl: 'templates/product-details-modal.template.html'
+                        templateUrl : 'templates/product-details-modal.template.html'
                     });
                 });
             }

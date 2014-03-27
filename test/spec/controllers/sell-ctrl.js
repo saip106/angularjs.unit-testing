@@ -1,25 +1,25 @@
 'use strict';
 
-describe('Controller: SellCtrl', function () {
+describe('Controller: SellCtrl', function() {
 
-  // load the controller's module
-  beforeEach(module('getvApp'));
+    // load the controller's module
+    beforeEach(module('getvApp'));
 
-  var SellCtrl, scope;
+    var SellCtrl, scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    SellCtrl = $controller('SellCtrl', {
-      $scope: scope
+    // Initialize the controller and a mock scope
+    beforeEach(inject(function($controller, $rootScope) {
+        scope = $rootScope.$new();
+        SellCtrl = $controller('SellCtrl', {
+            $scope : scope
+        });
+    }));
+
+    it('should attach the order to the scope', function() {
+        expect(scope.order).toBeDefined();
     });
-  }));
 
-  it('should attach the order to the scope', function () {
-    expect(scope.order).toBeDefined();
-  });
-
-  xit('should have items in the order', function(){
-    expect(scope.order.items).toBeNonEmptyArray();
-  });
+    it('should have items in the order', function() {
+        expect(scope.order).toBeNonEmptyArray();
+    });
 });
