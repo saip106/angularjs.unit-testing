@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('getvApp')
-    .controller('SellCtrl', function($scope, $http) {
+    .controller('SellController', function ($scope, $http) {
 
         $scope.order = {
             items : []
@@ -10,10 +10,10 @@ angular.module('getvApp')
         $scope.user = {};
 
         $http.get('/data/products.json')
-            .success(function(data) {
+            .success(function (data) {
                 $scope.order.products = data;
             })
-            .error(function(error) {
+            .error(function (error) {
                 console.log(error);
             });
 
@@ -25,11 +25,11 @@ angular.module('getvApp')
                 authorization : 'Authorization: Basic amhtLXdlYjpDUTlCSGE2NW8zd0g0aWtRbDVOSWxJekhJNDdSclFFZ2VWOXlMdVhZZ2hIRWljdEdFdQ=='
             }
         })
-            .success(function(data) {
+            .success(function (data) {
                 console.log(data);
                 $scope.user.token = data.access_token;
             })
-            .error(function(error) {
+            .error(function (error) {
                 console.log(error);
             });
 
@@ -39,14 +39,14 @@ angular.module('getvApp')
                 Authorization : 'Bearer' + $scope.user.token,
                 Host : 'v1-dev-retail-api.jhm.info'
             }})
-            .success(function(data) {
+            .success(function (data) {
                 $scope.order.products = data;
             })
-            .error(function(error) {
+            .error(function (error) {
                 console.log(error);
             });
 
-        $scope.onSelect = function() {
+        $scope.onSelect = function () {
 
             var selectedItem = $scope.selected;
             $scope.selected = '';
@@ -59,7 +59,7 @@ angular.module('getvApp')
             });
         };
 
-        $scope.$watchCollection('order.items', function() {
+        $scope.$watchCollection('order.items', function () {
             console.log('From controller, Number of items: ' + $scope.order.items.length);
         });
     });

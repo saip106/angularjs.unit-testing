@@ -8,7 +8,7 @@
                            class="form-control"
                            ng-model="selected"
                            typeahead="product as product.name for product in order.products | filter:$viewValue | limitTo:8"
-                           typeahead-template-url="templates/productItemTemplate.html"
+                           typeahead-template-url="templates/product-item-template.html"
                            typeahead-on-select="onSelect()">
                         <span class="input-group-btn">
                         <button class="btn btn-primary" type="button"><Span class="glyphicon glyphicon-search"></Span></button>
