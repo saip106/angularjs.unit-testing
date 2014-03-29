@@ -17,23 +17,7 @@ angular.module('getvApp')
                 console.log(error);
             });
 
-        $http({
-            method : 'POST',
-            url : 'https://v1-dev-identity-api.jhm.info/token',
-            data : 'grant_type=password&username=guest&password=asdfasdf',
-            headers : {
-                authorization : 'Authorization: Basic amhtLXdlYjpDUTlCSGE2NW8zd0g0aWtRbDVOSWxJekhJNDdSclFFZ2VWOXlMdVhZZ2hIRWljdEdFdQ=='
-            }
-        })
-            .success(function (data) {
-                console.log(data);
-                $scope.user.token = data.access_token;
-            })
-            .error(function (error) {
-                console.log(error);
-            });
-
-        $http.get({
+        /*$http.get({
             url : 'https://v1-dev-retail-api.jhm.info/products',
             headers : {
                 Authorization : 'Bearer' + $scope.user.token,
@@ -44,7 +28,7 @@ angular.module('getvApp')
             })
             .error(function (error) {
                 console.log(error);
-            });
+            });*/
 
         $scope.onSelect = function () {
 

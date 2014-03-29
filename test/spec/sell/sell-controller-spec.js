@@ -19,8 +19,16 @@ describe('Sell Controller', function () {
             expect(scope.order).toBeDefined();
         });
 
-        it('should have items in the order', function () {
-            expect(scope.order.items).toBeDefined();
+        it('should have no items in the order', function () {
+            expect(scope.order.items.length).toEqual(0);
         });
+
+        it('should have user defined', function () {
+            expect(scope.user).toBeDefined();
+        });
+    });
+
+    describe('Initialization', function () {
+
     });
 });
