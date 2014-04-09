@@ -8,7 +8,7 @@ angular.module('getvApp')
 
                 $state.go('user.dashboard');
 
-                /*$http({
+                $http({
                     method : 'POST',
                     url : 'https://v1-dev-identity-api.jhm.info/token',
                     data : 'grant_type=password&username=guest&password=asdfasdf'
@@ -20,7 +20,7 @@ angular.module('getvApp')
                     .error(function (error) {
                         console.log(error);
                         $state.go('user.dashboard');
-                    });*/
+                    });
             };
         }
     ]);

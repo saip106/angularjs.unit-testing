@@ -15,7 +15,7 @@ getvApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
         var access = routingConfig.accessLevels;
 
-        $urlRouterProvider.otherwise('/login/');
+        $urlRouterProvider.otherwise('login');
 
         // Public routes
         $stateProvider
@@ -41,7 +41,7 @@ getvApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 }
             })
             .state('anonymous.login', {
-                url : '/login/',
+                url : '/login',
                 templateUrl : 'views/login.html',
                 controller : 'LoginController as loginController'
             })
