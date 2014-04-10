@@ -65,11 +65,12 @@ getvApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             .state('user.sell', {
                 url : 'sell',
                 templateUrl : 'views/sell.html',
-                controller : 'SellController'
+                controller : 'SellController as sellController'
             })
             .state('user.products', {
                 url : 'products',
-                templateUrl : 'views/products.html'
+                templateUrl : 'views/products.html',
+                controller : 'ProductsController as productsController'
             })
             .state('user.customers', {
                 url : 'customers',
