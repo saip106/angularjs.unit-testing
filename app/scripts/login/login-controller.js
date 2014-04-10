@@ -1,29 +1,13 @@
 'use strict';
 
 angular.module('getvApp')
-    .controller('LoginController', [ '$scope', '$http', '$state',
-        function ($scope, $http, $state) {
+    .controller('LoginController', [ '$scope', '$state', 'LoginService',
+        function ($scope, $state, LoginService) {
+
+            $scope.username = 'guest';
+            $scope.password = 'asdfasdf';
 
             this.login = function (username, password) {
-
-                //$state.go('user.dashboard');
-
-                $http({
-                    method : 'POST',
-                    url : 'https://v1-dev-identity-api.jhm.info/token',
-                    headers: {
-                        authorization: 'Basic amhtLXdlYjpDUTlCSGE2NW8zd0g0aWtRbDVOSWxJekhJNDdSclFFZ2VWOXlMdVhZZ2hIRWljdEdFdQ=='
-                    },
-                    data : 'grant_type=password&username=guest&password=asdfasdf'
-                })
-                    .success(function (data) {
-                        console.log(data);
-                        //$state.go('user.dashboard');
-                    })
-                    .error(function (error) {
-                        console.log(error);
-                        //$state.go('user.dashboard');
-                    });
+                LoginService.login(username, password);
             };
-        }
-    ]);
+        }]);
