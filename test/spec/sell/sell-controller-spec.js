@@ -14,7 +14,7 @@ describe('Sell Controller', function () {
         });
     }));
 
-    describe('Initialization', function () {
+    xdescribe('Initialization', function () {
         it('should attach the order to the scope', function () {
             expect(scope.order).toBeDefined();
         });
