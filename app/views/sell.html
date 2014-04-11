@@ -7,7 +7,7 @@
                     <input type="text"
                            class="form-control"
                            ng-model="selected"
-                           typeahead="product as product.name for product in order.products | filter:$viewValue | limitTo:8"
+                           typeahead="item as item.name for item in sellController.getItems($viewValue) | limitTo:10"
                            typeahead-template-url="templates/product-item-template.html"
                            typeahead-on-select="onSelect()">
                         <span class="input-group-btn">

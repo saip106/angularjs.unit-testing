@@ -8,7 +8,7 @@ angular.module('getvApp')
 
             $http({
                 method : 'GET',
-                url : 'https://v1-dev-retail-api.jhm.info/stockitems',
+                url : 'https://v1-dev-retail-api.jhm.info/stockitems?$top=10&$filter=substringof(\'Portrait Of The Children\', Name)',
                 headers : {
                     authorization : authorizationHeader
                 }
