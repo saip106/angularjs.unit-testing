@@ -17,7 +17,7 @@ angular.module('getvApp')
                         .success(function (data) {
                             SessionStorageService.clear();
                             SessionStorageService.put('userSession', data);
-                            $state.go('user.dashboard');
+                            $state.go('user.sell');
                         })
                         .error(function (error) {
                             console.log(error);
