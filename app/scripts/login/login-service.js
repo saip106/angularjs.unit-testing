@@ -8,7 +8,7 @@ angular.module('getvApp')
 
                     $http({
                         method : 'POST',
-                        url : GETV.config.baseAuthenticationUrl + 'token',
+                        url : 'https://v1-dev-identity-api.jhm.info/token',
                         headers : {
                             authorization : 'Basic amhtLXdlYjpDUTlCSGE2NW8zd0g0aWtRbDVOSWxJekhJNDdSclFFZ2VWOXlMdVhZZ2hIRWljdEdFdQ=='
                         },

@@ -16,7 +16,7 @@ angular.module('getvApp')
             this.getItems = function (searchText) {
                 return $http({
                     method : 'GET',
-                    url : GETV.config.baseUrl + 'stockitems?$top=10&$filter=substringof(\'' + searchText + '\', Name)',
+                    url : 'https://v1-dev-retail-api.jhm.info/stockitems?$top=10&$filter=substringof(\'' + searchText + '\', Name)',
                     headers : {
                         authorization : authorizationHeader
                     }
