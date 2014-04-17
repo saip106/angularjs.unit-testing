@@ -10,7 +10,7 @@
                            typeahead="item as item.name for item in sellController.getItems($viewValue) | limitTo:10"
                            typeahead-template-url="templates/product-item-template.html"
                            typeahead-wait-ms="5"
-                           typeahead-on-select="onSelect()">
+                           typeahead-on-select="sellController.onSelect()">
                         <span class="input-group-btn">
                         <button class="btn btn-primary" type="button"><Span class="glyphicon glyphicon-search"></Span></button>
                       </span>

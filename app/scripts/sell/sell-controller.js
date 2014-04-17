@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('getvApp')
-    .controller('SellController', ['$scope', '$http', 'SessionStorageService',
-        function ($scope, $http, Session) {
+    .controller('SellController', ['$scope', '$http', 'ItemsSearchService',
+        function ($scope, $http, ItemsSearchService) {
 
             $scope.order = {
                 items : []
@@ -10,26 +10,9 @@ angular.module('getvApp')
 
             $scope.user = {};
 
-            var userSession = Session.get('userSession'),
-                authorizationHeader = 'Bearer ' + userSession.access_token;
+            this.getItems = ItemsSearchService.searchItems;
 
-            this.getItems = function (searchText) {
-                return $http({
-                    method : 'GET',
-                    url : 'https://v1-dev-retail-api.jhm.info/stockitems?$top=10&$filter=substringof(\'' + searchText + '\', Name)',
-                    headers : {
-                        authorization : authorizationHeader
-                    }
-                })
-                    .then(function (result) {
-                        console.log(result.data.items)
-                        return result.data.items;
-                    }
-                );
-
-            };
-
-            $scope.onSelect = function () {
+            this.onSelect = function () {
 
                 var selectedItem = $scope.selected;
                 $scope.selected = '';
