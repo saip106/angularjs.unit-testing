@@ -27,14 +27,17 @@ angular.module('getvApp')
 			var addItem = function (selectedItem, order) {
 
 				$http({
-					method: 'PATCH',
+					method: 'POST',
 					url: 'https://v1-dev-retail-api.jhm.info/orders/' + order.orderId + '/items/' + selectedItem.id,
 					headers: {
 						authorization: authorizationHeader
+					},
+					data: {
+						"quantity":1
 					}
 				})
 					.success(function (result) {
-						console.log(result.items[0]);
+						console.log(result);
 					})
 					.error(function (error) {
 						console.log(error);
