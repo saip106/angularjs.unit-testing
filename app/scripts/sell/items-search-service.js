@@ -17,7 +17,7 @@ angular.module('getvApp')
                         }
                     })
                         .then(function (result) {
-                            console.log(result.data.items)
+                            //console.log(result.data.items);
                             return result.data.items;
                         }
                     );

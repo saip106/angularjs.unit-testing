@@ -6,7 +6,7 @@
                 <div class="input-group">
                     <input type="text"
                            class="form-control"
-                           ng-model="selected"
+                           ng-model="transaction.selectedItem"
                            typeahead="item as item.name for item in sellController.getItems($viewValue) | limitTo:10"
                            typeahead-template-url="templates/product-item-template.html"
                            typeahead-wait-ms="5"
