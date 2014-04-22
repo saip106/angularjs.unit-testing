@@ -167,10 +167,17 @@ angular.module('getvApp')
 			            currentPrice = (currentPrice * 10) + number;
 			            scope.currentPrice = currentPrice;
 		            }
+		            if (number === '.') {
+			            console.log('period clicked !!!');
+		            }
 	            };
 
 	            scope.clear = function () {
 		            scope.currentPrice = 0;
+	            };
+
+	            scope.cancel = function () {
+		            scope.closeTemplateContent();
 	            };
 
 	            scope.submit = function () {

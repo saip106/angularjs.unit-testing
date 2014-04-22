@@ -1,7 +1,7 @@
 <div class="main_panel">
-    <br />
-    <input class="text_box form-control" type="text" id="number" name="num" data-ng-model="currentPrice"/>
-    <br />
+    <div>
+        <input class="text_box form-control" type="text" id="number" name="num" data-ng-model="currentPrice"/>
+    </div>
     <div class="number_button btn btn-primary" data-ng-click="updatePrice(1, currentPrice)">1</div>
     <div class="number_button btn btn-primary" data-ng-click="updatePrice(2, currentPrice)">2</div>
     <div class="number_button btn btn-primary" data-ng-click="updatePrice(3, currentPrice)">3</div>
@@ -13,5 +13,7 @@
     <div class="number_button btn btn-primary" data-ng-click="updatePrice(9, currentPrice)">9</div>
     <div class="number_button btn btn-primary" data-ng-click="clear()">C</div>
     <div class="number_button btn btn-primary" data-ng-click="updatePrice(0, currentPrice)">0</div>
-    <div class="number_button btn btn-primary" data-ng-click="submit()">:)</div>
+    <div class="number_button btn btn-primary" data-ng-click='updatePrice(".", currentPrice)'>.</div>
+    <div class="cancel_button btn btn-danger" data-ng-click="cancel()">Cancel</div>
+    <div class="submit_button btn btn-success" data-ng-click="submit()">Submit</div>
 </div>
