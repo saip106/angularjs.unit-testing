@@ -2,7 +2,12 @@
     <tbody>
     <tr data-ng-repeat="item in itemsListData track by $index">
         <td class="span1">
-            <span class="badge">{{item.quantity}}</span>
+            <button class="btn btn-link"
+                    data-toggle="popover"
+                    price-editor>
+                <span class="badge">{{item.quantity}}</span>
+            </button>
+
         </td>
         <td class="span20">
             <product-details name="{{item.name}}"></product-details>
