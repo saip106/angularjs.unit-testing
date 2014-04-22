@@ -1,13 +1,10 @@
 'use strict';
 
 angular.module('getvApp')
-    .factory('OrderService', ['$http', 'SessionStorageService',
-        function ($http, Session) {
+    .factory('OrderService', ['$http',
+        function ($http) {
 
-            var userSession = Session.get('userSession'),
-                authorizationHeader = 'Bearer ' + userSession.access_token;
-
-            var createNewOrder = function (order) {
+            var createNewOrder = function (order, authorizationHeader) {
                 return $http({
                     method : 'POST',
                     url : 'https://v1-dev-retail-api.jhm.info/orders',
@@ -24,8 +21,7 @@ angular.module('getvApp')
                     });
             };
 
-            var addItem = function (selectedItem, order) {
-
+            var addItem = function (selectedItem, order, authorizationHeader) {
                 $http({
                     method : 'POST',
                     url : 'https://v1-dev-retail-api.jhm.info/orders/' + order.orderId + '/items/' + selectedItem.id,
@@ -52,7 +48,7 @@ angular.module('getvApp')
                 });
             };
 
-            var deleteOrder = function (orderId) {
+            var deleteOrder = function (orderId, authorizationHeader) {
                 $http({
                     method : 'DELETE',
                     url : 'https://v1-dev-retail-api.jhm.info/orders/' + orderId,
@@ -69,16 +65,16 @@ angular.module('getvApp')
             };
 
             return {
-                addItem : function (selectedItem, order) {
+                addItem : function (selectedItem, order, authorizationHeader) {
 
                     if(order.items.length === 0) {
-                        createNewOrder(order)
+                        createNewOrder(order, authorizationHeader)
                             .then(function () {
-                                addItem(selectedItem, order);
+                                addItem(selectedItem, order, authorizationHeader);
                             });
                     }
                     else {
-                        addItem(selectedItem, order);
+                        addItem(selectedItem, order, authorizationHeader);
                     }
                 },
                 deleteOrder: deleteOrder
