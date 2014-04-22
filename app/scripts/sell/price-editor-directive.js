@@ -4,7 +4,9 @@ angular.module('getvApp')
     .directive('popup', ['$compile', '$timeout', function ($compile, $timeout) {
         return {
             restrict : 'A',
-            scope : {},
+            scope : {
+	            currentValue: '='
+            },
             link : function (scope, element, attrs) {
                 var strPopup = null;    // String version of the popup's HTML
                 var cPopup = null;      // Compiled version of the popup
@@ -117,8 +119,7 @@ angular.module('getvApp')
 
                 // Listen for a request to update the element's value, and do so
                 scope.$on("UPDATE_POPUP", function (event, message) {
-                    element.val(message);
-                    element.trigger('input');
+                    scope.currentValue = message;
                 });
             }
         }
@@ -137,27 +138,45 @@ angular.module('getvApp')
     .directive('templateContent', [function() {
         return {
             restrict: 'E',
-            templateUrl: 'templates/rich-price-editor-template.html',
+            templateUrl: '../../templates/price-editor-template.html',
             replace: true,
             scope: {},
             link: function(scope, element, attrs) {
-                var val = "";   // Variable to track the value
-
                 // POPUP_VALUE is broadcast when the popup is first opened.
                 // Listen for it, and store it's value.
-                scope.$on("POPUP_VALUE", function(event, message) {
-                    val = message;
+                scope.$on("POPUP_VALUE", function(event, value) {
+	                scope.currentPrice = value;
                 });
 
                 // A function to submit the current value back to the popup
                 var updateValue = function(event) {
-                    scope.$emit("UPDATE_POPUP", val);
+                    scope.$emit("UPDATE_POPUP", scope.currentPrice);
                 };
 
                 // A function to request the popup be closed
                 scope.closeTemplateContent = function(event) {
                     scope.$emit("CLOSE_POPUP");
                 };
+
+	            scope.updatePrice = function (number, currentPrice) {
+		            if( number >= 0 && number <= 9 )
+		            {
+			            if(isNaN (currentPrice)) {
+				            currentPrice = 0;
+			            }
+			            currentPrice = (currentPrice * 10) + number;
+			            scope.currentPrice = currentPrice;
+		            }
+	            };
+
+	            scope.clear = function () {
+		            scope.currentPrice = 0;
+	            };
+
+	            scope.submit = function () {
+		            updateValue();
+		            scope.closeTemplateContent();
+	            };
             }
         }
     }]);

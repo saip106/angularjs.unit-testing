@@ -13,6 +13,10 @@ angular.module('getvApp')
                 scope.removeItem = function (index) {
                     scope.itemsListData.splice(index, 1);
                 };
+
+	            scope.editPrice = function (itemPrice) {
+		            scope.$broadcast('POPUP_VALUE', itemPrice);
+	            }
             }
         };
     });

@@ -10,11 +10,11 @@
             <product-details name="{{item.name}}"></product-details>
         </td>
         <td class="span5">
-            <button class="btn btn-link" popup template>
+            <button class="btn btn-link" data-ng-click="editPrice(item.unitPrice)" popup template current-value="item.unitPrice">
                 <span class="badge">@ {{item.unitPrice | currency}}</span>
             </button>
         </td>
-        <td class="span5">{{item.total | currency}}</td>
+        <td class="span5">{{item.unitPrice * item.quantity | currency}}</td>
         <td class="span1"><span class="glyphicon glyphicon-remove" data-ng-click="removeItem($index)"></span></td>
     </tr>
     </tbody>
