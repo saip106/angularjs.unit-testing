@@ -1,10 +1,16 @@
 'use strict';
 
 angular.module('getvApp')
-    .factory('LoginService', [ '$http', '$state', 'SessionStorageService',
-        function ($http, $state, SessionStorageService) {
+    .factory('LoginService', [ '$http', '$state', 'SessionStorageService', '$modal', '$log',
+        function ($http, $state, SessionStorageService, $modal, $log) {
             return {
                 login : function (username, password) {
+
+                    var modalInstance = $modal.open({
+                        templateUrl : 'templates/loading-template.html',
+                        backdrop: 'static',
+                        keyboard: false
+                    });
 
                     $http({
                         method : 'POST',
@@ -15,12 +21,19 @@ angular.module('getvApp')
                         data : 'grant_type=password&username=' + username + '&password=' + password
                     })
                         .success(function (data) {
+                            $log.info('login successful')
                             SessionStorageService.clear();
                             SessionStorageService.put('userSession', data);
                             $state.go('user.sell');
+                            if(modalInstance) {
+                                modalInstance.close();
+                            }
                         })
                         .error(function (error) {
-                            console.log(error);
+                            $log.error(error);
+                            if(modalInstance) {
+                                modalInstance.close();
+                            }
                         });
                 }
             };
