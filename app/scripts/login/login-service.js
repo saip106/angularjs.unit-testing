@@ -3,6 +3,13 @@
 angular.module('getvApp')
     .factory('LoginService', [ '$http', '$state', 'SessionStorageService', '$modal', '$log',
         function ($http, $state, SessionStorageService, $modal, $log) {
+
+            var closeModalDialog = function (modalInstance) {
+                if (modalInstance) {
+                    modalInstance.close();
+                }
+            };
+
             return {
                 login : function (username, password) {
 
@@ -25,15 +32,13 @@ angular.module('getvApp')
                             SessionStorageService.clear();
                             SessionStorageService.put('userSession', data);
                             $state.go('user.sell');
-                            if(modalInstance) {
-                                modalInstance.close();
-                            }
+
+                            closeModalDialog(modalInstance);
                         })
                         .error(function (error) {
                             $log.error(error);
-                            if(modalInstance) {
-                                modalInstance.close();
-                            }
+
+                            closeModalDialog(modalInstance);
                         });
                 }
             };

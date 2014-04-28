@@ -1,10 +1,27 @@
 'use strict';
 
 angular.module('getvApp')
-    .factory('OrderService', ['$http',
-        function ($http) {
+    .factory('OrderService', ['$http', '$modal',
+        function ($http, $modal) {
+
+            var openModalDialog = function () {
+                return $modal.open({
+                    templateUrl : 'templates/loading-template.html',
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }
+
+            var closeModalDialog = function (modalInstance) {
+                if (modalInstance) {
+                    modalInstance.close();
+                }
+            };
 
             var createNewOrder = function (order, authorizationHeader) {
+
+                var modalInstance = openModalDialog();
+
                 return $http({
                     method : 'POST',
                     url : 'https://v1-dev-retail-api.jhm.info/orders',
@@ -15,13 +32,18 @@ angular.module('getvApp')
                     .success(function (result) {
                         console.log('created order with id ' + result.items[0].orderId);
                         order.orderId = result.items[0].orderId;
+                        closeModalDialog(modalInstance);
                     })
                     .error(function (error) {
                         console.log(error);
+                        closeModalDialog(modalInstance);
                     });
             };
 
             var addItem = function (selectedItem, order, authorizationHeader) {
+
+                var modalInstance = openModalDialog();
+
                 $http({
                     method : 'POST',
                     url : 'https://v1-dev-retail-api.jhm.info/orders/' + order.orderId + '/items/' + selectedItem.id,
@@ -34,9 +56,11 @@ angular.module('getvApp')
                 })
                     .success(function (result) {
                         console.log('item with id ' + selectedItem.id + ' is successfully added to order ' + order.orderId);
+                        closeModalDialog(modalInstance);
                     })
                     .error(function (error) {
                         console.log(error);
+                        closeModalDialog(modalInstance);
                     });
 
                 order.items.push({
@@ -49,6 +73,9 @@ angular.module('getvApp')
             };
 
             var deleteOrder = function (orderId, authorizationHeader) {
+
+                var modalInstance = openModalDialog();
+
                 $http({
                     method : 'DELETE',
                     url : 'https://v1-dev-retail-api.jhm.info/orders/' + orderId,
@@ -58,9 +85,11 @@ angular.module('getvApp')
                 })
                     .success(function (result) {
                         console.log('order with id ' + orderId + ' is successfully deleted');
+                        closeModalDialog(modalInstance);
                     })
                     .error(function (error) {
                         console.log(error);
+                        closeModalDialog(modalInstance);
                     });
             };
 
