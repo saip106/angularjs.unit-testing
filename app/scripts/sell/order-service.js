@@ -10,7 +10,7 @@ angular.module('getvApp')
                     backdrop: 'static',
                     keyboard: false
                 });
-            }
+            };
 
             var closeModalDialog = function (modalInstance) {
                 if (modalInstance) {

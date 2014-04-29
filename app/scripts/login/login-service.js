@@ -4,6 +4,14 @@ angular.module('getvApp')
     .factory('LoginService', [ '$http', '$state', 'SessionStorageService', '$modal', '$log',
         function ($http, $state, SessionStorageService, $modal, $log) {
 
+            var openModalDialog = function () {
+                return $modal.open({
+                    templateUrl : 'templates/loading-template.html',
+                    backdrop: 'static',
+                    keyboard: false
+                });
+            }
+
             var closeModalDialog = function (modalInstance) {
                 if (modalInstance) {
                     modalInstance.close();
@@ -13,11 +21,7 @@ angular.module('getvApp')
             return {
                 login : function (username, password) {
 
-                    var modalInstance = $modal.open({
-                        templateUrl : 'templates/loading-template.html',
-                        backdrop: 'static',
-                        keyboard: false
-                    });
+                    var modalInstance = openModalDialog();
 
                     $http({
                         method : 'POST',
