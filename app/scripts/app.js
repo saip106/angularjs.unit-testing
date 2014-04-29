@@ -124,42 +124,42 @@ getvApp.constant('AUTH_EVENTS', {
     notAuthorized : 'auth-not-authorized'
 });
 
-getvApp.run(function ($rootScope) {
+getvApp.run(function ($rootScope, $log) {
 
     $rootScope
         .$on('$stateChangeStart',
         function (event, toState, toParams, fromState, fromParams) {
-            console.log("State Change: transition begins!");
+            $log.debug("State Change: transition begins!");
         });
 
     $rootScope
         .$on('$stateChangeSuccess',
         function (event, toState, toParams, fromState, fromParams) {
-            console.log("State Change: State change success!");
+            $log.debug("State Change: State change success!");
         });
 
     $rootScope
         .$on('$stateChangeError',
         function (event, toState, toParams, fromState, fromParams) {
-            console.log("State Change: Error!");
+            $log.debug("State Change: Error!");
         });
 
     $rootScope
         .$on('$stateNotFound',
         function (event, toState, toParams, fromState, fromParams) {
-            console.log("State Change: State not found!");
+            $log.debug("State Change: State not found!");
         });
 
     $rootScope
         .$on('$viewContentLoading',
         function (event, viewConfig) {
-            console.log("View Load: the view is loaded, and DOM rendered!");
+            $log.debug("View Load: the view is loaded, and DOM rendered!");
         });
 
     $rootScope
         .$on('$viewcontentLoaded',
         function (event, viewConfig) {
-            console.log("View Load: the view is loaded, and DOM rendered!");
+            $log.debug("View Load: the view is loaded, and DOM rendered!");
         });
 
 })

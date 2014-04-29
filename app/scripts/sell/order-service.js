@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('getvApp')
-    .factory('OrderService', ['$http', '$modal',
-        function ($http, $modal) {
+    .factory('OrderService', ['$http', '$modal', '$log',
+        function ($http, $modal, $log) {
 
             var openModalDialog = function () {
                 return $modal.open({
@@ -30,12 +30,12 @@ angular.module('getvApp')
                     }
                 })
                     .success(function (result) {
-                        console.log('created order with id ' + result.items[0].orderId);
+                        $log.debug('created order with id ' + result.items[0].orderId);
                         order.orderId = result.items[0].orderId;
                         closeModalDialog(modalInstance);
                     })
                     .error(function (error) {
-                        console.log(error);
+                        $log.error(error);
                         closeModalDialog(modalInstance);
                     });
             };
@@ -55,11 +55,11 @@ angular.module('getvApp')
                     }
                 })
                     .success(function (result) {
-                        console.log('item with id ' + selectedItem.id + ' is successfully added to order ' + order.orderId);
+                        $log.debug('item with id ' + selectedItem.id + ' is successfully added to order ' + order.orderId);
                         closeModalDialog(modalInstance);
                     })
                     .error(function (error) {
-                        console.log(error);
+                        $log.error(error);
                         closeModalDialog(modalInstance);
                     });
 
@@ -84,11 +84,11 @@ angular.module('getvApp')
                     }
                 })
                     .success(function (result) {
-                        console.log('order with id ' + orderId + ' is successfully deleted');
+                        $log.debug('order with id ' + orderId + ' is successfully deleted');
                         closeModalDialog(modalInstance);
                     })
                     .error(function (error) {
-                        console.log(error);
+                        $log.error(error);
                         closeModalDialog(modalInstance);
                     });
             };

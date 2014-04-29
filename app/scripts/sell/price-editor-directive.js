@@ -135,7 +135,7 @@ angular.module('getvApp')
             }
         }
     }])
-    .directive('templateContent', [function() {
+    .directive('templateContent', ['$log', function($log) {
         return {
             restrict: 'E',
             templateUrl: '../../templates/price-editor-template.html',
@@ -168,7 +168,7 @@ angular.module('getvApp')
 			            scope.currentPrice = currentPrice;
 		            }
 		            if (number === '.') {
-			            console.log('period clicked !!!');
+			            $log.debug('period clicked !!!');
 		            }
 	            };
 
