@@ -12,7 +12,7 @@ angular.module('getvApp')
 
                     return $http({
                         method : 'GET',
-                        url : 'https://v1-dev-retail-api.jhm.info/stockitems?$top=10&$filter=substringof(\'' + searchText + '\', Id) or substringof(\'' + searchText + '\', Name) or substringof(\'' + searchText + '\', Description)',
+                        url : 'https://v1-dev-retail-api.jhm.info/stockitems?$top=10&$filter=substringof(\'' + searchText + '\', Id) or substringof(\'' + searchText + '\', Name)',
                         headers : {
                             authorization : authorizationHeader
                         }
