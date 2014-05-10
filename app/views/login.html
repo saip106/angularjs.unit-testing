@@ -1,5 +1,16 @@
-<div>
-    <input type="text" placeholder="username" data-ng-model="username"/>
-    <input type="password" placeholder="password" data-ng-model="password"/>
-    <button type="submit" class="btn btn-primary" data-ng-click="loginController.login(username, password)">Login</button>
+<div class="container-fluid content-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="login-panel">
+                    <h3>Sign in here</h3>
+                    <input type="text"  class="form-control login-field" placeholder="username" data-ng-model="username"/>
+                    <input type="password"  class="form-control login-field" placeholder="password" data-ng-model="password"/>
+                    <button type="button" class="btn btn-success btn-width" data-ng-click="loginController.login(username, password)">Login</button>
+                    <br /><br />
+                    <a href="#">Forget username or password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

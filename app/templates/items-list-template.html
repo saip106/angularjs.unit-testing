@@ -1,21 +1,12 @@
-<table class="table table-striped">
-    <tbody>
-    <tr data-ng-repeat="item in itemsListData track by $index">
-        <td class="span1">
-            <button class="btn btn-link" popup template>
-                <span class="badge">{{item.quantity}}</span>
-            </button>
-        </td>
-        <td class="span20">
-            <product-details name="{{item.name}}"></product-details>
-        </td>
-        <td class="span5">
-            <button class="btn btn-link" data-ng-click="editPrice(item.unitPrice)" popup template current-value="item.unitPrice">
-                <span class="badge">@ {{item.unitPrice | currency}}</span>
-            </button>
-        </td>
-        <td class="span5">{{item.unitPrice * item.quantity | currency}}</td>
-        <td class="span1"><span class="glyphicon glyphicon-remove" data-ng-click="removeItem($index)"></span></td>
-    </tr>
-    </tbody>
-</table>
+<div class="row product-row" data-ng-repeat="item in itemsListData track by $index">
+    <div class="col-md-1"><button popup template href="#" class="round">{{item.quantity}}</button></div>
+    <div class="col-md-7"><product-details class="product-link" name="{{item.name}}"></product-details></div>
+    <div class="col-md-2">
+        <button class="btn btn-link round" data-ng-click="editPrice(item.unitPrice)" popup template current-value="item.unitPrice">
+            <span class="badge">@ {{item.unitPrice | currency}}</span>
+        </button>
+    </div>
+    <div class="col-md-1">{{item.unitPrice * item.quantity | currency}}</div>
+    <div class="col-md-1"><span class="btn-close" data-ng-click="removeItem($index)"></div>
+</div>
+

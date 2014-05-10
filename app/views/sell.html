@@ -1,62 +1,84 @@
-<div class="row" xmlns="http://www.w3.org/1999/html">
-    <div class="col-lg-6">
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">
-                <div class="input-group">
-                    <input type="text"
-                           class="form-control"
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="left-panel">
+
+            <div class="row search-panel">
+                <div class="col-md-10">
+                    <input id="exampleInputEmail1"
+                           type="email"
+                           class="form-control field-search"
                            ng-model="transaction.selectedItem"
                            typeahead="item as item.name for item in sellController.getItems($viewValue) | limitTo:10"
                            typeahead-template-url="templates/product-item-template.html"
                            typeahead-wait-ms="500"
                            typeahead-min-length="3"
-                           typeahead-on-select="sellController.onSelect()">
-                        <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button"><Span class="glyphicon glyphicon-search"></Span></button>
-                      </span>
-                    </input>
+                           typeahead-on-select="sellController.onSelect()"/>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn">Add</button>
                 </div>
             </div>
-            <div class="panel-body sell-panel-body" items-list items-list-data="order.items">
 
+            <div class="all-products" items-list items-list-data="order.items"></div>
+
+            <div class="row-fluid result-box">
+                <div class="span6">
+                    <input type="email" class="form-control customer" placeholder="Search Customer">
+                    <img src="images/btn-plus.png"/>
+                    <span class="text-below">No customer selected</span>
+                </div>
+                <div class="span5">
+                    <div class="span6 text-below"><br/>
+                        Subtotal<br/>
+                        Tax<br/>
+                        TOTAL
+                    </div>
+                    <div class="span6"><br/>
+                        $0.00<br/>
+                        $0.00<br/>
+                        $0.00
+                    </div>
+                    <div class="span6 result-txt">TO PAY</div>
+                    <div class="span6 result-txt">$0.00</div>
+
+                </div>
+                <div class="span1" style="padding-top:60px;"><a href="#" class="btn-close"></a></div>
             </div>
-            <div class="panel-footer">
-                <table>
-                    <tr>
-                        <td>
-                            <h3>This is where we put total</h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="sell-button-group">
-                                <button type="button" class="btn btn-primary sell-button">Void</button>
-                                <button type="button" class="btn btn-primary sell-button">Park</button>
-                                <button type="button" class="btn btn-primary sell-button">Notes</button>
-                                <button type="button" class="btn btn-primary sell-button">Discount</button>
-                                <button type="button" class="btn btn-success sell-button"><i class="fa fa-shopping-cart"></i> Pay</button>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+            <div class="row-fluid buttons-panel">
+                <button type="button" class="btn btn-inverse">Void</button>
+                <button type="button" class="btn btn-inverse">Park(F5)</button>
+                <button type="button" class="btn btn-inverse">Notes</button>
+                <button type="button" class="btn btn-inverse">Discount</button>
+                <button type="button" class="btn btn-success">Pay(f5)</button>
+            </div>
 
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="right-panel">
+            <div class="row">
+                <div class="black-bar">Default</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 right-links">T-Shirt(Demo)</div>
+                <div class="col-md-3 right-links">Coffee(Demo)</div>
+            </div>
+            <div class="row products-spce">
+                <div class="col-md-12"></div>
+            </div>
+            <div class="row right-bottom-panel">
+                <div class="col-md-12">
+                    <div class="col-md-1"><img src="images/arrow-left.png"/></div>
+                    <div class="col-md-10 right-bottom-panel-txt">1</div>
+                    <div class="col-md-1"><img src="images/arrow-right.png"/></div>
+                </div>
             </div>
         </div>
 
     </div>
-    <div class="col-lg-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Quick Keys</h3>
-            </div>
-            <div class="panel-body quick-keys-panel-body">
-                This is where the quick keys go
-            </div>
-            <div class="panel-footer">
-                <h3 class="panel-title">Paging controls go here</h3>
-            </div>
-        </div>
-    </div>
+
 </div>
+
 

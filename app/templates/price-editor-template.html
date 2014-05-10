@@ -1,19 +1,71 @@
-<div class="main_panel">
-    <div>
-        <input class="text_box form-control" type="text" id="number" name="num" data-ng-model="currentPrice"/>
+<div class="calculator_box">
+
+    <div class="borderbtm">
+        <form role="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1" class="field-title">Unit Price</label>
+                <input type="email" class="form-control field-text" id="exampleInputEmail1"
+                       placeholder="Unit Price Here">
+            </div>
+        </form>
     </div>
-    <div class="number_button btn btn-primary" data-ng-click="updatePrice(1, currentPrice)">1</div>
-    <div class="number_button btn btn-primary" data-ng-click="updatePrice(2, currentPrice)">2</div>
-    <div class="number_button btn btn-primary" data-ng-click="updatePrice(3, currentPrice)">3</div>
-    <div class="number_button btn btn-primary" data-ng-click="updatePrice(4, currentPrice)">4</div>
-    <div class="number_button btn btn-primary" data-ng-click="updatePrice(5, currentPrice)">5</div>
-    <div class="number_button btn btn-primary" data-ng-click="updatePrice(6, currentPrice)">6</div>
-    <div class="number_button btn btn-primary" data-ng-click="updatePrice(7, currentPrice)">7</div>
-    <div class="number_button btn btn-primary" data-ng-click="updatePrice(8, currentPrice)">8</div>
-    <div class="number_button btn btn-primary" data-ng-click="updatePrice(9, currentPrice)">9</div>
-    <div class="number_button btn btn-primary" data-ng-click="clear()">C</div>
-    <div class="number_button btn btn-primary" data-ng-click="updatePrice(0, currentPrice)">0</div>
-    <div class="number_button btn btn-primary" data-ng-click='updatePrice(".", currentPrice)'>.</div>
-    <div class="cancel_button btn btn-danger" data-ng-click="cancel()">Cancel</div>
-    <div class="submit_button btn btn-success" data-ng-click="submit()">Submit</div>
+
+    <div class="btns-row">
+        <div class="btns-col">
+            <button type="button" class="btn btn-default" data-ng-click="updatePrice(1, currentPrice)">1</button>
+        </div>
+        <div class="btns-col">
+            <button type="button" class="btn btn-default" data-ng-click="updatePrice(1, currentPrice)">2</button>
+        </div>
+        <div class="btns-col">
+            <button type="button" class="btn btn-default" data-ng-click="updatePrice(1, currentPrice)">3</button>
+        </div>
+        <div class="btns-col">
+            <button type="button" class="btn btn-default"><img src="images/back.png" data-ng-click="clear()"/></button>
+        </div>
+    </div>
+
+    <div class="btns-row">
+        <div class="btns-col">
+            <button type="button" class="btn btn-default" data-ng-click="updatePrice(1, currentPrice)">4</button>
+        </div>
+        <div class="btns-col">
+            <button type="button" class="btn btn-default" data-ng-click="updatePrice(1, currentPrice)">5</button>
+        </div>
+        <div class="btns-col">
+            <button type="button" class="btn btn-default" data-ng-click="updatePrice(1, currentPrice)">6</button>
+        </div>
+        <div class="btns-col">
+            <button type="button" class="btn btn-default"><img src="images/plus-minus.png"/></button>
+        </div>
+    </div>
+
+    <div class="btns-col2">
+        <button type="button" class="btn btn-default2" data-ng-click="submit()">return</button>
+    </div>
+
+    <div class="btns-row2">
+        <div class="btns-col">
+            <button type="button" class="btn btn-default" data-ng-click="updatePrice(1, currentPrice)">7</button>
+        </div>
+        <div class="btns-col">
+            <button type="button" class="btn btn-default" data-ng-click="updatePrice(1, currentPrice)">8</button>
+        </div>
+        <div class="btns-col">
+            <button type="button" class="btn btn-default" data-ng-click="updatePrice(1, currentPrice)">9</button>
+        </div>
+    </div>
+
+    <div class="btns-row2">
+        <div class="btns-col">
+            <button type="button" class="btn btn-default" data-ng-click="updatePrice(1, currentPrice)">0</button>
+        </div>
+        <div class="btns-col">
+            <button type="button" class="btn btn-default">00</button>
+        </div>
+        <div class="btns-col">
+            <button type="button" class="btn btn-default">.</button>
+        </div>
+    </div>
+
 </div>
