@@ -5,8 +5,7 @@
 
             <div class="row search-panel">
                 <div class="col-md-10">
-                    <input id="exampleInputEmail1"
-                           type="email"
+                    <input type="email"
                            class="form-control field-search"
                            ng-model="transaction.selectedItem"
                            typeahead="item as item.name for item in sellController.getItems($viewValue) | limitTo:10"
@@ -22,35 +21,42 @@
 
             <div class="all-products" items-list items-list-data="order.items"></div>
 
-            <div class="row-fluid result-box">
-                <div class="span6">
-                    <input type="email" class="form-control customer" placeholder="Search Customer">
-                    <img src="images/btn-plus.png"/>
+            <div class="row result-box">
+                <div class="col-md-6 pull-left"><input type="email" class="form-control customer pull-left" id="exampleInputEmail1" placeholder="Search Customer"><img vspace="10" src="images/btn-plus.png" />
+                    <br />
                     <span class="text-below">No customer selected</span>
-                </div>
-                <div class="span5">
-                    <div class="span6 text-below"><br/>
-                        Subtotal<br/>
-                        Tax<br/>
-                        TOTAL
-                    </div>
-                    <div class="span6"><br/>
-                        $0.00<br/>
-                        $0.00<br/>
-                        $0.00
-                    </div>
-                    <div class="span6 result-txt">TO PAY</div>
-                    <div class="span6 result-txt">$0.00</div>
 
                 </div>
-                <div class="span1" style="padding-top:60px;"><a href="#" class="btn-close"></a></div>
+                <div class="col-md-6"><br />
+                    <div class="row">
+                        <div class="col-md-5">Subtotal</div>
+                        <div class="col-md-5">$0.00</div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">Tax</div>
+                        <div class="col-md-5">$0.00</div>
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">TOTAL</div>
+                        <div class="col-md-5">$0.00</div>
+                        <div class="col-md-1"><a href="#" class="btn-close"></a></div>
+                    </div>
+                    <div class="row brdrtop">
+                        <div class="col-md-5"><strong>TO PAY</strong></div>
+                        <div class="col-md-5"><strong>$0.00</strong></div>
+                        <div class="col-md-1"></div>
+                    </div>
+
+                </div>
             </div>
-            <div class="row-fluid buttons-panel">
-                <button type="button" class="btn btn-inverse">Void</button>
-                <button type="button" class="btn btn-inverse">Park(F5)</button>
-                <button type="button" class="btn btn-inverse">Notes</button>
-                <button type="button" class="btn btn-inverse">Discount</button>
-                <button type="button" class="btn btn-success">Pay(f5)</button>
+            <div class="row buttons-panel">
+                <button type="button" data-toggle="modal" href="#myModal3" class="btn btn-success btn-width">Void</button>
+                <button type="button" class="btn btn-success btn-width">Park(F5)</button>
+                <button type="button" class="btn btn-success btn-width">Notes</button>
+                <button type="button" class="btn btn-success btn-width">Discount</button>
+                <button type="button" data-toggle="modal" href="#myModal2" class="btn btn-warning btn-width">Pay(f5)</button>
             </div>
 
         </div>
