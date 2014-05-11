@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('getvApp')
-    .directive('itemsList', function ($templateCache, $compile) {
+    .directive('itemsList', function () {
         return {
             restrict : 'A',
             scope : {
@@ -14,9 +14,14 @@ angular.module('getvApp')
                     scope.itemsListData.splice(index, 1);
                 };
 
-	            scope.editPrice = function (itemPrice) {
-		            scope.$broadcast('POPUP_VALUE', itemPrice);
-	            }
+                scope.editPrice = function (itemPrice) {
+                    scope.$broadcast('ITEM_PRICE_VALUE', itemPrice);
+                };
+
+                scope.editQuantity = function (itemQuantity) {
+                    console.log('quantity button clicked')
+                    scope.$broadcast('ITEM_QUANTITY_VALUE', itemQuantity);
+                };
             }
         };
     });

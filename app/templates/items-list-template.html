@@ -1,12 +1,22 @@
 <div class="row product-row" data-ng-repeat="item in itemsListData track by $index">
-    <div class="col-md-1"><button popup template href="#" class="round">{{item.quantity}}</button></div>
+    <div class="col-md-1">
+        <button quantity-editor
+                template
+                data-ng-click="editQuantity(item.quantity)"
+                current-value="item.quantity"
+                class="round">
+            {{item.quantity}}
+        </button></div>
     <div class="col-md-7"><product-details class="product-link" name="{{item.name}}"></product-details></div>
     <div class="col-md-2">
-        <button class="btn btn-link round" data-ng-click="editPrice(item.unitPrice)" popup template current-value="item.unitPrice">
-            <span class="badge">@ {{item.unitPrice | currency}}</span>
+        <button price-editor
+                template
+                class="btn btn-link round"
+                data-ng-click="editPrice(item.unitPrice)"
+                current-value="item.unitPrice">
+            @ {{item.unitPrice | currency}}
         </button>
     </div>
     <div class="col-md-1">{{item.unitPrice * item.quantity | currency}}</div>
     <div class="col-md-1"><span class="btn-close" data-ng-click="removeItem($index)"></div>
 </div>
-

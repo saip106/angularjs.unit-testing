@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('getvApp')
-    .directive('priceEditor', ['$compile', '$timeout', function ($compile, $timeout) {
+    .directive('quantityEditor', ['$compile', '$timeout', function ($compile, $timeout) {
         return {
             restrict : 'A',
             scope : {
@@ -74,7 +74,7 @@ angular.module('getvApp')
                     placePopup();
 
                     // Let the popup's content know the element's value
-                    scope.$broadcast("ITEM_PRICE_VALUE", element.val());
+                    scope.$broadcast("ITEM_QUANTITY_VALUE", element.val());
                 };
 
                 // Used to close the popup and clean up events
@@ -138,19 +138,19 @@ angular.module('getvApp')
     .directive('templateContent', ['$log', function ($log) {
         return {
             restrict : 'E',
-            templateUrl : '../../templates/price-editor-template.html',
+            templateUrl : '../../templates/quantity-editor-template.html',
             replace : true,
             scope : {},
             link : function (scope, element, attrs) {
-                // ITEM_PRICE_VALUE is broadcast when the popup is first opened.
+                // ITEM_QUANTITY_VALUE is broadcast when the popup is first opened.
                 // Listen for it, and store it's value.
-                scope.$on("ITEM_PRICE_VALUE", function (event, value) {
-                    scope.currentPrice = value;
+                scope.$on("ITEM_QUANTITY_VALUE", function (event, value) {
+                    scope.currentQuantity = value;
                 });
 
                 // A function to submit the current value back to the popup
                 var updateValue = function (event) {
-                    scope.$emit("UPDATE_POPUP", scope.currentPrice);
+                    scope.$emit("UPDATE_POPUP", scope.currentQuantity);
                 };
 
                 // A function to request the popup be closed
@@ -158,13 +158,13 @@ angular.module('getvApp')
                     scope.$emit("CLOSE_POPUP");
                 };
 
-                scope.updatePrice = function (number, currentPrice) {
+                scope.updateQuantity = function (number, currentQuantity) {
                     if(number >= 0 && number <= 9) {
-                        if(isNaN(currentPrice)) {
-                            currentPrice = 0;
+                        if(isNaN(currentQuantity)) {
+                            currentQuantity = 0;
                         }
-                        currentPrice = (currentPrice * 10) + number;
-                        scope.currentPrice = currentPrice;
+                        currentQuantity = (currentQuantity * 10) + number;
+                        scope.currentQuantity = currentQuantity;
                     }
                     if(number === '.') {
                         $log.debug('period clicked !!!');
@@ -172,7 +172,7 @@ angular.module('getvApp')
                 };
 
                 scope.clear = function () {
-                    scope.currentPrice = 0;
+                    scope.currentQuantity = 0;
                 };
 
                 scope.cancel = function () {
