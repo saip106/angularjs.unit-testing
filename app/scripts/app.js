@@ -13,18 +13,13 @@ var getvApp = angular.module('getvApp',
 getvApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
     function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-        var access = routingConfig.accessLevels;
-
         $urlRouterProvider.otherwise('login');
 
         // Public routes
         $stateProvider
             .state('public', {
                 abstract : true,
-                template : "<ui-view/>",
-                data : {
-                    access : access.public
-                }
+                template : "<ui-view/>"
             })
             .state('public.404', {
                 url : '/404/',
@@ -35,10 +30,7 @@ getvApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         $stateProvider
             .state('anonymous', {
                 abstract : true,
-                template : "<ui-view/>",
-                data : {
-                    access : access.anon
-                }
+                template : "<ui-view/>"
             })
             .state('anonymous.login', {
                 url : '/login',
