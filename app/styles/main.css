@@ -84,22 +84,25 @@ p{ color:#5c5c5c; margin:4px 0px;}
     border: 1px solid #b0b0b0;
     background-color:#fcfcfc;}
 
-.search-panel{
+.search-panel {
     background-color:#e3e3e3;
     border-radius: 9px 9px 0px 0px;
     padding:6px 0 6px 0px;
     width:100%;
 }
+
 .field-search{ color:#000 !important; font-size:12px; width:96%; margin-left:6px;}
 .all-products{ height:330px; border-bottom:1px solid #dcdcdc; background-color:#fff; width:100%; }
-.product-row{ border-bottom:1px solid #dcdcdc; padding-top:10px; background-color:#fff; padding-bottom:10px;}
-.product-col-1{ width:10%; float:left; text-align:center}
-.product-col-2{ width:57%; float:left}
-.product-col-3{ width:17%; float:left}
-.product-col-4{ width:9%; float:left}
-.product-col-5{ width:7%; float:left}
+.product-row {
+    border-bottom:1px solid #dcdcdc;
+    padding-top:10px;
+    background-color:#fff;
+    padding-bottom:10px;
+    display: block;
+}
 
-.round{background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#fff),color-stop(100%,#ececee));
+.round {
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#fff),color-stop(100%,#ececee));
     background-image: -webkit-linear-gradient(#fff,#ececee);
     background-image: -moz-linear-gradient(#fff,#ececee);
     background-image: -o-linear-gradient(#fff,#ececee);
@@ -120,7 +123,8 @@ p{ color:#5c5c5c; margin:4px 0px;}
     padding: 4px 8px;
     text-decoration:none;
 }
-.round:hover{background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#69a4f8),color-stop(100%,#3c78d8));
+.round:hover{
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#69a4f8),color-stop(100%,#3c78d8));
     background-image: -webkit-linear-gradient(#69a4f8,#3c78d8);
     background-image: -moz-linear-gradient(#69a4f8,#3c78d8);
     background-image: -o-linear-gradient(#69a4f8,#3c78d8);

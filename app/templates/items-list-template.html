@@ -6,7 +6,8 @@
                 current-value="item.quantity"
                 class="round">
             {{item.quantity}}
-        </button></div>
+        </button>
+    </div>
     <div class="col-md-7"><product-details class="product-link" name="{{item.name}}"></product-details></div>
     <div class="col-md-2">
         <button price-editor
@@ -18,5 +19,7 @@
         </button>
     </div>
     <div class="col-md-1">{{item.unitPrice * item.quantity | currency}}</div>
-    <div class="col-md-1"><span class="btn-close" data-ng-click="removeItem($index)"></div>
+    <div class="col-md-1">
+        <a class="btn-close" data-ng-click="removeItem($index)"/>
+    </div>
 </div>
