@@ -145,7 +145,6 @@ angular.module('getvApp')
                 // ITEM_QUANTITY_VALUE is broadcast when the popup is first opened.
                 // Listen for it, and store it's value.
                 scope.$on("ITEM_QUANTITY_VALUE", function (event, value) {
-                    $log.debug('current quantity ' + value)
                     scope.currentQuantity = value;
                 });
 
@@ -159,13 +158,33 @@ angular.module('getvApp')
                     scope.$emit("CLOSE_POPUP");
                 };
 
+                scope.incrementQuantity = function(currentQuantity) {
+                    if(isNaN(currentQuantity)) {
+                        scope.currentQuantity = 0;
+                    }
+                    scope.currentQuantity += 1;
+                };
+
+                scope.decrementQuantity = function(currentQuantity) {
+                    if(isNaN(currentQuantity)) {
+                        scope.currentQuantity = 0;
+                    }
+                    scope.currentQuantity -= 1;
+                };
+
+                scope.changeSign = function(currentQuantity) {
+                    if(isNaN(currentQuantity)) {
+                        scope.currentQuantity = 0;
+                    }
+                    scope.currentQuantity *= -1;
+                };
+
                 scope.updateQuantity = function (number, currentQuantity) {
                     if(number >= 0 && number <= 9) {
                         if(isNaN(currentQuantity)) {
                             currentQuantity = 0;
                         }
-                        currentQuantity = (currentQuantity * 10) + number;
-                        scope.currentQuantity = currentQuantity;
+                        scope.currentQuantity = (currentQuantity * 10) + number;
                     }
                     if(number === '.') {
                         $log.debug('period clicked !!!');
@@ -174,10 +193,6 @@ angular.module('getvApp')
 
                 scope.clear = function () {
                     scope.currentQuantity = 0;
-                };
-
-                scope.cancel = function () {
-                    scope.closeTemplateContent();
                 };
 
                 scope.submit = function () {
