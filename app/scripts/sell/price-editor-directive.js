@@ -124,18 +124,18 @@ angular.module('getvApp')
             }
         }
     }])
-    .directive('template', [function () {
+    .directive('priceEditorTemplate', [function () {
         return {
             restrict : 'A',
             link : function (scope, element, attrs) {
                 // Lets the popup know what directive to inject as content
-                $(element).attr("directive", "template-content");
+                $(element).attr("directive", "price-editor-template-content");
                 // A class to customize the style of the input
                 $(element).addClass("template");
             }
         }
     }])
-    .directive('templateContent', ['$log', function ($log) {
+    .directive('priceEditorTemplateContent', ['$log', function ($log) {
         return {
             restrict : 'E',
             templateUrl : '../../templates/price-editor-template.html',

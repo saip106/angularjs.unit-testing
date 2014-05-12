@@ -19,7 +19,6 @@ angular.module('getvApp')
                 };
 
                 scope.editQuantity = function (itemQuantity) {
-                    console.log('quantity button clicked')
                     scope.$broadcast('ITEM_QUANTITY_VALUE', itemQuantity);
                 };
             }

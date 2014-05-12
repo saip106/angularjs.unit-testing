@@ -124,18 +124,18 @@ angular.module('getvApp')
             }
         }
     }])
-    .directive('template', [function () {
+    .directive('quantityEditorTemplate', [function () {
         return {
             restrict : 'A',
             link : function (scope, element, attrs) {
                 // Lets the popup know what directive to inject as content
-                $(element).attr("directive", "template-content");
+                $(element).attr("directive", "quantity-editor-template-content");
                 // A class to customize the style of the input
                 $(element).addClass("template");
             }
         }
     }])
-    .directive('templateContent', ['$log', function ($log) {
+    .directive('quantityEditorTemplateContent', ['$log', function ($log) {
         return {
             restrict : 'E',
             templateUrl : '../../templates/quantity-editor-template.html',
@@ -145,6 +145,7 @@ angular.module('getvApp')
                 // ITEM_QUANTITY_VALUE is broadcast when the popup is first opened.
                 // Listen for it, and store it's value.
                 scope.$on("ITEM_QUANTITY_VALUE", function (event, value) {
+                    $log.debug('current quantity ' + value)
                     scope.currentQuantity = value;
                 });
 

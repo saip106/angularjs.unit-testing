@@ -1,7 +1,7 @@
 <div class="row product-row" data-ng-repeat="item in itemsListData track by $index">
     <div class="col-md-1">
         <button quantity-editor
-                template
+                quantity-editor-template
                 data-ng-click="editQuantity(item.quantity)"
                 current-value="item.quantity"
                 class="round">
@@ -10,10 +10,10 @@
     <div class="col-md-7"><product-details class="product-link" name="{{item.name}}"></product-details></div>
     <div class="col-md-2">
         <button price-editor
-                template
-                class="btn btn-link round"
+                price-editor-template
                 data-ng-click="editPrice(item.unitPrice)"
-                current-value="item.unitPrice">
+                current-value="item.unitPrice"
+                class="btn btn-link round">
             @ {{item.unitPrice | currency}}
         </button>
     </div>
