@@ -18,8 +18,8 @@
             @ {{item.unitPrice | currency}}
         </button>
     </div>
-    <div class="col-md-1">{{item.unitPrice * item.quantity | currency}}</div>
+    <div class="col-md-1 price-text">{{item.unitPrice * item.quantity | currency}}</div>
     <div class="col-md-1">
-        <a class="btn-close" data-ng-click="removeItem($index)"/>
+        <a class="btn-close price-text" data-ng-click="removeItem($index)"/>
     </div>
 </div>

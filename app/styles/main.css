@@ -85,19 +85,71 @@ p{ color:#5c5c5c; margin:4px 0px;}
     background-color:#fcfcfc;}
 
 .search-panel {
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#ebebeb),color-stop(100%,#dcdcdc));
+    background-image: -webkit-linear-gradient(#ebebeb,#dcdcdc);
+    background-image: -moz-linear-gradient(#ebebeb,#dcdcdc);
+    background-image: -o-linear-gradient(#ebebeb,#dcdcdc);
+    background-image: linear-gradient(#ebebeb,#dcdcdc);
     background-color:#e3e3e3;
     border-radius: 9px 9px 0px 0px;
     padding:6px 0 6px 0px;
     width:100%;
+    border-bottom: 1px solid #b0b0b0;
 }
 
-.field-search{ color:#000 !important; font-size:12px; width:96%; margin-left:6px;}
+.field-search{ color:#000 !important; font-size:12px; width:93%; border: 1px solid #aeaeae; float:right;}
+.zero-padding{ padding:0px;}
+
+.btn-add{background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#fdfdfd),color-stop(100%,#d4d4d4));
+    background-image: -webkit-linear-gradient(#fdfdfd,#d4d4d4);
+    background-image: -moz-linear-gradient(#fdfdfd,#d4d4d4);
+    background-image: -o-linear-gradient(#fdfdfd,#d4d4d4);
+    background-image: linear-gradient(#fdfdfd,#d4d4d4);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+    /* padding: 2px 8px; */
+    margin: 0 0 0 6px;
+    background-color: #f1f1f3;
+    border: 1px solid #aeaeae;
+    text-decoration: none;
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 7px 15px 8px 15px;
+    text-decoration: none;
+}
+.btn-add:hover{background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#69a4f8),color-stop(100%,#3c78d8));
+    background-image: -webkit-linear-gradient(#69a4f8,#3c78d8);
+    background-image: -moz-linear-gradient(#69a4f8,#3c78d8);
+    background-image: -o-linear-gradient(#69a4f8,#3c78d8);
+    background-image: linear-gradient(#69a4f8,#3c78d8);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin: 0 0 0 6px;
+    background-color: #f1f1f3;
+    border: 1px solid #0969ce;
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 7px 15px 8px 15px;
+    text-decoration:none;
+    background-color:#3c78d8;
+}
+
 .all-products{ height:330px; border-bottom:1px solid #dcdcdc; background-color:#fff; width:100%; }
 .product-row {
     border-bottom:1px solid #dcdcdc;
-    padding-top:10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     background-color:#fff;
-    padding-bottom:10px;
     display: block;
 }
 
@@ -223,7 +275,7 @@ p{ color:#5c5c5c; margin:4px 0px;}
     border-color: #9b9b9b;
     text-align:right}
 
-.product-link{ color:#06c; text-decoration:underline; font-size:14px;}
+.product-link{ color:#06c; text-decoration:underline; font-size:14px; padding: 4px;}
 .product-link:hover{ color:#06c; text-decoration:none;}
 .btn-close{ width:18px; height:18px; background:url(../images/btn-cross.png) no-repeat; display:block;}
 .btn-close:hover{ width:18px; height:18px; background:url(../images/btn-active.png) no-repeat; display:block;}
@@ -232,8 +284,26 @@ p{ color:#5c5c5c; margin:4px 0px;}
 .result-txt{ color:#333; font-weight:bold; margin-left:0px !important; border-top:1px solid #333; margin-top:3px; padding-top:3px;}
 .brdrtop{border-top:1px solid #000; padding-top:2px; margin-top:2px;}
 
+.table-result > thead > tr > th {
+    vertical-align: bottom;
+    background-color:#f1f1f2;
+}
+.table-result > tbody > tr > td {
+    padding:4px 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    font-size:13px;
+}
+.table-result > tbody > tr > td.btn-col { padding-right:0px;}
+.table-result > tbody > tr > td.brdr-top { border-top:1px solid #000;}
+.table-result > tbody > tr > td.width-col { width:100px;}
+.table-result {
+    width: 100%;
+    margin-top: 8px;
+}
+
 .customer{ border-radius:1px !important; margin:8px 4px 0 8px; width:150px;}
-.text-below{display: block; font-size: 13px; margin: 0px 0 0 8px; color:#333;}
+.text-below{display: block; font-size: 14px; margin: 0px 0 0 0px; color:#333; clear:right}
 
 
 .buttons-panel{
@@ -305,7 +375,7 @@ p{ color:#5c5c5c; margin:4px 0px;}
 
 .btn-size{ height:34px; width:40px; font-size:25px !important; padding-top:0px; float:left; margin-left:4px;}
 
-
+.price-text { line-height: 30px; }
 
 /*--------------------------------------- Media Querries -----------------------------------*/
 

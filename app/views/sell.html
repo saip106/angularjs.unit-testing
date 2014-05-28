@@ -4,7 +4,7 @@
         <div class="left-panel">
 
             <div class="row search-panel">
-                <div class="col-md-10">
+                <div class="col-md-10 zero-padding">
                     <input type="email"
                            class="form-control field-search"
                            ng-model="transaction.selectedItem"
@@ -14,42 +14,54 @@
                            typeahead-min-length="3"
                            typeahead-on-select="sellController.onSelect()"/>
                 </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn">Add</button>
+                <div class="col-md-2 zero-padding">
+                    <button type="button" class="btn btn-add">Add</button>
                 </div>
             </div>
 
             <div class="all-products" items-list items-list-data="order.items"></div>
 
             <div class="row result-box">
-                <div class="col-md-6 pull-left"><input type="email" class="form-control customer pull-left" id="exampleInputEmail1" placeholder="Search Customer"><img vspace="10" src="images/btn-plus.png" />
-                    <br />
-                    <span class="text-below">No customer selected</span>
+                <div class="col-md-7 pull-left">
+                    <div class="row">
+                        <input type="email" class="form-control customer pull-left" id="exampleInputEmail1" placeholder="Search Customer"><img vspace="15" src="images/btn-plus.png" />
+                    </div>
+                    <div class="row text-below pull-left">No customer selected</div>
 
                 </div>
-                <div class="col-md-6"><br />
-                    <div class="row">
-                        <div class="col-md-5">Subtotal</div>
-                        <div class="col-md-5">$0.00</div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5">Tax</div>
-                        <div class="col-md-5">$0.00</div>
-                        <div class="col-md-1"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-5">TOTAL</div>
-                        <div class="col-md-5">$0.00</div>
-                        <div class="col-md-1"><a href="#" class="btn-close"></a></div>
-                    </div>
-                    <div class="row brdrtop">
-                        <div class="col-md-5"><strong>TO PAY</strong></div>
-                        <div class="col-md-5"><strong>$0.00</strong></div>
-                        <div class="col-md-1"></div>
+
+                <div class="col-md-5">
+                    <div class="table-responsive pull-right">
+                        <table class="table-result">
+                            <tbody>
+                            <tr>
+                                <td class="width-col">Subtotal</td>
+                                <td>$0.00</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Tax</td>
+                                <td>$0.00</td>
+                                <td class="btn-col"><a href="#" class="btn-close"></a></td>
+                            </tr>
+                            </tbody>
+                            <tr >
+                                <td><strong>TOTAL</strong></td>
+                                <td><strong>$0.00</strong></td>
+                                <td></td>
+                            </tr>
+                            <tr >
+                                <td class="brdr-top"><strong>TO PAY</strong></td>
+                                <td class="brdr-top"><strong>$0.00</strong></td>
+                                <td class="brdr-top"></td>
+                            </tr>
+
+
+                        </table>
                     </div>
 
                 </div>
+
             </div>
             <div class="row buttons-panel">
                 <button type="button" data-toggle="modal" href="#myModal3" class="btn btn-success btn-width">Void</button>
