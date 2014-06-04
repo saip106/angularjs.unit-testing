@@ -43,6 +43,41 @@ p{ color:#5c5c5c; margin:4px 0px;}
 
 /*------------------------------------------------------- Header Menus ------------------------------*/
 
+.navbar-default {
+    background-color:transparent;
+    border-color:transparent;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+.navbar-brand, .navbar-nav > li > a {
+    text-shadow:none;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #ccc;
+    background-color: transparent;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: #555;
+    background-color: #ffc82e;
+}
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border: 0px solid transparent;
+}
+
+.btn-success {
+    background-color: #707070;
+    border-color: #4f4f4f;
+}
+.btn-success:hover, .btn-success:focus {
+    background-color: #454545;
+    border-color: #303030;
+    background-position: 0 -15px;
+}
+
 .menu-block-1 { padding-bottom: 0px;
 
     background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#444),color-stop(100%,#1a1a1a));
@@ -94,6 +129,7 @@ p{ color:#5c5c5c; margin:4px 0px;}
     border-radius: 9px 9px 0px 0px;
     padding:6px 0 6px 0px;
     width:100%;
+    margin:0px;
     border-bottom: 1px solid #b0b0b0;
 }
 
@@ -152,6 +188,10 @@ p{ color:#5c5c5c; margin:4px 0px;}
     background-color:#fff;
     display: block;
 }
+
+.field-search{ color:#000 !important; font-size:12px; width:96%; margin-left:6px;}
+.all-products{ height:330px; border-bottom:1px solid #dcdcdc; background-color:#fff; width:100%;}
+.product-row{ border-bottom:1px solid #dcdcdc; padding-top:10px; background-color:#fff; padding-bottom:10px; margin:0px;}
 
 .round {
     background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#fff),color-stop(100%,#ececee));
@@ -280,7 +320,7 @@ p{ color:#5c5c5c; margin:4px 0px;}
 .btn-close{ width:18px; height:18px; background:url(../images/btn-cross.png) no-repeat; display:block;}
 .btn-close:hover{ width:18px; height:18px; background:url(../images/btn-active.png) no-repeat; display:block;}
 
-.result-box{ background-color:#fff;  border-bottom:1px solid #dcdcdc; height:120px; width:100%;}
+.result-box{ background-color:#fff;  border-bottom:1px solid #dcdcdc; height:120px; width:100%; margin:0px;}
 .result-txt{ color:#333; font-weight:bold; margin-left:0px !important; border-top:1px solid #333; margin-top:3px; padding-top:3px;}
 .brdrtop{border-top:1px solid #000; padding-top:2px; margin-top:2px;}
 
@@ -312,6 +352,7 @@ p{ color:#5c5c5c; margin:4px 0px;}
     padding:6px 0 6px 0px;
     text-align:center;
     width:100%;
+    margin:0px;
 }
 .btn-width{ width:102px;}
 
@@ -351,7 +392,7 @@ p{ color:#5c5c5c; margin:4px 0px;}
     text-align:center;
     border-top:1px solid #9f9fa0;
 }
-.right-bottom-panel-txt{ font-weight:bold; font-style:14px; color:#333;}
+.right-bottom-panel-txt{ font-weight:bold; color:#333;}
 /*------------------------------------------------------- Calculator ------------------------------*/
 
 .calculator_block { padding-bottom: 10px; padding-top: 10px; border:1px solid #ccc; }
@@ -360,10 +401,11 @@ p{ color:#5c5c5c; margin:4px 0px;}
 .calculator_box{ width:320px; height:332px; text-align:left;}
 .box-arrow{ position:absolute; margin:30px 0 0 -25px;}
 
-.field-title{ color:#ffffff; font-size:12px; font-weight:bold;}
+.field-title{ color:#ffffff; font-size:12px; font-weight:bold; margin-left:15px;}
 .field-text{ color:#000 !important; font-size:12px; text-align:right; width:198px; float:left;}
 
 .borderbtm{ border-bottom:1px dotted #303030;margin-top: 28px; width: 98%;}
+.padding-both{ padding:0 15px;}
 .form-margin{padding-bottom:10px;margin-bottom:8px; padding-left:10px;}
 
 .btns-row{ margin-top:10px; width:100%;}
