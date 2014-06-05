@@ -1,27 +1,12 @@
 'use strict';
 
 angular.module('getvApp')
-    .factory('LoginService', [ '$http', '$state', 'SessionStorageService', '$modal', '$log',
-        function ($http, $state, SessionStorageService, $modal, $log) {
-
-            var openModalDialog = function () {
-                return $modal.open({
-                    templateUrl : 'templates/loading-template.html',
-                    backdrop: 'static',
-                    keyboard: false
-                });
-            }
-
-            var closeModalDialog = function (modalInstance) {
-                if (modalInstance) {
-                    modalInstance.close();
-                }
-            };
-
+    .factory('LoginService', [ '$http', '$state', 'SessionStorageService', 'LoadingDialogService', '$log',
+        function ($http, $state, SessionStorageService, LoadingDialogService, $log) {
             return {
                 login : function (username, password) {
 
-                    var modalInstance = openModalDialog();
+                    LoadingDialogService.open();
 
                     $http({
                         method : 'POST',
@@ -37,12 +22,12 @@ angular.module('getvApp')
                             SessionStorageService.put('userSession', data);
                             $state.go('user.sell');
 
-                            closeModalDialog(modalInstance);
+                            LoadingDialogService.close();
                         })
                         .error(function (error) {
                             $log.error(error);
 
-                            closeModalDialog(modalInstance);
+                            LoadingDialogService.close();
                         });
                 }
             };
