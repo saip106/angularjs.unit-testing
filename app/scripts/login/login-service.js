@@ -17,7 +17,7 @@ angular.module('getvApp')
                         data : 'grant_type=password&username=' + username + '&password=' + password
                     })
                         .success(function (data) {
-                            $log.info('login successful')
+                            $log.info('login successful');
                             SessionStorageService.clear();
                             SessionStorageService.put('userSession', data);
                             $state.go('user.sell');
@@ -26,7 +26,6 @@ angular.module('getvApp')
                         })
                         .error(function (error) {
                             $log.error(error);
-
                             LoadingDialogService.close();
                         });
                 }

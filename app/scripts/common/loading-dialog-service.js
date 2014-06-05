@@ -12,7 +12,8 @@ angular.module('getvApp')
                     modalInstance = $modal.open({
                         templateUrl : 'templates/loading-template.html',
                         backdrop: 'static',
-                        keyboard: false
+                        keyboard: false,
+                        controller: 'LoadingDialogController as loadingDialogController'
                     });
                 },
                 close : function () {
@@ -21,5 +22,13 @@ angular.module('getvApp')
                     }
                 }
             };
+        }
+    ]);
+
+angular.module('getvApp')
+    .controller('LoadingDialogController', [
+        '$scope',
+        function ($scope) {
+            $scope.message = 'Loading...';
         }
     ]);
