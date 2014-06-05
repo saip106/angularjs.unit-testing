@@ -1,26 +1,12 @@
 'use strict';
 
 angular.module('getvApp')
-    .factory('OrderService', ['$http', '$modal', '$log',
-        function ($http, $modal, $log) {
-
-            var openModalDialog = function () {
-                return $modal.open({
-                    templateUrl : 'templates/loading-template.html',
-                    backdrop: 'static',
-                    keyboard: false
-                });
-            };
-
-            var closeModalDialog = function (modalInstance) {
-                if (modalInstance) {
-                    modalInstance.close();
-                }
-            };
+    .factory('OrderService', ['$http', 'LoadingDialogService', '$log',
+        function ($http, LoadingDialogService, $log) {
 
             var createNewOrder = function (order, authorizationHeader) {
 
-                var modalInstance = openModalDialog();
+                LoadingDialogService.open();
 
                 return $http({
                     method : 'POST',
@@ -32,17 +18,17 @@ angular.module('getvApp')
                     .success(function (result) {
                         $log.debug('created order with id ' + result.items[0].orderId);
                         order.orderId = result.items[0].orderId;
-                        closeModalDialog(modalInstance);
+                        LoadingDialogService.close();
                     })
                     .error(function (error) {
                         $log.error(error);
-                        closeModalDialog(modalInstance);
+                        LoadingDialogService.close();
                     });
             };
 
             var addItem = function (selectedItem, order, authorizationHeader) {
 
-                var modalInstance = openModalDialog();
+                LoadingDialogService.open();
 
                 $http({
                     method : 'POST',
@@ -56,11 +42,11 @@ angular.module('getvApp')
                 })
                     .success(function (result) {
                         $log.debug('item with id ' + selectedItem.id + ' is successfully added to order ' + order.orderId);
-                        closeModalDialog(modalInstance);
+                        LoadingDialogService.close();
                     })
                     .error(function (error) {
                         $log.error(error);
-                        closeModalDialog(modalInstance);
+                        LoadingDialogService.close();
                     });
 
                 order.items.push({
@@ -74,7 +60,7 @@ angular.module('getvApp')
 
             var deleteOrder = function (orderId, authorizationHeader) {
 
-                var modalInstance = openModalDialog();
+                LoadingDialogService.open();
 
                 $http({
                     method : 'DELETE',
@@ -85,11 +71,11 @@ angular.module('getvApp')
                 })
                     .success(function (result) {
                         $log.debug('order with id ' + orderId + ' is successfully deleted');
-                        closeModalDialog(modalInstance);
+                        LoadingDialogService.close();
                     })
                     .error(function (error) {
                         $log.error(error);
-                        closeModalDialog(modalInstance);
+                        LoadingDialogService.close();
                     });
             };
 
