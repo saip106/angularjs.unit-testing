@@ -20,7 +20,7 @@ angular.module('getvApp')
                             $log.info('login successful');
                             SessionStorageService.clear();
                             SessionStorageService.put('userSession', data);
-                            $state.go('user.sell');
+                            $state.go('app.sell');
 
                             LoadingDialogService.close();
                         })

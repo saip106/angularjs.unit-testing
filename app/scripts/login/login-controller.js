@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('getvApp')
-    .controller('LoginController', [ '$scope', '$state', 'LoginService',
-        function ($scope, $state, LoginService) {
+    .controller('LoginController', [ '$scope', 'LoginService',
+        function ($scope, LoginService) {
 
             $scope.username = 'guest';
             $scope.password = 'asdfasdf';

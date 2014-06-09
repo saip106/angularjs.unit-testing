@@ -30,59 +30,18 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div class="container-fluid menu-block-1">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="navbar navbar-default navbar-static-top" role="navigation">
-                    <ul class="nav navbar-nav">
-                        <li ui-sref-active="active"><a ui-sref="user.dashboard">Dashboard</a></li>
-                        <li ui-sref-active="active"><a ui-sref="user.sell">Sell</a></li>
-                        <li ui-sref-active="active"><a ui-sref="user.products">Products</a></li>
-                        <li ui-sref-active="active"><a ui-sref="user.history">History</a></li>
-                        <li ui-sref-active="active"><a ui-sref="user.customers">Customers</a></li>
-                        <li ui-sref-active="active"><a ui-sref="user.setup">Setup</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="navbar navbar-default navbar-static-top" role="navigation">
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">John Doe</a></li>
-                        <li><a href="#">Main Outlet</a></li>
-                        <li><a href="#">Sign out</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="container-fluid menu-block-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <ul class="menu-2">
-                    <li><a href="#">CURRENT SALE CLOSE </a></li>
-                    <li><a href="#">RETRIEVE SALE (F6)</a></li>
-                    <li><a href="#">REGISTER (F7)</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-
-            </div>
-        </div>
-    </div>
-</div>
+<div data-ui-view="header"></div>
 
 <!-- Add your site or application content here -->
-
 <div class="container-fluid content-block">
     <div class="container">
-        <div data-ui-view></div>
+        <div data-ui-view="content"></div>
+        <div data-ui-view="footer"></div>
     </div>
+
 </div>
+
+
 
 <!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>

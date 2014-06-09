@@ -13,7 +13,7 @@ var getvApp = angular.module('getvApp',
 getvApp.config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise('login');
+        $urlRouterProvider.otherwise('/login');
 
         // Public routes
         $stateProvider
@@ -29,8 +29,12 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
         // Anonymous routes
         $stateProvider
             .state('anonymous', {
-                abstract : true,
-                template : "<ui-view/>"
+                abstract: true,
+                views: {
+                    'content' : {
+                        template: '<div data-ui-view></div>'
+                    }
+                }
             })
             .state('anonymous.login', {
                 url : '/login',
@@ -38,42 +42,51 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
                 controller : 'LoginController as loginController'
             })
             .state('anonymous.register', {
-                url : '/register/',
+                url : '/register',
                 templateUrl : 'views/register.html',
                 controller : 'RegistrationController as registrationController'
             });
 
         // Regular user routes
         $stateProvider
-            .state('user', {
-                url : '/',
+            .state('app', {
                 abstract : true,
-                template : "<ui-view/>"
+                views: {
+                    'header' : {
+                        templateUrl: 'views/header.html'
+                    },
+                    'content' : {
+                        template: '<div ui-view></div>'
+                    },
+                    'footer' : {
+                        templateUrl: 'views/footer.html'
+                    }
+                }
             })
-            .state('user.dashboard', {
-                url : 'dashboard',
+            .state('app.dashboard', {
+                url : '/dashboard',
                 templateUrl : 'views/dashboard.html'
             })
-            .state('user.sell', {
-                url : 'sell',
+            .state('app.sell', {
+                url : '/sell',
                 templateUrl : 'views/sell.html',
                 controller : 'SellController as sellController'
             })
-            .state('user.products', {
-                url : 'products',
+            .state('app.products', {
+                url : '/products',
                 templateUrl : 'views/products.html',
                 controller : 'ProductsController as productsController'
             })
-            .state('user.customers', {
-                url : 'customers',
+            .state('app.customers', {
+                url : '/customers',
                 templateUrl : 'views/customers.html'
             })
-            .state('user.setup', {
-                url : 'setup',
+            .state('app.setup', {
+                url : '/setup',
                 templateUrl : 'views/setup.html'
             })
-            .state('user.history', {
-                url : 'history',
+            .state('app.history', {
+                url : '/history',
                 templateUrl : 'views/history.html'
             });
     }]);
