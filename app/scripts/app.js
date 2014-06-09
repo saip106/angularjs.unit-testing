@@ -19,7 +19,11 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state('public', {
                 abstract : true,
-                template : "<ui-view/>"
+                views: {
+                    'content' : {
+                        template : "<div data-ui-view></div>"
+                    }
+                }
             })
             .state('public.404', {
                 url : '/404/',
