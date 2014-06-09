@@ -45,9 +45,9 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl : 'views/login.html',
                 controller : 'LoginController as loginController'
             })
-            .state('anonymous.register', {
-                url : '/register',
-                templateUrl : 'views/register.html',
+            .state('anonymous.registration', {
+                url : '/registration',
+                templateUrl : 'views/registration.html',
                 controller : 'RegistrationController as registrationController'
             });
 
