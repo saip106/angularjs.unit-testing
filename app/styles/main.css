@@ -319,6 +319,7 @@ p{ color:#5c5c5c; margin:4px 0px;}
 .product-link:hover{ color:#06c; text-decoration:none;}
 .btn-close{ width:18px; height:18px; background:url(../images/btn-cross.png) no-repeat; display:block;}
 .btn-close:hover{ width:18px; height:18px; background:url(../images/btn-active.png) no-repeat; display:block;}
+.remove-item-button {margin-top: 5px}
 
 .result-box{ background-color:#fff;  border-bottom:1px solid #dcdcdc; height:120px; width:100%; margin:0px;}
 .result-txt{ color:#333; font-weight:bold; margin-left:0px !important; border-top:1px solid #333; margin-top:3px; padding-top:3px;}
