@@ -6,7 +6,7 @@ angular.module('getvApp')
             return {
                 login : function (username, password) {
 
-                    LoadingDialogService.open();
+                    LoadingDialogService.open('Logging in...');
 
                     $http({
                         method : 'POST',

@@ -270,6 +270,10 @@ p{ color:#5c5c5c; margin:4px 0px;}
     border-radius: 6px 6px 0px 0px;
 }
 
+.spinner-image {
+    margin: 0px 10px 0px 0px;
+}
+
 .spinner {
     display: inline-block;
     opacity: 0;

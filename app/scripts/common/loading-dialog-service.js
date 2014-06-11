@@ -8,12 +8,21 @@ angular.module('getvApp')
             var modalInstance = null;
 
             return {
-                open : function () {
+                open : function (message) {
+
+                    var data = {
+                        message : message
+                    };
                     modalInstance = $modal.open({
                         templateUrl : 'templates/loading-template.html',
                         backdrop: 'static',
                         keyboard: false,
-                        controller: 'LoadingDialogController as loadingDialogController'
+                        controller: 'LoadingDialogController as loadingDialogController',
+                        resolve: {
+                            data: function () {
+                                return data;
+                            }
+                        }
                     });
                 },
                 close : function () {
@@ -27,8 +36,8 @@ angular.module('getvApp')
 
 angular.module('getvApp')
     .controller('LoadingDialogController', [
-        '$scope',
-        function ($scope) {
-            $scope.message = 'Loading...';
+        '$scope', 'data',
+        function ($scope, data) {
+            $scope.message = data.message;
         }
     ]);
