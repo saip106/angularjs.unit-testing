@@ -1,5 +1,5 @@
 <div class="modal-header payment-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <button type="button" class="close" data-ng-click="paymentDialogController.cancel()" aria-hidden="true">&times;</button>
     <h4 class="modal-title" id="myModalLabel">Payment</h4>
 </div>
 <div class="modal-body">
@@ -16,18 +16,12 @@
         <div class="col-md-3"></div>
     </div>
     <div class="row top-buffer padding-both">
-        <button type="button" class="btn btn-success btn-width">Cash</button>
-        <button type="button" class="btn btn-success btn-width">Credit Card</button>
-    </div>
-    <div class="row top-buffer"></div>
-    <div class="row top-buffer"></div>
-    <div class="row top-buffer padding-both">
-        <div class="col-md-9 left-buffer0">
-            <button type="button" class="btn btn-width">on account</button>
-            <button type="button" class="btn btn-width">Layby</button>
+        <div class="col-md-9">
+            <button type="button" class="btn btn-success btn-width">Cash</button>
+            <button type="button" class="btn btn-success btn-width">Credit Card</button>
         </div>
         <div class="col-md-3">
-            <button type="button" class="btn btn-width">Back to Sale</button>
+            <button type="button" class="btn btn-width" data-ng-click="paymentDialogController.ok()">Back to Sale</button>
         </div>
     </div>
 </div>

@@ -23,8 +23,15 @@ angular.module('getvApp')
 
 angular.module('getvApp')
     .controller('PaymentDialogController', [
-        '$scope', 'data',
-        function ($scope, data) {
-            $scope.message = data.message;
+        '$scope', '$modalInstance', 'data',
+        function ($scope, $modalInstance, data) {
+
+            this.ok = function () {
+                $modalInstance.close({});
+            };
+
+            this.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
         }
     ]);
