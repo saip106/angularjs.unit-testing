@@ -6,7 +6,7 @@ angular.module('getvApp')
 
             var createNewOrder = function (order, authorizationHeader) {
 
-                LoadingDialogService.open();
+                LoadingDialogService.open('Creating new order...');
 
                 return $http({
                     method : 'POST',
@@ -28,7 +28,7 @@ angular.module('getvApp')
 
             var addItem = function (selectedItem, order, authorizationHeader) {
 
-                LoadingDialogService.open();
+                LoadingDialogService.open('Adding item');
 
                 $http({
                     method : 'POST',
@@ -60,7 +60,7 @@ angular.module('getvApp')
 
             var deleteOrder = function (orderId, authorizationHeader) {
 
-                LoadingDialogService.open();
+                LoadingDialogService.open('Deleting order...');
 
                 $http({
                     method : 'DELETE',
