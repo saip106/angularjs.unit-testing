@@ -10,9 +10,7 @@ angular.module('getvApp')
             return {
                 open : function (message) {
 
-                    var data = {
-                        message : message
-                    };
+                    var loadingMessage = message || 'Loading...';
                     modalInstance = $modal.open({
                         templateUrl : 'templates/loading-template.html',
                         backdrop: 'static',
@@ -20,7 +18,9 @@ angular.module('getvApp')
                         controller: 'LoadingDialogController as loadingDialogController',
                         resolve: {
                             data: function () {
-                                return data;
+                                return {
+                                    message : loadingMessage
+                                };
                             }
                         }
                     });
