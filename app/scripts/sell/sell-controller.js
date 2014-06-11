@@ -1,8 +1,16 @@
 'use strict';
 
 angular.module('getvApp')
-    .controller('SellController', ['$scope', '$http', '$log', 'ItemsSearchService', 'OrderService', 'SessionStorageService',
-        function ($scope, $http, $log, ItemsSearchService, OrderService, Session) {
+    .controller('SellController',
+    [
+        '$scope',
+        '$http',
+        '$log',
+        'ItemsSearchService',
+        'OrderService',
+        'SessionStorageService',
+        'PaymentDialogService',
+        function ($scope, $http, $log, ItemsSearchService, OrderService, Session, PaymentDialogService) {
 
             var userSession = Session.get('userSession'),
                 authorizationHeader = 'Bearer ' + userSession.access_token;
@@ -30,4 +38,8 @@ angular.module('getvApp')
                     OrderService.deleteOrder($scope.order.orderId, authorizationHeader);
                 }
             });
+
+            this.openPaymentDialog = function () {
+                PaymentDialogService.open();
+            };
         }]);
