@@ -8,7 +8,7 @@
             {{item.quantity}}
         </button>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-6">
         <button product-details item="item" class="btn btn-link product-link">{{item.name}}</button>
     </div>
     <div class="col-md-2">
@@ -20,7 +20,7 @@
             @ {{item.unitPrice | currency}}
         </button>
     </div>
-    <div class="col-md-1 price-text">{{item.unitPrice * item.quantity | currency}}</div>
+    <div class="col-md-2 price-text">{{item.unitPrice * item.quantity | currency}}</div>
     <div class="col-md-1">
         <a class="btn-close remove-item-button" data-ng-click="removeItem($index)"/>
     </div>

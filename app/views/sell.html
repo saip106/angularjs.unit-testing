@@ -47,12 +47,12 @@
                             </tbody>
                             <tr >
                                 <td><strong>TOTAL</strong></td>
-                                <td><strong>$0.00</strong></td>
+                                <td><strong>{{order.total | currency}}</strong></td>
                                 <td></td>
                             </tr>
                             <tr >
                                 <td class="brdr-top"><strong>TO PAY</strong></td>
-                                <td class="brdr-top"><strong>$0.00</strong></td>
+                                <td class="brdr-top"><strong>{{order.balanceToPay | currency}}</strong></td>
                                 <td class="brdr-top"></td>
                             </tr>
 

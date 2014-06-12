@@ -18,6 +18,9 @@ angular.module('getvApp')
 
             $scope.order = {
                 subTotal : 0,
+                tax : 0,
+                total : 0,
+                balanceToPay : 0,
                 items : []
             };
 
@@ -49,6 +52,11 @@ angular.module('getvApp')
                     });
                 }
             }, true);
+
+            $scope.$watch('order.subTotal', function () {
+                $scope.order.total = $scope.order.subTotal + $scope.order.tax;
+                $scope.order.balanceToPay = $scope.order.total;
+            });
 
             this.openPaymentDialog = function () {
                 PaymentDialogService.open();
