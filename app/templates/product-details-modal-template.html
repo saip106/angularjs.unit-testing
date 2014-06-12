@@ -1,67 +1,65 @@
-<div class="modal-content">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Products Details</h4>
+<div class="modal-header payment-header">
+    <button type="button" class="close" data-ng-click="productDetailsController.cancel()" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Products Details</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="thumbnail thumb-size">
+        </div>
+        <p>{{item.name}}</p>
+        <button type="button" class="btn btn-success btn-width">General</button>
     </div>
-    <div class="modal-body">
-        <div class="row">
-            <div class="thumbnail thumb-size">
-            </div>
-            <p>T-Shirt, White. You can delete this once you have some other products setup.</p>
-            <button type="button" class="btn btn-success btn-width">General</button>
+    <div class="borderbtm"></div>
+    <div class="row">
+        <div class="col-md-6"><br />
+            <strong>Brand</strong><br />
+            Generic Brand
         </div>
-        <div class="borderbtm"></div>
-        <div class="row">
-            <div class="col-md-6"><br />
-                <strong>Brand</strong><br />
-                Generic Brand
-            </div>
-            <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Handle</strong><br />
+            {{item.name}}
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <strong>Handle</strong><br />
-                tshirt
-            </div>
-            <div class="col-md-6">
-                <strong>Supplier</strong><br />
-                Evolent
-            </div>
+        <div class="col-md-6">
+            <strong>Supplier</strong><br />
+            Evolent
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <strong>SKU</strong><br />
-                tshirt-white
-            </div>
-            <div class="col-md-6"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>SKU</strong><br />
+            tshirt-white
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <strong>Average cost</strong><br />
-                $2.00
-            </div>
-            <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Average cost</strong><br />
+            $2.00
         </div>
-        <div class="borderbtm"></div>
-        <h3>Inventory</h3>
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Outlet</th>
-                    <th>In Stock</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Main Outlet</td>
-                    <td>-6</td>
-                </tr>
+        <div class="col-md-6"></div>
+    </div>
+    <div class="borderbtm"></div>
+    <h3>Inventory</h3>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Outlet</th>
+                <th>In Stock</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Main Outlet</td>
+                <td>-6</td>
+            </tr>
 
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
-    <div class="modal-footer">
-    </div>
+</div>
+<div class="modal-footer">
 </div>

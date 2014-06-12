@@ -8,7 +8,9 @@
             {{item.quantity}}
         </button>
     </div>
-    <div class="col-md-7"><product-details class="product-link" name="{{item.name}}"></product-details></div>
+    <div class="col-md-7">
+        <product-details class="product-link" item="item"/>
+    </div>
     <div class="col-md-2">
         <button price-editor
                 price-editor-template

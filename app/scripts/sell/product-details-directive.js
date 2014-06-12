@@ -5,18 +5,42 @@ angular.module('getvApp')
         return {
             replace : true,
             scope : {
-                item : '@'
+                item : '='
             },
             templateUrl : 'templates/product-details-template.html',
             restrict : "E",
             link : function (scope, element, attrs) {
-                scope.name = attrs.name;
 
                 element.bind('click', function () {
                     $modal.open({
-                        templateUrl : 'templates/product-details-modal-template.html'
+                        templateUrl : 'templates/product-details-modal-template.html',
+                        backdrop: 'static',
+                        keyboard: false,
+                        controller: 'ProductDetailsController as productDetailsController',
+                        resolve: {
+                            item: function () {
+                                return scope.item;
+                            }
+                        }
                     });
                 });
             }
         };
     });
+
+angular.module('getvApp')
+    .controller('ProductDetailsController', [
+        '$scope', '$modalInstance', 'item',
+        function ($scope, $modalInstance, item) {
+
+            $scope.item = item;
+
+            this.ok = function () {
+                $modalInstance.close({});
+            };
+
+            this.cancel = function () {
+                $modalInstance.dismiss('cancel');
+            };
+        }
+    ]);
