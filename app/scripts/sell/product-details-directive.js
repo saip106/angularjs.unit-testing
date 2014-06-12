@@ -15,6 +15,7 @@ angular.module('getvApp')
                         templateUrl : 'templates/product-details-modal-template.html',
                         backdrop: 'static',
                         keyboard: false,
+                        windowClass: 'app-modal-window',
                         controller: 'ProductDetailsController as productDetailsController',
                         resolve: {
                             item: function () {

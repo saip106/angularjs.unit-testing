@@ -424,6 +424,10 @@ p{ color:#5c5c5c; margin:4px 0px;}
 
 .price-text { line-height: 30px; }
 
+.app-modal-window .modal-dialog {
+    width: 800px;
+}
+
 /*--------------------------------------- Media Querries -----------------------------------*/
 
 
