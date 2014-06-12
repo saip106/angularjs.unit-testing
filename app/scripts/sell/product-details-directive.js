@@ -3,13 +3,12 @@
 angular.module('getvApp')
     .directive('productDetails', function ($modal) {
         return {
-            replace : true,
+            replace : false,
             scope : {
                 item : '='
             },
-            templateUrl : 'templates/product-details-template.html',
-            restrict : "E",
-            link : function (scope, element, attrs) {
+            restrict : "A",
+            link : function (scope, element) {
 
                 element.bind('click', function () {
                     $modal.open({

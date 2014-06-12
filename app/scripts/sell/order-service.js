@@ -52,6 +52,7 @@ angular.module('getvApp')
                 order.items.push({
                     id : selectedItem.id,
                     name : selectedItem.name,
+                    description: selectedItem.description,
                     unitPrice : selectedItem.listPrice,
                     quantity : 1,
                     total : selectedItem.listPrice
