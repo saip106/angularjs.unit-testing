@@ -95,20 +95,57 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
                 controller : 'SellController as sellController'
             })
             .state('app.sell.retrieveSale', {
-                url : '/sell/retrieve-sale',
+                url : '/retrieve-sale',
                 templateUrl : '../views/sell/retrieve-sale.html'
             })
             .state('app.sell.register', {
-                url : '/sell/register',
+                url : '/register',
                 templateUrl : '../views/sell/register.html'
             });
 
         $stateProvider
             .state('app.products', {
                 url : '/products',
-                templateUrl : 'views/products.html',
+                views : {
+                    'subHeader@app' : {
+                        templateUrl : 'templates/sub-headers/products-sub-header.html'
+                    },
+                    '' : {
+                        template : '<div ui-view></div>'
+                    }
+                }
+            })
+            .state('app.products.products', {
+                url : '/products',
+                templateUrl : '../views/products/products.html',
                 controller : 'ProductsController as productsController'
             })
+            .state('app.products.stockControl', {
+                url : '/stock-control',
+                templateUrl : '../views/products/stock-control.html'
+            })
+            .state('app.products.priceBooks', {
+                url : '/price-books',
+                templateUrl : '../views/products/price-books.html'
+            })
+            .state('app.products.brands', {
+                url : '/brands',
+                templateUrl : '../views/products/brands.html'
+            })
+            .state('app.products.suppliers', {
+                url : '/suppliers',
+                templateUrl : '../views/products/suppliers.html'
+            })
+            .state('app.products.types', {
+                url : '/types',
+                templateUrl : '../views/products/types.html'
+            })
+            .state('app.products.tags', {
+                url : '/tags',
+                templateUrl : '../views/products/tags.html'
+            });
+
+        $stateProvider
             .state('app.customers', {
                 url : '/customers',
                 templateUrl : 'views/customers.html'
