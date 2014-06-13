@@ -389,7 +389,7 @@ p{ color:#5c5c5c; margin:4px 0px;}
 
 }
 .right-links{ background-color:#eeeef0; border-right:1px solid #878787; border-bottom:1px solid #878787; text-align:center; color:#333; margin-left:0px !important; padding:15px 0px;}
-.products-space{ height:370px;}
+.products-space{ height:405px;}
 .right-bottom-panel{
     background-color:#f2f2f3;
     border-radius: 0px 0px 6px 6px;
@@ -424,8 +424,28 @@ p{ color:#5c5c5c; margin:4px 0px;}
 
 .price-text { line-height: 30px; }
 
+/*-------------------------------------overriding bootstrap related styles------------------*/
+
 .app-modal-window .modal-dialog {
     width: 800px;
+}
+
+.pagination {
+    margin : 0;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    z-index: 2;
+    color: #fff;
+    cursor: default;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #fff;
+    background-color: #707070;
+    border: 1px solid #4f4f4f;
 }
 
 /*--------------------------------------- Media Querries -----------------------------------*/
