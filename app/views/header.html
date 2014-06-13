@@ -4,22 +4,22 @@
             <div class="col-md-8">
                 <div class="navbar navbar-default navbar-static-top" role="navigation">
                     <ul class="nav navbar-nav">
-                        <li ui-sref-active="active">
+                        <li ng-class="{ active : $state.includes('app.dashboard.*') }" ui-sref-active="active">
                             <a ui-sref="app.dashboard">Dashboard</a>
                         </li>
-                        <li data-ng-class="{ active : this }" ui-sref-active="active">
+                        <li data-ng-class="{ active : $state.includes('app.sell.*') }" ui-sref-active="active">
                             <a ui-sref="app.sell">Sell</a>
                         </li>
                         <li ng-class="{ active : $state.includes('app.products.*') }" ui-sref-active="active">
                             <a ui-sref="app.products">Products</a>
                         </li>
-                        <li ui-sref-active="active">
+                        <li ng-class="{ active : $state.includes('app.history.*') }" ui-sref-active="active">
                             <a ui-sref="app.history">History</a>
                         </li>
-                        <li ui-sref-active="active">
+                        <li ng-class="{ active : $state.includes('app.customers.*') }" ui-sref-active="active">
                             <a ui-sref="app.customers">Customers</a>
                         </li>
-                        <li ui-sref-active="active">
+                        <li ng-class="{ active : $state.includes('app.setup.*') }" ui-sref-active="active">
                             <a ui-sref="app.setup">Setup</a>
                         </li>
                     </ul>

@@ -19,7 +19,7 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state('public', {
                 abstract : true,
-                views: {
+                views : {
                     'content' : {
                         template : "<div data-ui-view></div>"
                     }
@@ -33,10 +33,10 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
         // Anonymous routes
         $stateProvider
             .state('anonymous', {
-                abstract: true,
-                views: {
+                abstract : true,
+                views : {
                     'content' : {
-                        template: '<div data-ui-view></div>'
+                        template : '<div data-ui-view></div>'
                     }
                 }
             })
@@ -55,52 +55,55 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state('app', {
                 abstract : true,
-                views: {
-	                'header' : {
-                        templateUrl: 'views/header.html'
+                views : {
+                    'header' : {
+                        templateUrl : 'views/header.html',
+                        controller : function ($scope, $state) {
+                            $scope.$state = $state;
+                        }
                     },
                     'content' : {
-                        template: '<div ui-view></div>'
+                        template : '<div ui-view></div>'
                     },
                     'footer' : {
-                        templateUrl: 'views/footer.html'
+                        templateUrl : 'views/footer.html'
                     }
                 }
             });
 
-	    $stateProvider
+        $stateProvider
             .state('app.dashboard', {
                 url : '/dashboard',
                 templateUrl : 'views/dashboard.html'
             });
 
-	    $stateProvider
+        $stateProvider
             .state('app.sell', {
-			    url : '/sell',
-			    views : {
-			        'subHeader@app' : {
-				        templateUrl: 'templates/sub-headers/sell-sub-header.html'
-			        },
-			        '' : {
-				        template: '<div ui-view></div>'
-			        }
-		        }
+                url : '/sell',
+                views : {
+                    'subHeader@app' : {
+                        templateUrl : 'templates/sub-headers/sell-sub-header.html'
+                    },
+                    '' : {
+                        template : '<div ui-view></div>'
+                    }
+                }
             })
-	        .state('app.sell.currentSale', {
-		        url : '/current-sale',
-		        templateUrl : '../views/sell/current-sale.html',
-		        controller : 'SellController as sellController'
-	        })
-	        .state('app.sell.retrieveSale', {
-		        url : '/sell/retrieve-sale',
-		        templateUrl : '../views/sell/retrieve-sale.html'
-	        })
-	        .state('app.sell.register', {
-		        url : '/sell/register',
-		        templateUrl : '../views/sell/register.html'
-	        });
+            .state('app.sell.currentSale', {
+                url : '/current-sale',
+                templateUrl : '../views/sell/current-sale.html',
+                controller : 'SellController as sellController'
+            })
+            .state('app.sell.retrieveSale', {
+                url : '/sell/retrieve-sale',
+                templateUrl : '../views/sell/retrieve-sale.html'
+            })
+            .state('app.sell.register', {
+                url : '/sell/register',
+                templateUrl : '../views/sell/register.html'
+            });
 
-	    $stateProvider
+        $stateProvider
             .state('app.products', {
                 url : '/products',
                 templateUrl : 'views/products.html',
