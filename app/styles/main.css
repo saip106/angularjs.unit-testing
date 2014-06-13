@@ -90,7 +90,7 @@ p{ color:#5c5c5c; margin:4px 0px;}
 }
 .menu-block-2 { padding-bottom: 0px; background-color:#ffc82e}
 .menu-2 {	padding:0px; margin:0px;}
-.menu-2 ul{ margin-left:2px;}
+.menu-2 ul { margin-left:2px;}
 .menu-2 li {	margin:4px 0 0 8px; float:left; color:#cccccc; padding: 6px 0px; list-style:none; }
 .menu-2 li a {
     font-size:12px;
@@ -103,6 +103,11 @@ p{ color:#5c5c5c; margin:4px 0px;}
 
 }
 .menu-2 li a:hover{ text-decoration:underline;}
+.menu-2>.active>a, .menu-2>.active>a:hover, .menu-2>.active>a:focus {
+    color: #555;
+    background-color: #ffc82e;
+    font-weight: bold;
+}
 
 /*------------------------------------------------------- Content block ------------------------------*/
 
@@ -373,20 +378,19 @@ p{ color:#5c5c5c; margin:4px 0px;}
     border: 1px solid #b0b0b0;}
 
 .black-bar{
-    background-color: #3d3d3d;
-    *background-color: #3d3d3d;
-    background-image: -moz-linear-gradient(top, #202020, #3d3d3d);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#202020), to(#3d3d3d));
-    background-image: -webkit-linear-gradient(top, #202020, #3d3d3d);
-    background-image: -o-linear-gradient(top, #202020, #3d3d3d);
-    background-image: linear-gradient(to bottom, #202020, #3d3d3d);
+    background-color: #707070;
+    *background-color: #707070;
+    background-image: -moz-linear-gradient(top, #202020, #707070);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#202020), to(#707070));
+    background-image: -webkit-linear-gradient(top, #202020, #707070);
+    background-image: -o-linear-gradient(top, #202020, #707070);
+    background-image: linear-gradient(to bottom, #202020, #707070);
     background-repeat: repeat-x;
     border-radius: 9px 9px 0px 0px;
     padding:6px 0 6px 0px;
     text-align:center;
     color:#fff;
     font-weight:bold;
-
 }
 .right-links{ background-color:#eeeef0; border-right:1px solid #878787; border-bottom:1px solid #878787; text-align:center; color:#333; margin-left:0px !important; padding:15px 0px;}
 .products-space{ height:405px;}

@@ -4,12 +4,24 @@
             <div class="col-md-8">
                 <div class="navbar navbar-default navbar-static-top" role="navigation">
                     <ul class="nav navbar-nav">
-                        <li ui-sref-active="active"><a ui-sref="app.dashboard">Dashboard</a></li>
-                        <li ui-sref-active="active"><a ui-sref="app.sell">Sell</a></li>
-                        <li ui-sref-active="active"><a ui-sref="app.products">Products</a></li>
-                        <li ui-sref-active="active"><a ui-sref="app.history">History</a></li>
-                        <li ui-sref-active="active"><a ui-sref="app.customers">Customers</a></li>
-                        <li ui-sref-active="active"><a ui-sref="app.setup">Setup</a></li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="app.dashboard">Dashboard</a>
+                        </li>
+                        <li data-ng-class="{ active : this }" ui-sref-active="active">
+                            <a ui-sref="app.sell">Sell</a>
+                        </li>
+                        <li ng-class="{ active : $state.includes('app.products.*') }" ui-sref-active="active">
+                            <a ui-sref="app.products">Products</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="app.history">History</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="app.customers">Customers</a>
+                        </li>
+                        <li ui-sref-active="active">
+                            <a ui-sref="app.setup">Setup</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -26,19 +38,4 @@
     </div>
 </div>
 
-<div class="container-fluid menu-block-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <ul class="menu-2">
-                    <li><a href="#">CURRENT SALE CLOSE </a></li>
-                    <li><a href="#">RETRIEVE SALE (F6)</a></li>
-                    <li><a href="#">REGISTER (F7)</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-
-            </div>
-        </div>
-    </div>
-</div>
+<div data-ui-view="subHeader"></div>
