@@ -57,10 +57,7 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
                 abstract : true,
                 views : {
                     'header' : {
-                        templateUrl : 'views/header.html',
-                        controller : function ($scope, $state) {
-                            $scope.$state = $state;
-                        }
+                        templateUrl : 'views/header.html'
                     },
                     'content' : {
                         template : '<div ui-view></div>'
@@ -80,9 +77,13 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state('app.sell', {
                 url : '/sell',
+                abstract : true,
                 views : {
                     'subHeader@app' : {
-                        templateUrl : 'templates/sub-headers/sell-sub-header.html'
+                        templateUrl : 'templates/sub-headers/sell-sub-header.html',
+                        controller : function ($scope, $state) {
+                            $scope.$state = $state;
+                        }
                     },
                     '' : {
                         template : '<div ui-view></div>'
@@ -96,11 +97,17 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
             })
             .state('app.sell.retrieveSale', {
                 url : '/retrieve-sale',
-                templateUrl : '../views/sell/retrieve-sale.html'
+                templateUrl : '../views/sell/retrieve-sale.html',
+                controller : function ($scope, $state) {
+                    $scope.$state = $state;
+                }
             })
             .state('app.sell.register', {
                 url : '/register',
-                templateUrl : '../views/sell/register.html'
+                templateUrl : '../views/sell/register.html',
+                controller : function ($scope, $state) {
+                    $scope.$state = $state;
+                }
             });
 
         $stateProvider
@@ -148,15 +155,49 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state('app.customers', {
                 url : '/customers',
-                templateUrl : 'views/customers.html'
+                views : {
+                    'subHeader@app' : {
+                        templateUrl : 'templates/sub-headers/customers-sub-header.html'
+                    },
+                    '' : {
+                        template : '<div ui-view></div>'
+                    }
+                }
             })
+            .state('app.customers.customers', {
+                url : '/customers',
+                templateUrl : 'views/customers/customers.html'
+            })
+            .state('app.customers.groups', {
+                url : '/customers',
+                templateUrl : 'views/customers/groups.html'
+            });
+
+        $stateProvider
             .state('app.setup', {
                 url : '/setup',
-                templateUrl : 'views/setup.html'
+                views : {
+                    'subHeader@app' : {
+                        templateUrl : 'templates/sub-headers/setup-sub-header.html'
+                    },
+                    '' : {
+                        template : '<div ui-view></div>'
+                    }
+                }
             })
+            .state('app.setup.general', {
+                url : '/general',
+                templateUrl : 'views/setup/general.html'
+            })
+            .state('app.setup.accounts', {
+                url : '/account',
+                templateUrl : 'views/setup/accounts.html'
+            });
+
+        $stateProvider
             .state('app.history', {
                 url : '/history',
-                templateUrl : 'views/history.html'
+                templateUrl : '../views/history/history.html'
             });
     }]);
 
