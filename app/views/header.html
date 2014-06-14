@@ -7,7 +7,7 @@
                         <li ng-class="{ active : $state.includes('app.dashboard.*') }" ui-sref-active="active">
                             <a ui-sref="app.dashboard.summary">Dashboard</a>
                         </li>
-                        <li data-ng-class="{ active : $state.includes('app.sell') }" ui-sref-active="active">
+                        <li ng-class="{ active : $state.includes('app.sell') }" ui-sref-active="active">
                             <a ui-sref="app.sell.currentSale">Sell</a>
                         </li>
                         <li ng-class="{ active : $state.includes('app.products.*') }" ui-sref-active="active">
@@ -20,7 +20,7 @@
                             <a ui-sref="app.customers.customers">Customers</a>
                         </li>
                         <li ng-class="{ active : $state.includes('app.setup.*') }" ui-sref-active="active">
-                            <a ui-sref="app.setup.general">Setup {{$state}}</a>
+                            <a ui-sref="app.setup.general">Setup</a>
                         </li>
                     </ul>
                 </div>

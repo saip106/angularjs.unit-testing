@@ -95,31 +95,31 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
                 abstract : true,
                 views : {
                     'subHeader@app' : {
-                        templateUrl : 'templates/sub-headers/sell-sub-header.html',
+                        templateUrl : 'templates/sub-headers/sell-sub-header.html'
+                    },
+                    '' : {
+                        template : '<div ui-view></div>',
                         controller : function ($scope, $state) {
                             $scope.$state = $state;
                         }
-                    },
-                    '' : {
-                        template : '<div ui-view></div>'
                     }
                 }
             })
             .state('app.sell.currentSale', {
                 url : '/current-sale',
-                templateUrl : '../views/sell/current-sale.html',
+                templateUrl : 'views/sell/current-sale.html',
                 controller : 'SellController as sellController'
             })
             .state('app.sell.retrieveSale', {
                 url : '/retrieve-sale',
-                templateUrl : '../views/sell/retrieve-sale.html',
+                templateUrl : 'views/sell/retrieve-sale.html',
                 controller : function ($scope, $state) {
                     $scope.$state = $state;
                 }
             })
             .state('app.sell.register', {
                 url : '/register',
-                templateUrl : '../views/sell/register.html',
+                templateUrl : 'views/sell/register.html',
                 controller : function ($scope, $state) {
                     $scope.$state = $state;
                 }
@@ -128,6 +128,7 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state('app.products', {
                 url : '/products',
+                abstract : true,
                 views : {
                     'subHeader@app' : {
                         templateUrl : 'templates/sub-headers/products-sub-header.html'
