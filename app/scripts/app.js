@@ -71,7 +71,22 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state('app.dashboard', {
                 url : '/dashboard',
-                templateUrl : 'views/dashboard.html'
+                abstract : true,
+                views : {
+                    'subHeader@app' : {
+                        templateUrl : 'templates/sub-headers/dashboard-sub-header.html',
+                        controller : function ($scope, $state) {
+                            $scope.$state = $state;
+                        }
+                    },
+                    '' : {
+                        template : '<div ui-view></div>'
+                    }
+                }
+            })
+            .state('app.dashboard.summary', {
+                url : '/summary',
+                templateUrl : '../views/dashboard/summary.html'
             });
 
         $stateProvider
