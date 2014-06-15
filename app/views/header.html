@@ -4,22 +4,22 @@
             <div class="col-md-8">
                 <div class="navbar navbar-default navbar-static-top" role="navigation">
                     <ul class="nav navbar-nav">
-                        <li ng-class="{ active : $state.includes('app.dashboard.*') }" ui-sref-active="active">
+                        <li ng-class="{ active : $state.includes('app.dashboard.*') }">
                             <a ui-sref="app.dashboard.summary">Dashboard</a>
                         </li>
-                        <li ng-class="{ active : $state.includes('app.sell') }" ui-sref-active="active">
+                        <li ng-class="{ active : $state.includes('app.sell.*') }">
                             <a ui-sref="app.sell.currentSale">Sell</a>
                         </li>
-                        <li ng-class="{ active : $state.includes('app.products.*') }" ui-sref-active="active">
+                        <li ng-class="{ active : $state.includes('app.products.*') }">
                             <a ui-sref="app.products.products">Products</a>
                         </li>
-                        <li ng-class="{ active : $state.includes('app.history.*') }" ui-sref-active="active">
+                        <li ng-class="{ active : $state.includes('app.history.*') }">
                             <a ui-sref="app.history">History</a>
                         </li>
-                        <li ng-class="{ active : $state.includes('app.customers.*') }" ui-sref-active="active">
+                        <li ng-class="{ active : $state.includes('app.customers.*') }">
                             <a ui-sref="app.customers.customers">Customers</a>
                         </li>
-                        <li ng-class="{ active : $state.includes('app.setup.*') }" ui-sref-active="active">
+                        <li ng-class="{ active : $state.includes('app.setup.*') }">
                             <a ui-sref="app.setup.general">Setup</a>
                         </li>
                     </ul>
