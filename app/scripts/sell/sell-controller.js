@@ -4,7 +4,6 @@ angular.module('getvApp')
     .controller('SellController',
     [
         '$scope',
-	    '$state',
         '$http',
         '$log',
         'ItemsSearchService',
@@ -12,7 +11,7 @@ angular.module('getvApp')
         'SessionStorageService',
         'PaymentDialogService',
         '_',
-        function ($scope, $state, $http, $log, ItemsSearchService, OrderService, Session, PaymentDialogService, _) {
+        function ($scope, $http, $log, ItemsSearchService, OrderService, Session, PaymentDialogService, _) {
 
             var userSession = Session.get('userSession'),
                 authorizationHeader = 'Bearer ' + userSession.access_token;
@@ -25,7 +24,6 @@ angular.module('getvApp')
                 items : []
             };
 
-	        $scope.$state = $state;
             $scope.user = {};
             $scope.transaction = {};
 
