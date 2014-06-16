@@ -59,6 +59,7 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
                     'header' : {
                         templateUrl : 'views/header.html',
                         controller : function ($scope, $state) {
+	                        console.log('Injected $state');
                             $scope.$state = $state;
                         }
                     },
@@ -213,25 +214,25 @@ getvApp.run(function ($rootScope, $log) {
     $rootScope
         .$on('$stateChangeStart',
         function (event, toState, toParams, fromState, fromParams) {
-            $log.debug("State Change: transition begins!");
+            $log.debug("State Change (from: " + fromState.name + " -> to: " + toState.name + "): transition begins!");
         });
 
     $rootScope
         .$on('$stateChangeSuccess',
         function (event, toState, toParams, fromState, fromParams) {
-            $log.debug("State Change: State change success!");
+            $log.debug("State Change (from: " + fromState.name + " -> to: " + toState.name + "): State change success!");
         });
 
     $rootScope
         .$on('$stateChangeError',
         function (event, toState, toParams, fromState, fromParams) {
-            $log.debug("State Change: Error!");
+            $log.debug("State Change (from: " + fromState.name + " -> to: " + toState.name + "): Error!");
         });
 
     $rootScope
         .$on('$stateNotFound',
         function (event, toState, toParams, fromState, fromParams) {
-            $log.debug("State Change: State not found!");
+            $log.debug("State Change (from: " + fromState.name + " -> to: " + toState.name + "): State not found!");
         });
 
     $rootScope
