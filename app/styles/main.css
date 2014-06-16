@@ -413,7 +413,7 @@ p{ color:#5c5c5c; margin:4px 0px;}
 .field-title{ color:#ffffff; font-size:12px; font-weight:bold; margin-left:15px;}
 .field-text{ color:#000 !important; font-size:12px; text-align:right; width:198px; float:left;}
 
-.borderbtm{ border-bottom:1px dotted #303030;margin-top: 28px; width: 98%;}
+.separator{ border-bottom:1px dotted #303030;margin: 10px 0px 5px 0px; width: 98%;}
 .padding-both{ padding:0 15px;}
 .form-margin{padding-bottom:10px;margin-bottom:8px; padding-left:10px;}
 

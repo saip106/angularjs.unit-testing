@@ -4,44 +4,41 @@
 </div>
 <div class="modal-body">
     <div class="row">
-        <div class="thumbnail thumb-size">
-        </div>
-        <div ng-bind-html='item.description'></div>
-        <button type="button" class="btn btn-success btn-width">General</button>
-    </div>
-    <div class="borderbtm"></div>
-    <div class="row">
-        <div class="col-md-6"><br />
-            <strong>Brand</strong><br />
-            Generic Brand
-        </div>
-        <div class="col-md-6"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <strong>Handle</strong><br />
+        <div class="col-md-12">
+            <strong>Name</strong><br />
             {{item.name}}
         </div>
-        <div class="col-md-6">
-            <strong>Supplier</strong><br />
-            Evolent
+    </div>
+    <div class="separator"/>
+    <div class="row">
+        <div class="col-md-12">
+            <strong>Description</strong><br />
+            <div ng-bind-html='item.description'/>
         </div>
     </div>
+    <div class="separator"/>
     <div class="row">
         <div class="col-md-6">
-            <strong>SKU</strong><br />
-            tshirt-white
+            <strong>ID</strong><br />
+            {{item.id}}
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <strong>Format</strong><br />
+            {{item.format}}
+        </div>
     </div>
+    <br/>
     <div class="row">
         <div class="col-md-6">
-            <strong>Average cost</strong><br />
-            $2.00
+            <strong>List Price</strong><br />
+            {{item.unitPrice | currency}}
         </div>
-        <div class="col-md-6"></div>
+        <div class="col-md-6">
+            <strong>On sale</strong><br />
+            {{item.isOnSale}}
+        </div>
     </div>
-    <div class="borderbtm"></div>
+    <div class="separator"></div>
     <h3>Inventory</h3>
     <div class="table-responsive">
         <table class="table">

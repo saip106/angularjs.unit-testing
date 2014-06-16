@@ -55,7 +55,10 @@ angular.module('getvApp')
                     description: selectedItem.description,
                     unitPrice : selectedItem.listPrice,
                     quantity : 1,
-                    total : selectedItem.listPrice
+                    total : selectedItem.listPrice,
+					format : selectedItem.format,
+	                isOnSale : selectedItem.isOnSale ? "YES" : "NO",
+					product : selectedItem.product
                 });
             };
 

@@ -18,6 +18,8 @@ angular.module('getvApp')
                         }
                     })
                         .then(function (result) {
+	                        $log.debug(result.data.items);
+		                    window.xxx = result.data.items;
                             return result.data.items;
                         }
                     );
