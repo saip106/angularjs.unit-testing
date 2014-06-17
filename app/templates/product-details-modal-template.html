@@ -62,7 +62,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr data-ng-repeat="warehouse in item.stockItemWarehouses">
+                <tr data-ng-repeat="warehouse in item.stockItemWarehouses | orderBy:warehouseId">
                     <td>{{warehouse.warehouseId}}</td>
                     <td>{{warehouse.trueOnHand}}</td>
                 </tr>
