@@ -11,9 +11,12 @@
     </div>
     <div class="separator"/>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-9">
             <strong>Description</strong><br />
             <div ng-bind-html='item.description'/>
+        </div>
+        <div class="col-md-3">
+            <img class="thumbnail thumb-size" src="{{thumbnailUrl}}" alt="No Image available"/>
         </div>
     </div>
     <div class="separator"/>
@@ -38,22 +41,31 @@
             {{item.isOnSale}}
         </div>
     </div>
+    <br/>
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Publisher</strong><br />
+            {{item.product.publisherId}}
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
     <div class="separator"></div>
-    <h3>Inventory</h3>
+    <h3>Warehouses</h3>
     <div class="table-responsive">
         <table class="table">
             <thead>
-            <tr>
-                <th>Outlet</th>
-                <th>In Stock</th>
-            </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>On Hand</th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Main Outlet</td>
-                <td>-6</td>
-            </tr>
-
+                <tr data-ng-repeat="warehouse in item.stockItemWarehouses">
+                    <td>{{warehouse.warehouseId}}</td>
+                    <td>{{warehouse.trueOnHand}}</td>
+                </tr>
             </tbody>
         </table>
     </div>

@@ -58,7 +58,8 @@ angular.module('getvApp')
                     total : selectedItem.listPrice,
 					format : selectedItem.format,
 	                isOnSale : selectedItem.isOnSale ? "YES" : "NO",
-					product : selectedItem.product
+					product : selectedItem.product,
+	                stockItemWarehouses : selectedItem.stockItemWarehouses
                 });
             };
 

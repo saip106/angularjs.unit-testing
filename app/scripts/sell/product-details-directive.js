@@ -34,6 +34,9 @@ angular.module('getvApp')
         function ($scope, $modalInstance, item) {
 
             $scope.item = item;
+	        if (item.product.images.length > 0) {
+		        $scope.thumbnailUrl = item.product.images[0].thumbnailUrl;
+	        }
 
             this.ok = function () {
                 $modalInstance.close({});
