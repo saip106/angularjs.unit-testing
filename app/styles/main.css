@@ -452,6 +452,13 @@ p{ color:#5c5c5c; margin:4px 0px;}
     border: 1px solid #4f4f4f;
 }
 
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {
+    color: #fff;
+    cursor: not-allowed;
+    background-color: #707070;
+    border-color: #ddd;
+}
+
 /*--------------------------------------- Media Querries -----------------------------------*/
 
 

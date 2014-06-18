@@ -58,7 +58,7 @@ getvApp.config(['$stateProvider', '$urlRouterProvider',
                 views : {
                     'header' : {
                         templateUrl : 'views/header.html',
-	                    controller : 'HeaderController as headerController'
+                        controller : 'HeaderController as headerController'
                     },
                     'content' : {
                         template : '<div ui-view></div>'
