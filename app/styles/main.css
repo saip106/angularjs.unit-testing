@@ -375,7 +375,8 @@ p{ color:#5c5c5c; margin:4px 0px;}
     overflow:hidden;
     min-height:540px;
     margin: 10px 10px 0 0;
-    border: 1px solid #b0b0b0;}
+    border: 1px solid #b0b0b0;
+}
 
 .black-bar{
     background-color: #707070;
@@ -392,7 +393,19 @@ p{ color:#5c5c5c; margin:4px 0px;}
     color:#fff;
     font-weight:bold;
 }
-.right-links{ background-color:#eeeef0; border-right:1px solid #878787; border-bottom:1px solid #878787; text-align:center; color:#333; margin-left:0px !important; padding:15px 0px;}
+.quick-key {
+    background-color:#eeeef0;
+    border-right:1px solid #878787;
+    border-bottom:1px solid #878787;
+    text-align:center;
+    color:#333;
+    margin-left:0px !important;
+    padding:17px 0px;}
+
+.quick-keys {
+    height: 455px;
+}
+
 .products-space{ height:405px;}
 .right-bottom-panel{
     background-color:#f2f2f3;

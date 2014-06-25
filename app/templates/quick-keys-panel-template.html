@@ -2,18 +2,14 @@
     <div class="row">
         <div class="black-bar">Default</div>
     </div>
-    <div class="row">
-        <div class="col-md-3 right-links">T-Shirt(Demo)</div>
-        <div class="col-md-3 right-links">Coffee(Demo)</div>
-    </div>
-    <div class="row products-space">
+    <div class="quick-keys">
+        <div class="row" data-ng-repeat="item in currentPageItems">
+            <input type="button" class="col-md-12 quick-key" value='{{item.name}}' />
+        </div>
     </div>
     <div class="row right-bottom-panel">
         <div class="col-md-12">
-            <pagination total-items="totalItems" items-per-page="25" data-ng-model="currentPage" />
-            <!--<div class="col-md-1"><img src="images/arrow-left.png"/></div>-->
-            <!--<div class="col-md-10 right-bottom-panel-txt">1</div>-->
-            <!--<div class="col-md-1"><img src="images/arrow-right.png"/></div>-->
+            <pagination total-items="totalItems" items-per-page="8" data-ng-model="currentPage" ng-change="pageChanged()"/>
         </div>
     </div>
 </div>
