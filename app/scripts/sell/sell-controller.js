@@ -16,6 +16,8 @@ angular.module('getvApp')
             var userSession = Session.get('userSession'),
                 authorizationHeader = 'Bearer ' + userSession.access_token;
 
+	        $scope.authorizationHeader = authorizationHeader;
+
             $scope.order = {
                 subTotal : 0,
                 tax : 0,
@@ -34,12 +36,8 @@ angular.module('getvApp')
                 var selectedItem = $scope.transaction.selectedItem;
                 $scope.transaction.selectedItem = '';
 
-                addItem(selectedItem);
+	            OrderService.addItem(selectedItem, $scope.order, authorizationHeader);
             };
-
-            this.addItem = function (item) {
-                OrderService.addItem(item, $scope.order, authorizationHeader);
-            }
 
             $scope.$watchCollection('order.items', function () {
                 if($scope.order.orderId && $scope.order.items.length === 0) {

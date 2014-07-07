@@ -1,17 +1,16 @@
 'use strict';
 
 angular.module('getvApp')
-    .directive('quickKeysPanel', ['$http', '$log', 'QuickKeysRetriever',
-        function ($http, $log, QuickKeysRetriever) {
+    .directive('quickKeysPanel', ['$http', '$log', 'QuickKeysRetriever', 'OrderService',
+        function ($http, $log, QuickKeysRetriever, OrderService) {
             return {
                 replace : true,
-                scope : {},
                 restrict : "A",
                 templateUrl : 'templates/quick-keys-panel-template.html',
                 controller : 'QuickKeysController',
                 link : function (scope, element, attrs, controller) {
 
-                    scope.itemsPerPage = 8;
+	                scope.itemsPerPage = 8;
                     scope.currentPage = 1;
 
                     QuickKeysRetriever
@@ -28,16 +27,15 @@ angular.module('getvApp')
                     };
 
                     scope.addItem = function (item) {
-                        controller.addItem(item);
+	                    OrderService.addItem(item, scope.order, scope.authorizationHeader);
                     };
                 }
             };
         }]);
 
 angular.module('getvApp')
-    .controller('QuickKeysController', ['$scope', 'SellController',
-        function ($scope, SellController) {
-            this.addItem = function (item) {
-                SellController.addItem(item);
-            };
+    .controller('QuickKeysController', ['$scope',
+        function ($scope) {
+
+
     }]);
