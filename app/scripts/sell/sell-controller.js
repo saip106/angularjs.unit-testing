@@ -34,18 +34,22 @@ angular.module('getvApp')
                 var selectedItem = $scope.transaction.selectedItem;
                 $scope.transaction.selectedItem = '';
 
-                OrderService.addItem(selectedItem, $scope.order, authorizationHeader);
+                addItem(selectedItem);
             };
 
+            this.addItem = function (item) {
+                OrderService.addItem(item, $scope.order, authorizationHeader);
+            }
+
             $scope.$watchCollection('order.items', function () {
-                if ($scope.order.orderId && $scope.order.items.length === 0) {
+                if($scope.order.orderId && $scope.order.items.length === 0) {
                     $log.debug('deleting order with id ' + $scope.order.orderId);
                     OrderService.deleteOrder($scope.order.orderId, authorizationHeader);
                 }
             });
 
             $scope.$watch('order.items', function () {
-                if ($scope.order.items.length !== 0) {
+                if($scope.order.items.length !== 0) {
                     $scope.order.subTotal = 0;
                     _.each($scope.order.items, function (item) {
                         $scope.order.subTotal += item.quantity * item.unitPrice;

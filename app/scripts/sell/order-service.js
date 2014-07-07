@@ -52,14 +52,14 @@ angular.module('getvApp')
                 order.items.push({
                     id : selectedItem.id,
                     name : selectedItem.name,
-                    description: selectedItem.description,
+                    description : selectedItem.description,
                     unitPrice : selectedItem.listPrice,
                     quantity : 1,
                     total : selectedItem.listPrice,
-					format : selectedItem.format,
-	                isOnSale : selectedItem.isOnSale ? "YES" : "NO",
-					product : selectedItem.product,
-	                stockItemWarehouses : selectedItem.stockItemWarehouses
+                    format : selectedItem.format,
+                    isOnSale : selectedItem.isOnSale ? "YES" : "NO",
+                    product : selectedItem.product,
+                    stockItemWarehouses : selectedItem.stockItemWarehouses
                 });
             };
 
@@ -97,6 +97,6 @@ angular.module('getvApp')
                         addItem(selectedItem, order, authorizationHeader);
                     }
                 },
-                deleteOrder: deleteOrder
+                deleteOrder : deleteOrder
             };
         }]);

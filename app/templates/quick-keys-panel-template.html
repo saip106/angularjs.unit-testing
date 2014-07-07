@@ -4,12 +4,12 @@
     </div>
     <div class="quick-keys">
         <div class="row" data-ng-repeat="item in currentPageItems">
-            <input type="button" class="col-md-12 quick-key" value='{{item.name}}' />
+            <input type="button" class="col-md-12 quick-key" value='{{item.name}}' data-ng-click="addItem(item)"/>
         </div>
     </div>
     <div class="row right-bottom-panel">
         <div class="col-md-12">
-            <pagination total-items="totalItems" items-per-page="8" data-ng-model="currentPage" ng-change="pageChanged()"/>
+            <pagination total-items="totalItems" items-per-page="itemsPerPage" data-ng-model="currentPage" ng-change="pageChanged()"/>
         </div>
     </div>
 </div>
