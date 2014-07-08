@@ -61,6 +61,6 @@ angular.module('getvApp')
             });
 
             this.openPaymentDialog = function () {
-                PaymentDialogService.open();
+                PaymentDialogService.open($scope.order.balanceToPay);
             };
         }]);

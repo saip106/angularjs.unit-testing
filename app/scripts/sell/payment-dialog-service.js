@@ -5,7 +5,7 @@ angular.module('getvApp')
         function ($http, $modal, $log) {
 
             return {
-                open: function () {
+                open: function (amountToPay) {
                     $modal.open({
                         templateUrl: 'templates/payment-template.html',
                         controller: 'PaymentDialogController as paymentDialogController',
@@ -13,7 +13,9 @@ angular.module('getvApp')
                         backdrop: 'static',
                         resolve : {
                             data: function () {
-                                return {};
+                                return {
+                                    amountToPay : amountToPay
+                                };
                             }
                         }
                     });
@@ -25,6 +27,8 @@ angular.module('getvApp')
     .controller('PaymentDialogController', [
         '$scope', '$modalInstance', 'data',
         function ($scope, $modalInstance, data) {
+
+            $scope.amountToPay = data.amountToPay;
 
             this.ok = function () {
                 $modalInstance.close({});
