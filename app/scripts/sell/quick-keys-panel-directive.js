@@ -10,7 +10,7 @@ angular.module('getvApp')
                 controller : 'QuickKeysController',
                 link : function (scope, element, attrs, controller) {
 
-	                scope.itemsPerPage = 8;
+                    scope.itemsPerPage = 8;
                     scope.currentPage = 1;
 
                     QuickKeysRetriever
@@ -27,7 +27,7 @@ angular.module('getvApp')
                     };
 
                     scope.addItem = function (item) {
-	                    OrderService.addItem(item, scope.order, scope.authorizationHeader);
+                        OrderService.addItem(item, scope.order, scope.authorizationHeader);
                     };
                 }
             };
@@ -38,4 +38,4 @@ angular.module('getvApp')
         function ($scope) {
 
 
-    }]);
+        }]);
