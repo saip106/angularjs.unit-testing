@@ -10,7 +10,7 @@ angular.module('getvApp')
                 controller : 'QuickKeysController',
                 link : function (scope, element, attrs, controller) {
 
-                    scope.itemsPerPage = 8;
+                    scope.itemsPerPage = 24;
                     scope.currentPage = 1;
 
                     QuickKeysRetriever

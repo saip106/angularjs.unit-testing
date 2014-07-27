@@ -395,15 +395,23 @@ p{ color:#5c5c5c; margin:4px 0px;}
 }
 .quick-key {
     background-color:#eeeef0;
-    border-right:1px solid #878787;
-    border-bottom:1px solid #878787;
-    text-align:center;
+    border:1px solid #878787;
+    text-align: center;
     color:#333;
-    margin-left:0px !important;
-    padding:17px 0px;}
+    padding:16px 5px 16px 5px;
+    float: left;
+    width: 181px;
+    margin: 1px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    border-radius: 5px;
+}
 
 .quick-keys {
-    height: 455px;
+    height: 457px;
+    padding-left: 2px;
+    padding-top: 4px;
 }
 
 .products-space{ height:405px;}
