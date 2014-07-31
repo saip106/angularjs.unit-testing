@@ -185,18 +185,21 @@ p{ color:#5c5c5c; margin:4px 0px;}
     background-color:#3c78d8;
 }
 
-.all-products{ height:330px; border-bottom:1px solid #dcdcdc; background-color:#fff; width:100%; }
-.product-row {
-    border-bottom:1px solid #dcdcdc;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    background-color:#fff;
-    display: block;
-}
-
 .field-search{ color:#000 !important; font-size:12px; width:96%; margin-left:6px;}
-.all-products{ height:330px; border-bottom:1px solid #dcdcdc; background-color:#fff; width:100%;}
-.product-row{ border-bottom:1px solid #dcdcdc; padding-top:10px; background-color:#fff; padding-bottom:10px; margin:0px;}
+.all-products{
+    height:330px;
+    border-bottom:1px solid #dcdcdc;
+    background-color:#fff;
+    width:100%;
+    overflow: auto;
+}
+.product-row{
+    border-bottom:1px solid #dcdcdc;
+    padding-top:10px;
+    background-color:#fff;
+    padding-bottom:10px;
+    margin:0px;
+}
 
 .round {
     background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#fff),color-stop(100%,#ececee));
